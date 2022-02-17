@@ -11,15 +11,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const InputTextField = (props) => {
-  const { label, type } = props;
+  const { label, type, value, error, onChange, helperText, required } = props;
   const classes = useStyles();
   return (
     <TextField
+      InputLabelProps={{
+        shrink: true,
+      }}
       id="outlined-basic"
       size="small"
       type={type}
+      value={value}
+      error={error}
+      helperText={helperText}
+      onChange={onChange}
       className={classes.root}
       label={label}
+      required={required}
       variant="outlined"
     />
   );

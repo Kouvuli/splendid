@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
-import SignUpForm from "../../components/Login/SignUpForm";
-import SignInForm from "../../components/Login/SignInForm";
+import SignUpForm from "../../components/Form/SignUpForm";
+import SignInForm from "../../components/Form/SignInForm";
 
-export const LoginForm = () => {
+export const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   const signInHandler = () => {
@@ -34,7 +34,7 @@ export const LoginForm = () => {
               Sign In
             </button>
           </div>
-          <div class="overlay-panel overlay-right">
+          <div className="overlay-panel overlay-right">
             <h1>Hello, Friend!</h1>
             <p>Enter your personal details and start journey with us</p>
             <button className="ghost" id="signUp" onClick={signInHandler}>
@@ -47,4 +47,4 @@ export const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;
