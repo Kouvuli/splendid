@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ForgotPasswordForm1 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm1";
 import ForgotPasswordForm2 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm2";
+import ForgotPasswordForm3 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm3";
+import SuccessForm from "../../components/Form/ForgotPasswordForm/SuccessForm";
 import "./ForgotPassword.css";
 
 const steps = [
@@ -37,10 +39,9 @@ const ForgotPassword = () => {
     <div className="container" id="container">
       <Box
         sx={{
-          width: "100%",
           display: "flex",
           flexDirection: "column",
-          height: "480px",
+          height: "400px",
         }}
       >
         <HorizontalStepper activeStep={activeStep} alternativeLabel>
@@ -57,29 +58,25 @@ const ForgotPassword = () => {
         </HorizontalStepper>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+            <SuccessForm />
+            <Box className="btn-container">
               <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleReset}>Reset</Button>
             </Box>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
-            {activeStep === 0 && <ForgotPasswordForm1 />}
-            {activeStep === 2 && <ForgotPasswordForm2 />}
-
             <Box
               sx={{
-                overflow: "auto",
-                display: "flex",
-                flexDirection: "row",
-                pt: 2,
-                marginTop: "auto",
+                padding: "0 20px",
               }}
             >
+              {activeStep === 0 && <ForgotPasswordForm1 />}
+              {activeStep === 1 && <ForgotPasswordForm2 />}
+              {activeStep === 2 && <ForgotPasswordForm3 />}
+            </Box>
+
+            <Box className="btn-container">
               <Box sx={{ flex: "1 1 auto" }} />
               <Button
                 color="inherit"
@@ -91,7 +88,7 @@ const ForgotPassword = () => {
               </Button>
 
               <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                {activeStep === steps.length - 1 ? "Reset password" : "Next"}
               </Button>
             </Box>
           </React.Fragment>

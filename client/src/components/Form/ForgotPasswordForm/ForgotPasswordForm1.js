@@ -1,10 +1,14 @@
 import React from "react";
 import InputTextField from "../../UI/InputTextField";
-
+import "./ForgotPasswordForm.css";
 const ForgotPasswordForm1 = () => {
   return (
     <form action="#">
-      <h2>Sign in</h2>
+      <h2>Enter you Email</h2>
+      <div className="subtitle">
+        Lost your password? Please enter your email address. You will receive a
+        link to create a new password.
+      </div>
       <InputTextField label="Email" type="email" />
     </form>
   );
