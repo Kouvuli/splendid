@@ -1,10 +1,10 @@
 import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import styles from "./SuccessForm.css";
+import styles from "./SuccessForm.module.css";
 const SuccessForm = () => {
   return (
-    <form className={styles.haha}>
-      <CheckCircleIcon sx={{ fontSize: "100px" }} />
+    <form className={styles.form}>
+      <CheckCircleIcon className={styles.icon} color="primary" />
       <h1 className="success">Success!</h1>
     </form>
   );

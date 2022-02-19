@@ -1,11 +1,11 @@
 import React from "react";
 import InputTextField from "../../UI/InputTextField";
-import "./ForgotPasswordForm.css";
+import styles from "./ForgotPasswordForm.module.css";
 const ForgotPasswordForm3 = () => {
   return (
-    <form action="#">
+    <form action="#" className={styles.form}>
       <h2>New Password</h2>
-      <div className="subtitle">Enter new password</div>
+      <div className={styles.subtitle}>Enter new password</div>
       <InputTextField label="New password" type="password" />
       <InputTextField label="Retype New Password" type="password" />
     </form>

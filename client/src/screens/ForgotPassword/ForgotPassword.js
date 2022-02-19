@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import HorizontalStepper from "../../components/UI/HorizontalStepper";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import ForgotPasswordForm1 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm1";
 import ForgotPasswordForm2 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm2";
 import ForgotPasswordForm3 from "../../components/Form/ForgotPasswordForm/ForgotPasswordForm3";
 import SuccessForm from "../../components/Form/ForgotPasswordForm/SuccessForm";
+import ErrorForm from "../../components/Form/ForgotPasswordForm/ErrorForm";
 import "./ForgotPassword.css";
 
-const steps = [
-  "Select campaign settings",
-  "Create an ad group",
-  "Create an ad",
-];
+const steps = ["Enter your email", "Verification", "New password"];
 const ForgotPassword = () => {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -58,7 +53,7 @@ const ForgotPassword = () => {
         </HorizontalStepper>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <SuccessForm />
+            <ErrorForm />
             <Box className="btn-container">
               <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleReset}>Reset</Button>
