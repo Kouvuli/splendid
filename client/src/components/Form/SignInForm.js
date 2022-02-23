@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-// import "./SignInForm.css";
+import styles from "./SignInForm.module.css";
 import InputTextField from "../UI/InputTextField";
+import Link from "@mui/material/Link";
 export const LoginForm = () => {
   return (
     <form action="#">
       <h1>Sign in</h1>
       <InputTextField label="Email" type="email" />
       <InputTextField label="Password" type="password" />
-      <a href="#">Forgot your password?</a>
-      <button>Sign In</button>
+      <Link
+        href="#"
+        className={`${styles["forgot-password-link"]}`}
+        underline="none"
+      >
+        {"Forgot Password"}
+      </Link>
+
+      <button className={styles.btn}>Sign In</button>
     </form>
   );
 };

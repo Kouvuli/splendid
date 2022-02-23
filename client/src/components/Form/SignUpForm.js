@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputTextField from "../UI/InputTextField";
-// import "./SignInForm.css";
+import styles from "./SignInForm.module.css";
 const SignUpForm = () => {
   const [name, setName] = useState("");
   const [isNameError, setIsNameError] = useState(false);
@@ -119,7 +119,9 @@ const SignUpForm = () => {
         required
       />
       <InputTextField type="date" label="Birthday" required />
-      <button type="submit">Sign Up</button>
+      <button type="submit" className={styles.btn}>
+        Sign Up
+      </button>
     </form>
   );
 };

@@ -1,20 +1,6 @@
 
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
 
 h1 {
 	font-weight: bold;
@@ -32,19 +18,17 @@ p {
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
-
-span {
-	font-size: 12px;
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	margin: -20px 0 50px;
+	background-color: "background.default"
 }
 
-a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
-}
-
-button {
+.btn {
 	border-radius: 20px;
 	border: 1px solid #0cb994;
 	background-color: #0cb994;
@@ -58,21 +42,20 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.btn:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.btn:focus {
 	outline: none;
 }
 
-button.ghost {
+.btn.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
 
 form {
-	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -117,6 +100,7 @@ form {
 
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
+	display:none !important;
 }
 
 .sign-up-container {

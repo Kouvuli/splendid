@@ -1,0 +1,24 @@
+.carousel-section{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.spad {
+    padding-top: 106px;
+    padding-bottom: 106px;
+}
+.blog-section{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+@media only screen and (min-width:900px) {
+    .carousel-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .blog-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
