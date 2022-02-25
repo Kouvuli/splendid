@@ -10,7 +10,7 @@ const BlogItem = (props) => {
       <div className={styles["post-metas"]}>
         <div className={styles["post-meta"]}>{author}</div>
         <div className={styles["post-meta"]}>in {category}</div>
-        <div className={styles["post-meta"]}>{commentNumber}</div>
+        <div className={styles["post-meta"]}>{commentNumber} comments</div>
       </div>
       <p>{content}</p>
       <a href="" className={styles["read-more"]}>

@@ -2,9 +2,10 @@ import React from "react";
 import TopNavBar from "../../components/Bar/TopNavBar";
 import SideNavBar from "../../components/Bar/SideNavBar";
 import Box from "@mui/material/Box";
-import LastestNewsList from "../../components/List/LatestNewsList";
+import SideBarList from "../../components/List/SideBarList";
 import DailyNewsList from "../../components/List/DailyNewsList";
 import Carousel from "../../components/Carousel/Carousel";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { Container, Grid } from "@mui/material";
 import styles from "./Home.module.css";
 const Home = () => {
@@ -34,19 +35,36 @@ const Home = () => {
       </Grid>
       <Grid
         container
-        alignItems="center"
         justifyContent="center"
         maxWidth="1170px"
         marginLeft="auto"
         marginRight="auto"
+        paddingTop="106px"
+        paddingBottom="106px"
       >
-        <Grid item xs={12} md={9}>
-          <div className={`${styles["blog-section"]} ${styles["spad"]}`}>
+        <Grid item xs={12} md={8}>
+          <div className={`${styles["section-title"]}`}>
+            <Grid container>
+              <Grid item xs={12} sm={8}>
+                <h4>Hot news</h4>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <div className={styles["btn__all"]}>
+                  <a href="#" className={styles["primary-btn"]}>
+                    View all
+                    <ArrowRightAltIcon className={styles["arrow_right"]} />
+                  </a>
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+
+          <div className={`${styles["blog-section"]}`}>
             <DailyNewsList />
           </div>
         </Grid>
-        <Grid item md={3}>
-          <LastestNewsList />
+        <Grid item sm={12} md={4}>
+          <SideBarList />
         </Grid>
       </Grid>
       <Container>{/* Footer */}</Container>

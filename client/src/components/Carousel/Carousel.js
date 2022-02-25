@@ -90,6 +90,22 @@ const CustomOwlCarousel = styled(OwlCarousel)`
   &.owl-carousel .owl-dots button.active {
     background: #ffffff;
   }
+  &.owl-carousel .owl-item.active p {
+    top: 0;
+    opacity: 1;
+  }
+  &.owl-carousel .owl-item.active a {
+    top: 0;
+    opacity: 1;
+  }
+  &.owl-carousel .owl-item.active h2 {
+    top: 0;
+    opacity: 1;
+  }
+  &.owl-carousel .owl-item.active .hero__text .label {
+    top: 0;
+    opacity: 1;
+  }
 `;
 const options = {
   loop: true,
@@ -114,7 +130,12 @@ const Carousel = () => {
       {images.map((image) => {
         return (
           <div className="item">
-            <CarouselItem img={image.imgPath} label={image.label} />
+            <CarouselItem
+              img={image.imgPath}
+              label={image.label}
+              content="Lorem ipsum 123 asdljkda akjdaks ajdoa askak adlalasdadkad asld"
+              title="Ha noi - ep 6"
+            />
           </div>
         );
       })}

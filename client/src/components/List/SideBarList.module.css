@@ -1,0 +1,9 @@
+.product__sidebar{
+    padding-right:50px;
+}
+@media only screen and (max-width:900px) {
+    .product__sidebar{
+        padding-right:50px;
+        padding-left: 50px;
+    }
+}

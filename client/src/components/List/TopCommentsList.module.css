@@ -1,0 +1,21 @@
+.section-title {
+    margin-bottom: 30px;
+}
+.section-title h5 {
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Oswald", sans-serif;
+    line-height: 21px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+}
+.section-title h5:after {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 32px;
+    width: 4px;
+    background: #e53637;
+    content: "";
+}
