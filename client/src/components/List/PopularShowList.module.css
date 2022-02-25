@@ -1,15 +1,3 @@
-.carousel-section{
-    padding-left: 50px;
-    padding-right: 50px;
-}
-.spad {
-    padding-top: 106px;
-    padding-bottom: 106px;
-}
-.blog-section{
-    padding-left: 50px;
-    padding-right: 20px;
-}
 .section-title {
 
     margin-bottom: 30px;
@@ -47,6 +35,7 @@
 .btn__all {
     text-align: right;
 }
+
 a.primary-btn  {
     text-decoration: none;
 }
@@ -54,18 +43,6 @@ a.primary-btn  {
     font-size: 18px;
     margin-left: 5px;
     position: relative;
-    top: 6px;
+    top: 3px;
 
-}
-@media only screen and (max-width:900px) {
-    .carousel-section{
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-
-    .blog-section{
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-    
 }

@@ -1,64 +1,57 @@
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FolderIcon from "@mui/icons-material/Folder";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import React, { useState } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import MovieIcon from "@mui/icons-material/Movie";
 import styles from "./SideNavBar.module.css";
-const CustomBottomNavigation = styled(BottomNavigation)(({ theme }) => ({
-  display: "flex",
-  position: "absolute",
-  right: 15,
-  flexDirection: "column",
-  width: 50,
-  marginTop: "25vh",
-  marginBottom: "auto",
-  height: "auto",
-  boxShadow: "0 0 5px rgba(0,0,0,0.1), 0 0 3px rgba(0,0,0,0.22)",
-  borderRadius: "20px",
-  backgroundColor: theme.palette.background.default,
-}));
-
-const CustomBottomNavigationAction = styled(BottomNavigationAction)(
-  ({ theme }) => ({
-    minWidth: 50,
-    width: 50,
-    borderRadius: "20px",
-    "&.Mui-selected": {},
-  })
-);
+import Tooltip from "@mui/material/Tooltip";
 const SideNavBar = () => {
-  const [value, setValue] = React.useState("recents");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [isHome, setIsHome] = useState(true);
+  const [isManga, setIsManga] = useState(false);
+  const [isAnime, setIsAnime] = useState(false);
+  const homeHandler = () => {
+    setIsHome(true);
+    setIsManga(false);
+    setIsAnime(false);
   };
-
+  const mangaHandler = () => {
+    setIsManga(true);
+    setIsHome(false);
+    setIsAnime(false);
+  };
+  const animeHandler = () => {
+    setIsAnime(true);
+    setIsHome(false);
+    setIsManga(false);
+  };
   return (
-    <CustomBottomNavigation value={value} onChange={handleChange}>
-      <CustomBottomNavigationAction
-        label="Recents"
-        value="recents"
-        icon={<RestoreIcon />}
-      />
-      <CustomBottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
-      />
-      <CustomBottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
-      />
-      <CustomBottomNavigationAction
-        label="Folder"
-        value="folder"
-        icon={<FolderIcon />}
-      />
-    </CustomBottomNavigation>
+    <nav className={styles["sidebar-navigation"]}>
+      <ul>
+        <Tooltip title="Home" placement="right">
+          <li
+            className={`${isHome ? styles["active"] : ""}`}
+            onClick={homeHandler}
+          >
+            <HomeIcon></HomeIcon>
+          </li>
+        </Tooltip>
+        <Tooltip title="Manga" placement="right">
+          <li
+            className={`${isManga ? styles["active"] : ""}`}
+            onClick={mangaHandler}
+          >
+            <MenuBookIcon />
+          </li>
+        </Tooltip>
+        <Tooltip title="Anime" placement="right">
+          <li
+            className={`${isAnime ? styles["active"] : ""}`}
+            onClick={animeHandler}
+          >
+            <MovieIcon></MovieIcon>
+          </li>
+        </Tooltip>
+      </ul>
+    </nav>
   );
 };
 

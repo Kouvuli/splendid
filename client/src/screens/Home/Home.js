@@ -8,9 +8,11 @@ import Carousel from "../../components/Carousel/Carousel";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { Container, Grid } from "@mui/material";
 import styles from "./Home.module.css";
+import PopularShowList from "../../components/List/PopularShowList";
 const Home = () => {
   return (
     <Box sx={{ backgroundColor: "background.default" }}>
+      <SideNavBar />
       {/* Header */}
       <Grid container>
         <Grid item xs={12} md={12}>
@@ -43,24 +45,26 @@ const Home = () => {
         paddingBottom="106px"
       >
         <Grid item xs={12} md={8}>
-          <div className={`${styles["section-title"]}`}>
-            <Grid container>
-              <Grid item xs={12} sm={8}>
-                <h4>Hot news</h4>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <div className={styles["btn__all"]}>
-                  <a href="#" className={styles["primary-btn"]}>
-                    View all
-                    <ArrowRightAltIcon className={styles["arrow_right"]} />
-                  </a>
-                </div>
-              </Grid>
-            </Grid>
-          </div>
-
           <div className={`${styles["blog-section"]}`}>
+            <div className={`${styles["section-title"]}`}>
+              <Grid container justifyContent="center">
+                <Grid item xs={7} sm={8}>
+                  <h4>Hot news</h4>
+                </Grid>
+                <Grid item xs={5} sm={4}>
+                  <div className={styles["btn__all"]}>
+                    <a href="#" className={styles["primary-btn"]}>
+                      View all
+                      <ArrowRightAltIcon className={styles["arrow_right"]} />
+                    </a>
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
             <DailyNewsList />
+          </div>
+          <div className="popular-show">
+            <PopularShowList />
           </div>
         </Grid>
         <Grid item sm={12} md={4}>
@@ -68,7 +72,6 @@ const Home = () => {
         </Grid>
       </Grid>
       <Container>{/* Footer */}</Container>
-      <SideNavBar />
     </Box>
   );
 };

@@ -28,7 +28,7 @@
 .product__sidebar__view .filter__controls {
     position: absolute;
     right: 0;
-    top: -5px;
+    top: 3px;
 }
 
 .product__sidebar__view .filter__controls li.active {
