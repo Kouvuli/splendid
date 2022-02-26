@@ -1,30 +1,29 @@
 
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
-
-h1 {
+.title{
 	font-weight: bold;
 	margin: 0;
+	font-size:27px;
 }
-
-h2 {
-	text-align: center;
-}
-
-p {
+.subtitle{
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
 	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
+	margin: 20px 10px 30px;
 }
+
+
+
+
+
 .main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	height: 100vh;
-	margin: -20px 0 50px;
 	background-color: "background.default"
 }
 
@@ -170,7 +169,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 40px;
+	padding: 0;
 	text-align: center;
 	top: 0;
 	height: 100%;

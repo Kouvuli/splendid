@@ -36,8 +36,8 @@ export const Login = () => {
             <div
               className={`${styles["overlay-panel"]} ${styles["overlay-left"]}`}
             >
-              <h1>Welcome Back!</h1>
-              <p>
+              <h1 className={styles.title}>Welcome Back!</h1>
+              <p className={styles.subtitle}>
                 To keep connected with us please login with your personal info
               </p>
               <button
@@ -51,8 +51,10 @@ export const Login = () => {
             <div
               className={`${styles["overlay-panel"]} ${styles["overlay-right"]}`}
             >
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
+              <h1 className={styles.title}>Hello, Friend!</h1>
+              <p className={styles.subtitle}>
+                Enter your personal details and start journey with us
+              </p>
               <button
                 className={`${styles["btn"]} ${styles["ghost"]}`}
                 id={`${styles["signUp"]}`}

@@ -5,7 +5,7 @@ const SuccessForm = () => {
   return (
     <form className={styles.form}>
       <CheckCircleIcon className={styles.icon} color="primary" />
-      <h1 className="success">Success!</h1>
+      <h1>Success!</h1>
     </form>
   );
 };

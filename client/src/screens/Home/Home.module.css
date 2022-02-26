@@ -1,20 +1,20 @@
-.carousel-section{
-    padding-left: 50px;
-    padding-right: 50px;
-}
+
 .spad {
     padding-top: 106px;
     padding-bottom: 106px;
 }
-.blog-section{
-    padding-left: 50px;
-    padding-right: 20px;
-}
+
 .section-title {
 
     margin-bottom: 30px;
 }
+.blog-section{
+        padding-right: 20px;
+}
 
+.popular-show-section{
+        padding-right: 20px;
+}
 .section-title h4, .section-title h5 {
     margin:0;
     color: #ffffff;
@@ -57,7 +57,7 @@ a.primary-btn  {
     top: 6px;
 
 }
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:1200px) {
     .carousel-section{
         padding-left: 50px;
         padding-right: 50px;
@@ -65,7 +65,37 @@ a.primary-btn  {
 
     .blog-section{
         padding-left: 50px;
+        padding-right: 20px;
+    }
+    .popular-show-section{
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+    
+}
+@media only screen and (max-width:900px) {
+    .blog-section{
+        padding-left: 50px;
         padding-right: 50px;
+    }
+    .popular-show-section{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media only screen and (max-width:600px) {
+    .carousel-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .blog-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .popular-show-section{
+        padding-left: 10px;
+        padding-right: 10px;
     }
     
 }

@@ -4,7 +4,7 @@ import styles from "./ForgotPasswordForm.module.css";
 const ForgotPasswordForm1 = () => {
   return (
     <form action="#" className={styles.form}>
-      <h2>Enter your Email</h2>
+      <h2 className={styles.title}>Enter your Email</h2>
       <div className={styles.subtitle}>
         Lost your password? Please enter your email address. You will receive a
         link to create a new password.

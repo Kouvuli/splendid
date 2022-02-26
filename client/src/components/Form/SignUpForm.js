@@ -81,7 +81,11 @@ const SignUpForm = () => {
   };
   return (
     <form action="#" onSubmit={submitHandler}>
-      <h1>Create Account</h1>
+      <h1
+        style={{ fontSize: "27px", fontWeight: "bold", marginBottom: "10px" }}
+      >
+        Create Account
+      </h1>
       <InputTextField
         type="text"
         error={isNameError}

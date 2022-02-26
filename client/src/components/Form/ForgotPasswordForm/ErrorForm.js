@@ -5,7 +5,7 @@ const ErrorForm = () => {
   return (
     <form className={styles.form}>
       <ErrorIcon className={styles.icon} color="error" />
-      <h1 className="success">Sorry! Something's wrong</h1>
+      <h1>Sorry! Something's wrong</h1>
     </form>
   );
 };

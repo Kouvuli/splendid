@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 export const LoginForm = () => {
   return (
     <form action="#">
-      <h1>Sign in</h1>
+      <h1 style={{ fontSize: "27px", fontWeight: "bold" }}>Sign in</h1>
       <InputTextField label="Email" type="email" />
       <InputTextField label="Password" type="password" />
       <Link

@@ -3,9 +3,9 @@ import Grid from "@mui/material/Grid";
 import MovieItem from "../Item/MovieItem";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import styles from "./PopularShowList.module.css";
-const PopularShowList = () => {
+const ShowList = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container columnSpacing={5}>
       <Grid item xs={12}>
         <div className={`${styles["section-title"]}`}>
           <Grid container justifyContent="center">
@@ -23,18 +23,14 @@ const PopularShowList = () => {
           </Grid>
         </div>
       </Grid>
-
-      <Grid item xs={12} sm={5} md={4}>
-        <MovieItem></MovieItem>
-      </Grid>
-      <Grid item xs={12} sm={5} md={4}>
-        <MovieItem></MovieItem>
-      </Grid>
-      <Grid item xs={12} sm={5} md={4}>
-        <MovieItem></MovieItem>
-      </Grid>
+      <MovieItem></MovieItem>
+      <MovieItem></MovieItem>
+      <MovieItem></MovieItem>
+      <MovieItem></MovieItem>
+      <MovieItem></MovieItem>
+      <MovieItem></MovieItem>
     </Grid>
   );
 };
 
-export default PopularShowList;
+export default ShowList;

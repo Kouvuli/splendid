@@ -6,9 +6,10 @@ import SideBarList from "../../components/List/SideBarList";
 import DailyNewsList from "../../components/List/DailyNewsList";
 import Carousel from "../../components/Carousel/Carousel";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import Footer from "../../components/Footer/Footer";
 import { Container, Grid } from "@mui/material";
 import styles from "./Home.module.css";
-import PopularShowList from "../../components/List/PopularShowList";
+import ShowList from "../../components/List/PopularShowList";
 const Home = () => {
   return (
     <Box sx={{ backgroundColor: "background.default" }}>
@@ -37,7 +38,6 @@ const Home = () => {
       </Grid>
       <Grid
         container
-        justifyContent="center"
         maxWidth="1170px"
         marginLeft="auto"
         marginRight="auto"
@@ -63,15 +63,17 @@ const Home = () => {
             </div>
             <DailyNewsList />
           </div>
-          <div className="popular-show">
-            <PopularShowList />
+          <div className={styles["popular-show-section"]}>
+            <ShowList />
           </div>
         </Grid>
-        <Grid item sm={12} md={4}>
-          <SideBarList />
+        <SideBarList />
+      </Grid>
+      <Grid container>
+        <Grid item xs={12}>
+          <Footer />
         </Grid>
       </Grid>
-      <Container>{/* Footer */}</Container>
     </Box>
   );
 };

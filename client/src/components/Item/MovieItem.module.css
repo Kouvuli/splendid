@@ -1,5 +1,6 @@
 .product__item {
     margin-bottom: 30px;
+    max-width:300px;
 }
 
 .product__item__pic {
