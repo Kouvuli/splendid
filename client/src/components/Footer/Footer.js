@@ -12,10 +12,10 @@ const Footer = () => {
     <div className={styles["footer"]}>
       <div className={styles["page-up"]}>
         <a onClick={toTop}>
-          <span className={styles["arrow_carrot-up"]}></span>
+          <span className="arrow_carrot-up"></span>
         </a>
       </div>
-      <Grid container>
+      <Grid container justifyContent="center">
         <Grid item xs={3}>
           <div className={styles["footer__logo"]}>
             <a href="./index.html">
@@ -41,7 +41,7 @@ const Footer = () => {
             </ul>
           </div>
         </Grid>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={3}></Grid>
       </Grid>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./TopViewsItem.module.css";
+import styles from "./SideBarListItem1.module.css";
 const TopViewsItem = () => {
   const img =
     "https://luotphimtv.com/wp-content/uploads/2021/08/Boruto-Naruto-The-He-Tiep-Theo.jpg";

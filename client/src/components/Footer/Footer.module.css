@@ -41,9 +41,7 @@
 	margin-right: 40px;
 }
 
-.footer__nav ul li:last-child {
-	margin-right: 0;
-}
+
 
 .footer__nav ul li a {
 	font-size: 15px;
@@ -63,3 +61,11 @@
 	color: #e53637;
 }
 
+
+@media only screen and (max-width: 473px){
+	.footer__nav ul li {
+    	margin-right: 10px;
+		margin-left: 10px;
+
+	}
+}

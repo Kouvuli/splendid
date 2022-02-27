@@ -4,7 +4,7 @@
 
 .blog-post img {
     border-radius:5px;
-    width: 350px; height: 230px; object-fit: cover;
+    height: 230px; object-fit: cover;
     margin-bottom: 34px;
     min-width: 100%;
 }

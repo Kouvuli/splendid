@@ -3,7 +3,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import styles from "./Carousel.module.css";
-import "./ElegantIcons.css";
+import "../../assets/css/ElegantIcons.css";
 import { styled, alpha } from "@mui/material/styles";
 // import styled from "styled-components";
 import CarouselItem from "../Item/CarouselItem";

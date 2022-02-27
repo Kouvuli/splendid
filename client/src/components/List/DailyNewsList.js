@@ -11,6 +11,9 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import Grid from "@mui/material/Grid";
 import BlogItem from "../Item/Blog/BlogItem";
 import FeatureBlog from "../Item/Blog/FeatureBlog";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
+import styles from "./DailyNewsList.module.css";
 const DailyNewsList = (props) => {
   const { numberPerPage } = props;
   return (
@@ -20,6 +23,23 @@ const DailyNewsList = (props) => {
       marginLeft="auto"
       columnSpacing={{ xs: 1, sm: 2, md: 3 }}
     >
+      <Grid item xs={12}>
+        <div className={`${styles["section-title"]}`}>
+          <Grid container justifyContent="center">
+            <Grid item xs={7} sm={8}>
+              <h4>Hot news</h4>
+            </Grid>
+            <Grid item xs={5} sm={4}>
+              <div className={styles["btn__all"]}>
+                <a href="#" className={styles["primary-btn"]}>
+                  View all
+                  <ArrowRightAltIcon className={styles["arrow_right"]} />
+                </a>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </Grid>
       <Grid item xs={12}>
         <FeatureBlog
           date="April 1,2022"
@@ -31,7 +51,7 @@ const DailyNewsList = (props) => {
           content="Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum susp-endisse ultrices gravida. Risus commodo."
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={6} md={6}>
         <BlogItem
           date="April 1,2022"
           commentNumber="3"
@@ -42,7 +62,7 @@ const DailyNewsList = (props) => {
           content="Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum susp-endisse ultrices gravida. Risus commodo."
         ></BlogItem>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={6} md={6}>
         <BlogItem
           date="April 1,2022"
           commentNumber="3"

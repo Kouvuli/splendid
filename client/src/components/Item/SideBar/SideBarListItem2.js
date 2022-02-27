@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./TopCommentItem.module.css";
+import styles from "./SideBarListItem2.module.css";
 const TopCommentItem = () => {
   return (
     <div className={styles["product__sidebar__comment__item"]}>
