@@ -1,11 +1,17 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import styles from "./Footer.module.css";
+import $ from "jquery";
 const Footer = () => {
+  const toTop = () => {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  };
+
   return (
     <div className={styles["footer"]}>
       <div className={styles["page-up"]}>
-        <a href="#" id={styles["scrollToTopButton"]}>
+        <a onClick={toTop}>
           <span className={styles["arrow_carrot-up"]}></span>
         </a>
       </div>
