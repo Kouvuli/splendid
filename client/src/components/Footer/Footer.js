@@ -26,7 +26,7 @@ const Footer = () => {
         <Grid item xs={6}>
           <div className={styles["footer__nav"]}>
             <ul>
-              <li class={styles["active"]}>
+              <li className={styles["active"]}>
                 <a href="#">Homepage</a>
               </li>
               <li>

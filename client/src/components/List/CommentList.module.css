@@ -8,12 +8,11 @@
 
 .section-title h4, .section-title h5 {
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 21px;
     text-transform: uppercase;
     padding-left: 20px;
     position: relative;
-    font-family: "Oswald", sans-serif;
 }
 .section-title h4:after, .section-title h5:after {
     position: absolute;

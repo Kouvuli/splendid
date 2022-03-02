@@ -3,7 +3,6 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import styles from "./Carousel.module.css";
-import "../../assets/css/ElegantIcons.css";
 import { styled, alpha } from "@mui/material/styles";
 // import styled from "styled-components";
 import CarouselItem from "../Item/CarouselItem";
@@ -120,16 +119,15 @@ const options = {
   animateOut: "fadeOut",
   animateIn: "fadeIn",
   smartSpeed: 1200,
-  autoHeight: true,
   autoplay: false,
   mouseDrag: false,
 };
 const Carousel = () => {
   return (
     <CustomOwlCarousel className={styles["carousel-container"]} {...options}>
-      {images.map((image) => {
+      {images.map((image, index) => {
         return (
-          <div className="item">
+          <div key={index} className="item">
             <CarouselItem
               img={image.imgPath}
               label={image.label}

@@ -4,7 +4,7 @@ import MovieItem from "../Item/MovieItem";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import styles from "./MovieList.module.css";
 const MovieList = (props) => {
-  const { title } = props;
+  const { title, items } = props;
   return (
     <Grid container columnSpacing={5}>
       <Grid item xs={12}>
@@ -24,12 +24,9 @@ const MovieList = (props) => {
           </Grid>
         </div>
       </Grid>
-      <MovieItem></MovieItem>
-      <MovieItem></MovieItem>
-      <MovieItem></MovieItem>
-      <MovieItem></MovieItem>
-      <MovieItem></MovieItem>
-      <MovieItem></MovieItem>
+      {items.map((item, index) => {
+        return <MovieItem key={index} {...item} />;
+      })}
     </Grid>
   );
 };

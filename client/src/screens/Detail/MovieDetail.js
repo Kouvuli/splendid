@@ -7,9 +7,13 @@ import SideBarList3 from "../../components/List/SideBarList/SideBarList3";
 import styles from "./MovieDetail.module.css";
 import CommentList from "../../components/List/CommentList";
 import Footer from "../../components/Footer/Footer";
+import { useParams } from "react-router-dom";
+import TopNavBar from "../../components/Bar/TopNavBar";
+import Header from "../../components/Header/Header";
 const MovieDetail = () => {
+  const { id } = useParams();
   return (
-    <Box sx={{ backgroundColor: "background.default" }}>
+    <>
       <div className={styles["breadcrumb-section"]}>
         <BreadCrumb />
       </div>
@@ -125,12 +129,7 @@ const MovieDetail = () => {
           </Grid>
         </Grid>
       </section>
-      <Grid container>
-        <Grid item xs={12}>
-          <Footer />
-        </Grid>
-      </Grid>
-    </Box>
+    </>
   );
 };
 

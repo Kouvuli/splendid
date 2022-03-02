@@ -3,31 +3,34 @@ import Grid from "@mui/material/Grid";
 import styles from "./MovieItem.module.css";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-const MovieItem = () => {
+const MovieItem = (props) => {
   return (
     <Grid item xs={12} sm={5} md={4}>
       <div class={styles["product__item"]}>
         <div
           class={`${styles["product__item__pic"]} ${styles["set-bg"]}`}
           style={{
-            backgroundImage: `url(https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_topic/vertical_poster_revised-26d2c15979b6-1637052315859-STK6iU1K.jpg?v=0&maxW=320)`,
+            backgroundImage: `url(${props.images.jpg.image_url})`,
           }}
         >
-          <div class={styles["ep"]}>18 / 18</div>
+          <div class={styles["ep"]}>
+            {props.aring ? "?" : props.episodes} / {props.episodes}
+          </div>
           <div class={styles["comment"]}>
-            <ChatBubbleIcon></ChatBubbleIcon> 11
+            <ChatBubbleIcon></ChatBubbleIcon> {props.score}
           </div>
           <div class={styles["view"]}>
-            <RemoveRedEyeIcon></RemoveRedEyeIcon> 9141
+            <RemoveRedEyeIcon></RemoveRedEyeIcon> {props.scored_by}
           </div>
         </div>
         <div class={styles["product__item__text"]}>
           <ul>
-            <li>Active</li>
-            <li>Movie</li>
+            {props.genres.map((genre) => {
+              return <li>{genre.name}</li>;
+            })}
           </ul>
           <h5>
-            <a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
+            <a href="#">{props.title}</a>
           </h5>
         </div>
       </div>

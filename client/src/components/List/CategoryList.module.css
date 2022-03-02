@@ -1,7 +1,8 @@
 .section-title {
     margin-bottom: 30px;
 }
-.section-title h4, .section-title h5 {
+
+.section-title h5 {
     color: #ffffff;
     font-weight: 700;
     line-height: 21px;
@@ -9,7 +10,7 @@
     padding-left: 20px;
     position: relative;
 }
-.section-title h4:after, .section-title h5:after {
+.section-title h5:after {
     position: absolute;
     left: 0;
     top: -6px;
@@ -17,14 +18,4 @@
     width: 4px;
     background: #e53637;
     content: "";
-}
-
-
-
-@media only screen and (max-width:600px) {
-    .anime__details__sidebar{
-        padding-top: 50px;
-        padding-right:10px;
-        padding-left: 10px;
-    }
 }
