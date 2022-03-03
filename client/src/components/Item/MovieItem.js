@@ -10,7 +10,7 @@ const MovieItem = (props) => {
         <div
           class={`${styles["product__item__pic"]} ${styles["set-bg"]}`}
           style={{
-            backgroundImage: `url(${props.images.jpg.image_url})`,
+            backgroundImage: `url(${props.images.jpg.large_image_url})`,
           }}
         >
           <div class={styles["ep"]}>

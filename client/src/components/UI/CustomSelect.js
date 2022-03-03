@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled, alpha } from "@mui/material/styles";
 const VerticalSelect = styled(Select)(({ theme }) => ({}));
 const CustomSelect = () => {
-  const [order, setOrder] = useState("Latest");
+  const [order, setOrder] = useState("title");
 
   const handleChange = (event) => {
     setOrder(event.target.value);
@@ -15,13 +15,13 @@ const CustomSelect = () => {
       onChange={handleChange}
       displayEmpty
       variant="outlined"
-      defaultValue={"Latest"}
+      defaultValue={"title"}
       inputProps={{ "aria-label": "Order by" }}
     >
-      <MenuItem value="Latest">Lastest</MenuItem>
-      <MenuItem value="A-Z">A-Z</MenuItem>
-      <MenuItem value="1-10">1-10</MenuItem>
-      <MenuItem value="1-50">1-50</MenuItem>
+      <MenuItem value="title">Lastest</MenuItem>
+      <MenuItem value="type">Type</MenuItem>
+      <MenuItem value="rating">Rating</MenuItem>
+      <MenuItem value="score">Score</MenuItem>
     </Select>
   );
 };

@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import MovieDetail from "./screens/Detail/MovieDetail";
 import "./assets/css/elegant-icons.css";
 import "./assets/css/nice-select.css";
+import "./assets/css/boxicons-2.1.1/css/boxicons.min.css";
 import Category from "./screens/Category/Category";
 import SideNavBar from "./components/Bar/SideNavBar";
 import Box from "@mui/material/Box";

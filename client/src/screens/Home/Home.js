@@ -42,7 +42,7 @@ const items = [
 const Home = () => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
-    const fetchAllMovie = async () => {
+    const fetTopMovies = async () => {
       try {
         const params = {
           page: 1,
@@ -55,7 +55,7 @@ const Home = () => {
         throw error;
       }
     };
-    fetchAllMovie();
+    fetTopMovies();
   }, []);
   return (
     <>

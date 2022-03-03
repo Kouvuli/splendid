@@ -25,14 +25,15 @@ import PaginationItem from "@mui/material/PaginationItem";
 //     color: "#ffffff",
 //   },
 // }));
-const Content = () => {
+const Content = (props) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get("page") || "1", 10);
+  props.handlePage(page);
   return (
     <Pagination
       page={page}
-      count={10}
+      count={props.page}
       renderItem={(item) => (
         <PaginationItem
           size="large"
@@ -45,11 +46,16 @@ const Content = () => {
   );
 };
 
-export default function CustomPagination() {
+export default function CustomPagination(props) {
   return (
     <MemoryRouter initialEntries={["/category"]} initialIndex={0}>
       <Switch>
-        <Route path="/category" component={Content} />
+        <Route
+          path="*"
+          render={() => (
+            <Content page={props.page} handlePage={props.handlePage} />
+          )}
+        />
       </Switch>
     </MemoryRouter>
   );
