@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import animeApi from "../../../apis/animeApi";
 import styles from "./SideBarListItem1.module.css";
-const TopViewsItem = () => {
-  const img =
-    "https://luotphimtv.com/wp-content/uploads/2021/08/Boruto-Naruto-The-He-Tiep-Theo.jpg";
+const TopViewsItem = (props) => {
+  const { id } = props;
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    const fetchAnimeById = async () => {
+      const response = await animeApi.getAnimeById(id);
+      setData(response.data);
+    };
+    fetchAnimeById();
+  });
   return (
-    <div
-      className={`${styles["product__sidebar__view__item"]} ${styles["set-bg"]} ${styles["mix day years"]}`}
-      style={{ backgroundImage: `url(${img})` }}
-    >
-      <div className={styles["ep"]}>18 / ?</div>
-      <div className={styles["view"]}>
-        <i className="fa fa-eye"></i> 9141
-      </div>
-      <h5>
-        <a href="#">Boruto: Naruto next generations</a>
-      </h5>
-    </div>
+    <>
+      {data && (
+        <div
+          className={`${styles["product__sidebar__view__item"]} ${styles["set-bg"]} ${styles["mix day years"]}`}
+          style={{ backgroundImage: `url(${data.images.jpg.large_image_url})` }}
+        >
+          <div className={styles["ep"]}>
+            {data.airing ? "?" : data.episodes}/{data.episodes}
+          </div>
+          <div className={styles["view"]}>
+            <i className="fa fa-eye"></i> {data.scored_by}
+          </div>
+          <h5>
+            <a href={`/category/${data.mal_id}`}>{data.title}</a>
+          </h5>
+        </div>
+      )}
+    </>
   );
 };
 

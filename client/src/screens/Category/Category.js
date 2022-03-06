@@ -11,10 +11,10 @@ import MovieListAll from "../../components/List/MovieListAll";
 import animeApi from "../../apis/animeApi";
 import useQuery from "../../hooks/useQuery";
 const Category = () => {
-  let query = useQuery();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(null);
   const [genres, setGenres] = useState("");
-  const [lastVisiblePage, setLastVisiblePage] = useState(0);
+  const [status, setStatus] = useState("");
+  const [lastVisiblePage, setLastVisiblePage] = useState(null);
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     const fetchAllMovie = async () => {
@@ -23,6 +23,7 @@ const Category = () => {
           page: page,
           limit: 18,
           genres,
+          status,
         };
         const response = await animeApi.getAll(params);
         setProductList(response.data);
@@ -32,7 +33,8 @@ const Category = () => {
       }
     };
     fetchAllMovie();
-  }, [page, genres]);
+  }, [page, genres, status]);
+  console.log(productList);
   return (
     <>
       <Grid
@@ -51,9 +53,12 @@ const Category = () => {
           <CustomPagination page={lastVisiblePage} handlePage={setPage} />
         </Grid>
         <Grid item xs={12} md={4}>
-          <Filter handleGenres={setGenres} title="Genres" />
-          <FilterList title="Genres" />
-          <FilterList title="Category" />
+          <Filter
+            status={status}
+            handleStatus={setStatus}
+            handleGenres={setGenres}
+            title="Genres"
+          />
         </Grid>
       </Grid>
     </>

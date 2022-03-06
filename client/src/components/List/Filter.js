@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import animeApi from "../../apis/animeApi";
 import styles from "./Filter.module.css";
+const status = ["Airing", "Upcoming", "Complete"];
 const Filter = (props) => {
   const [genres, setGenres] = useState([]);
   const [checkedGenres, setCheckedGenres] = useState([]);
-  props.handleGenres(checkedGenres.join());
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -20,7 +20,7 @@ const Filter = (props) => {
     };
     fetchGenres();
   }, []);
-  const handleChange = (e) => {
+  const handleChangeGenres = (e) => {
     if (e.target.checked) {
       setCheckedGenres((prevState) => {
         return [...prevState, e.target.attributes.id.value];
@@ -33,7 +33,14 @@ const Filter = (props) => {
       );
     }
   };
-  console.log(checkedGenres);
+  props.handleGenres(checkedGenres.join());
+  const handleChangeStatus = (e) => {
+    props.handleStatus((prevStatus) => {
+      if (prevStatus !== e.target.innerHTML) {
+        return e.target.innerHTML;
+      }
+    });
+  };
   return (
     <>
       <div className={`${styles["box"]} ${styles["filter-toggle-box"]}`}>
@@ -45,22 +52,23 @@ const Filter = (props) => {
         </button>
       </div>
       <div className={`${styles["section-title"]}`}>
-        <h5>Danh mục</h5>
+        <h5>Status</h5>
       </div>
       <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
         <ul className={styles["filter-list"]}>
-          <li>
-            <a href="tai-nghe.html">Tai nghe</a>
-          </li>
-          <li>
-            <a href="may-nghe-nhac.html">Máy nghe nhạc</a>
-          </li>
-          <li>
-            <a href="loa.html">Loa</a>
-          </li>
-          <li>
-            <a href="microphone.html">Microphone</a>
-          </li>
+          {status.map((item, i) => {
+            return (
+              <li
+                key={i}
+                className={`${
+                  props.status === item ? styles["active"] : styles[""]
+                }`}
+                onClick={handleChangeStatus}
+              >
+                {item}
+              </li>
+            );
+          })}
         </ul>
       </Box>
       <div className={`${styles["section-title"]}`}>
@@ -85,7 +93,7 @@ const Filter = (props) => {
                   <input
                     type="checkbox"
                     id={genre.mal_id}
-                    onChange={handleChange}
+                    onChange={handleChangeGenres}
                   />
                   <label for={genre.mal_id}>
                     {genre.name}

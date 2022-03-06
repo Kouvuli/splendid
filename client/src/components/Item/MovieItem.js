@@ -14,7 +14,7 @@ const MovieItem = (props) => {
           }}
         >
           <div class={styles["ep"]}>
-            {props.aring ? "?" : props.episodes} / {props.episodes}
+            {props.airing ? "?" : props.episodes} / {props.episodes}
           </div>
           <div class={styles["comment"]}>
             <ChatBubbleIcon></ChatBubbleIcon> {props.score}
@@ -30,7 +30,7 @@ const MovieItem = (props) => {
             })}
           </ul>
           <h5>
-            <a href="#">{props.title}</a>
+            <a href={`/category/${props.mal_id}`}>{props.title}</a>
           </h5>
         </div>
       </div>

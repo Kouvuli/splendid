@@ -1,0 +1,27 @@
+.product__item {
+    margin-bottom: 30px;
+    max-width:300px;
+}
+
+.product__item__pic {
+    height: 400px;
+    position: relative;
+    border-radius: 5px;
+}
+.product__item__text {
+    padding-top: 20px;
+}
+
+.product__item__text h5 a {
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+}
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}

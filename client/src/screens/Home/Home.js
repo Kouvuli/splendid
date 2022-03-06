@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import TopNavBar from "../../components/Bar/TopNavBar";
 import Box from "@mui/material/Box";
 import SideBarList from "../../components/List/SideBarList/SideBarList";
 import DailyNewsList from "../../components/List/DailyNewsList";
 import Carousel from "../../components/Carousel/Carousel";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import Footer from "../../components/Footer/Footer";
-import { Container, Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import styles from "./Home.module.css";
 import MovieList from "../../components/List/MovieList";
 import Header from "../../components/Header/Header";

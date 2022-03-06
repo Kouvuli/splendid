@@ -58,8 +58,10 @@
 }
 .section-title {
     margin-top: 17px;
-    margin-bottom: 30px;
+    margin-bottom: 17px;
 }
+
+
 
 .section-title h5 {
     color: #ffffff;
@@ -81,18 +83,17 @@
 
 .filter-list > li {
     margin-bottom: 20px;
+    color: #fff;
+    cursor: pointer;
 }
 .filter-list > li:last-child {
     margin-bottom: 0;
 }
 
-.filter-list > li > a{
-    color: #fff;
-}
-.filter-list > li.active > a{
+.filter-list > li.active {
     color:#e53637;
 }
-.filter-list > li > a:hover{
+.filter-list > li:hover{
     color: #e53637;
 }
 .filter-toggle-box {

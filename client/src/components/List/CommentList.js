@@ -5,9 +5,6 @@ const CommentList = () => {
   return (
     <>
       <div className={styles["anime__details__review"]}>
-        <div className={styles["section-title"]}>
-          <h5>Comments</h5>
-        </div>
         <CommentItem />
       </div>
       <div className={styles["anime__details__form"]}>
