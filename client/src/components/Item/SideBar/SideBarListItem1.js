@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import animeApi from "../../../apis/animeApi";
 import styles from "./SideBarListItem1.module.css";
-const TopViewsItem = (props) => {
+const SideBarListItem1 = (props) => {
   const { id } = props;
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -33,4 +33,4 @@ const TopViewsItem = (props) => {
   );
 };
 
-export default TopViewsItem;
+export default SideBarListItem1;

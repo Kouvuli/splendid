@@ -4,8 +4,14 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import BreadCrumb from "../../components/UI/BreadCrumb";
 import SideBarList3 from "../../components/List/SideBarList/SideBarList3";
 import styles from "./MovieDetail.module.css";
+import Tabs from "@mui/material/Tabs";
+import TabPanel from "../../components/UI/TabPanel";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
 import CommentList from "../../components/List/CommentList";
 import CardCarousel from "../../components/Carousel/CardCarousel";
+import NewsCardList from "../../components/List/NewsCardList";
+import CharacterList from "../../components/List/CharacterList";
 import { useParams } from "react-router-dom";
 import animeApi from "../../apis/animeApi";
 const MovieDetail = () => {
@@ -24,7 +30,11 @@ const MovieDetail = () => {
     fetchtAnimeRecommendations();
     fetchDetail();
   }, [id]);
+  const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
       {data && (
@@ -52,12 +62,28 @@ const MovieDetail = () => {
                 ></div>
               </Grid>
               <Grid item xs={12} md={9}>
-                <div className={styles["anime__details__text"]}>
-                  <div className={styles["anime__details__title"]}>
-                    <h3>{data.title}</h3>
-                    <div>{data.scored_by}</div>
-                  </div>
-                  {/* <div className={styles["anime__details__rating"]}>
+                <Box sx={{ width: "100%" }}>
+                  <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                    <Tabs
+                      value={value}
+                      onChange={handleChange}
+                      aria-label="basic tabs example"
+                    >
+                      <Tab label="Detail" style={{ fontWeight: "700" }} />
+                      <Tab
+                        label="Character & Staff"
+                        style={{ fontWeight: "700" }}
+                      />
+                      <Tab label="News" style={{ fontWeight: "700" }} />
+                    </Tabs>
+                  </Box>
+                  <TabPanel value={value} index={0}>
+                    <div className={styles["anime__details__text"]}>
+                      <div className={styles["anime__details__title"]}>
+                        <h3>{data.title}</h3>
+                        <div>{data.scored_by}</div>
+                      </div>
+                      {/* <div className={styles["anime__details__rating"]}>
                     <div className={styles["rating"]}>
                       <a href="#">
                         <i class="fa fa-star"></i>
@@ -78,83 +104,92 @@ const MovieDetail = () => {
 
                     <span>{data.scored_by}</span>
                   </div> */}
-                  <h4 className={styles["title__japanese"]}>
-                    {data.title_japanese}
-                  </h4>
-                  <p>{data.synopsis}</p>
-                  <div className={styles["anime__details__widget"]}>
-                    <Grid container>
-                      <Grid item xs={12} sm={6}>
-                        <ul>
-                          <li>
-                            <span>Type:</span> {data.type}
-                          </li>
-                          <li>
-                            <span>Studios:</span>{" "}
-                            {data.studios
-                              .map((studio) => {
-                                return studio.name;
-                              })
-                              .join()}
-                          </li>
-                          <li>
-                            <span>Date aired:</span>{" "}
-                            {!data.aired.from
-                              ? "?"
-                              : data.aired.prop.from.day +
-                                "/" +
-                                data.aired.prop.from.month +
-                                "/" +
-                                data.aired.prop.from.year}{" "}
-                            to{" "}
-                            {!data.aired.to
-                              ? "?"
-                              : data.aired.prop.to.day +
-                                "/" +
-                                data.aired.prop.to.month +
-                                "/" +
-                                data.aired.prop.to.year}
-                          </li>
-                          <li>
-                            <span>Status:</span> {data.status}
-                          </li>
-                          <li>
-                            <span>Genre:</span>{" "}
-                            {data.genres
-                              .map((genre) => {
-                                return genre.name;
-                              })
-                              .join(", ")}
-                          </li>
-                        </ul>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <ul>
-                          <li>
-                            <span>Scores:</span> {data.score} / {data.scored_by}
-                          </li>
-                          <li>
-                            <span>Rating:</span> {data.rating}
-                          </li>
-                          <li>
-                            <span>Duration:</span> {data.duration}
-                          </li>
-                          <li>
-                            <span>Season:</span> {data.season}-{data.year}
-                          </li>
-                          <li>
-                            <span>Favorites:</span> {data.favorites}
-                          </li>
-                        </ul>
-                      </Grid>
-                    </Grid>
-                  </div>
-                  <div className={styles["anime__details__btn"]}>
-                    <a href="#" className={styles["watch-btn"]}>
-                      <span>Watch Now</span> <ArrowForwardIosIcon />
-                    </a>
-                  </div>
-                </div>
+                      <h4 className={styles["title__japanese"]}>
+                        {data.title_japanese}
+                      </h4>
+                      <p>{data.synopsis}</p>
+                      <div className={styles["anime__details__widget"]}>
+                        <Grid container>
+                          <Grid item xs={12} sm={6}>
+                            <ul>
+                              <li>
+                                <span>Type:</span> {data.type}
+                              </li>
+                              <li>
+                                <span>Studios:</span>{" "}
+                                {data.studios
+                                  .map((studio) => {
+                                    return studio.name;
+                                  })
+                                  .join()}
+                              </li>
+                              <li>
+                                <span>Date aired:</span>{" "}
+                                {!data.aired.from
+                                  ? "?"
+                                  : data.aired.prop.from.day +
+                                    "/" +
+                                    data.aired.prop.from.month +
+                                    "/" +
+                                    data.aired.prop.from.year}{" "}
+                                to{" "}
+                                {!data.aired.to
+                                  ? "?"
+                                  : data.aired.prop.to.day +
+                                    "/" +
+                                    data.aired.prop.to.month +
+                                    "/" +
+                                    data.aired.prop.to.year}
+                              </li>
+                              <li>
+                                <span>Status:</span> {data.status}
+                              </li>
+                              <li>
+                                <span>Genre:</span>{" "}
+                                {data.genres
+                                  .map((genre) => {
+                                    return genre.name;
+                                  })
+                                  .join(", ")}
+                              </li>
+                            </ul>
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                            <ul>
+                              <li>
+                                <span>Scores:</span> {data.score} /{" "}
+                                {data.scored_by}
+                              </li>
+                              <li>
+                                <span>Rating:</span> {data.rating}
+                              </li>
+                              <li>
+                                <span>Duration:</span> {data.duration}
+                              </li>
+                              <li>
+                                <span>Season:</span> {data.season}-{data.year}
+                              </li>
+                              <li>
+                                <span>Favorites:</span> {data.favorites}
+                              </li>
+                            </ul>
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className={styles["anime__details__btn"]}>
+                        <a href="#" className={styles["watch-btn"]}>
+                          <span>Watch Now</span> <ArrowForwardIosIcon />
+                        </a>
+                      </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>
+                    <CharacterList id={id} />
+                  </TabPanel>
+                  <TabPanel value={value} index={2}>
+                    <NewsCardList id={id} />
+                  </TabPanel>
+                </Box>
               </Grid>
             </Grid>
             <Grid

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SideBarListItem2.module.css";
-const TopCommentItem = () => {
+const SideBarListItem2 = () => {
   return (
     <div className={styles["product__sidebar__comment__item"]}>
       <div className={styles["product__sidebar__comment__item__pic"]}>
@@ -25,4 +25,4 @@ const TopCommentItem = () => {
   );
 };
 
-export default TopCommentItem;
+export default SideBarListItem2;

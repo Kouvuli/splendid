@@ -25,6 +25,14 @@ const animeApi = {
     const url = `/anime/${id}/relations`;
     return axiosClient.get(url);
   },
+  getNewsById: (id, params) => {
+    const url = `/anime/${id}/news`;
+    return axiosClient.get(url, params);
+  },
+  getCharacterById: (id) => {
+    const url = `/anime/${id}/characters`;
+    return axiosClient.get(url);
+  },
 };
 
 export default animeApi;
