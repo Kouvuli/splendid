@@ -31,7 +31,15 @@
     font-weight: 500;
     margin-bottom: 10px;
 }
+.product__sidebar__comment__item__text a {
+    color: rgb(192, 192, 192);
+    font-size: 14px;
+    font-weight: 600;
 
+}
+.product__sidebar__comment__item__text a:hover {
+    text-decoration: underline;
+}
 .product__sidebar__comment__item__text h5 a {
     color: #ffffff;
     font-weight: 700;

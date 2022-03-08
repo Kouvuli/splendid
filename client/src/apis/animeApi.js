@@ -33,6 +33,10 @@ const animeApi = {
     const url = `/anime/${id}/characters`;
     return axiosClient.get(url);
   },
+  getReviewsById: (id, params) => {
+    const url = `/anime/${id}/reviews`;
+    return axiosClient.get(url);
+  },
 };
 
 export default animeApi;

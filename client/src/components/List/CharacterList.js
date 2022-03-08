@@ -22,7 +22,7 @@ const CharacterList = (props) => {
             return (
               <>
                 <CharacterCardItem data={item} />
-                <Divider />
+                <Divider style={{ borderColor: "#d9d9d9" }} />
               </>
             );
           })}

@@ -1,39 +1,39 @@
-.bgColor2 {
+.character__item .bgColor2 {
     background-color: unset;
 }
 
-.borderClass {
+.character__item .borderClass {
     border-color: unset;
     border-style: solid;
     border-width: 0 0 1px;
     padding: 3px;
 }
-td {
+.character__item td {
     font-size: 11px;
     line-height: 1.5em;
 }
 
-.ac {
+.character__item .ac {
     text-align: center!important;
 }
 
-.fw-n {
+.character__item .fw-n {
     font-weight: 400!important;
 }
 
-a, a:visited {
+.character__item a,.character__item a:visited {
     color: #fff;
     text-decoration: none;
 }
 
-div.picSurround img {
+.character__item div.picSurround img {
     display: block;
     margin: 0;
     padding: 1px;
 }
 
 
-.spaceit_pad {
+.character__item .spaceit_pad {
     padding: 3px 0;
     color: rgb(120, 120, 120);
 }

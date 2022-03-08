@@ -12,6 +12,7 @@ import CommentList from "../../components/List/CommentList";
 import CardCarousel from "../../components/Carousel/CardCarousel";
 import NewsCardList from "../../components/List/NewsCardList";
 import CharacterList from "../../components/List/CharacterList";
+import ReviewList from "../../components/List/ReviewList";
 import { useParams } from "react-router-dom";
 import animeApi from "../../apis/animeApi";
 const MovieDetail = () => {
@@ -75,6 +76,7 @@ const MovieDetail = () => {
                         style={{ fontWeight: "700" }}
                       />
                       <Tab label="News" style={{ fontWeight: "700" }} />
+                      <Tab label="Reviews" style={{ fontWeight: "700" }} />
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>
@@ -188,6 +190,9 @@ const MovieDetail = () => {
                   </TabPanel>
                   <TabPanel value={value} index={2}>
                     <NewsCardList id={id} />
+                  </TabPanel>
+                  <TabPanel value={value} index={3}>
+                    <ReviewList id={id} />
                   </TabPanel>
                 </Box>
               </Grid>
