@@ -235,7 +235,7 @@ const MovieDetail = () => {
                   <div className={styles["section-title"]}>
                     <h5>Recommendations</h5>
                   </div>
-                  <CardCarousel data={rec} />
+                  <CardCarousel type="1" data={rec} />
                 </Grid>
               )}
             </Grid>

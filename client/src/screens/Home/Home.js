@@ -10,6 +10,7 @@ import styles from "./Home.module.css";
 import MovieList from "../../components/List/MovieList";
 import Header from "../../components/Header/Header";
 import animeApi from "../../apis/animeApi";
+import CardCarousel from "../../components/Carousel/CardCarousel";
 
 const items = [
   {
@@ -39,23 +40,16 @@ const items = [
   },
 ];
 const Home = () => {
-  const [productList, setProductList] = useState([]);
+  const [topList, setTopList] = useState([]);
   useEffect(() => {
     const fetTopMovies = async () => {
-      try {
-        const params = {
-          page: 1,
-          limit: 6,
-        };
-        const response = await animeApi.getTop(params);
-        setProductList(response.data);
-        console.log(response.data);
-      } catch (error) {
-        throw error;
-      }
+      const response = await animeApi.getTop();
+      console.log(response.data);
+      setTopList(response.data);
     };
     fetTopMovies();
   }, []);
+  console.log(topList);
   return (
     <>
       <Grid
@@ -63,7 +57,7 @@ const Home = () => {
         alignItems="center"
         justifyContent="center"
         maxWidth="1170px"
-        marginTop="50px"
+        paddingTop="150px"
         marginLeft="auto"
         marginRight="auto"
       >
@@ -85,13 +79,13 @@ const Home = () => {
           <div className={`${styles["news-section"]}`}>
             <DailyNewsList />
           </div>
-          <div className={styles["movie-section"]}>
-            <MovieList items={productList} title="Popular shows" />
-          </div>
+          {topList.length > 0 && (
+            <div className={styles["movie-section"]}>
+              <CardCarousel type="2" data={topList} />
+            </div>
+          )}
         </Grid>
-        <Grid item sm={12} md={4}>
-          <SideBarList />
-        </Grid>
+        <Grid item sm={12} md={4}></Grid>
       </Grid>
     </>
   );

@@ -9,7 +9,7 @@ const SideBarList1 = (props) => {
         <h5>{title}</h5>
       </div>
       <ul className={styles["filter__controls"]}>
-        <li class="active" data-filter="*">
+        <li className="active" data-filter="*">
           Day
         </li>
         <li data-filter=".week">Week</li>

@@ -20,14 +20,6 @@
     top: 10px;
 }
 
-.product__item__pic svg {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 11px;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 .product__item__pic .comment {
     font-size: 13px;
     color: #ffffff;

@@ -14,6 +14,7 @@ const Category = () => {
   const [page, setPage] = useState(null);
   const [genres, setGenres] = useState("");
   const [status, setStatus] = useState("");
+  const [order, setOrder] = useState("type");
   const [lastVisiblePage, setLastVisiblePage] = useState(null);
   const [productList, setProductList] = useState([]);
   useEffect(() => {
@@ -24,16 +25,18 @@ const Category = () => {
           limit: 18,
           genres,
           status,
+          order_by: order,
         };
         const response = await animeApi.getAll(params);
         setProductList(response.data);
         setLastVisiblePage(response.pagination.last_visible_page);
+        console.log(productList);
       } catch (error) {
         throw error;
       }
     };
     fetchAllMovie();
-  }, [page, genres, status]);
+  }, [order, page, genres, status]);
   console.log(productList);
   return (
     <>
@@ -48,7 +51,11 @@ const Category = () => {
       >
         <Grid item xs={12} md={8}>
           <div className={styles["movie-section"]}>
-            <MovieListAll items={productList} title="Movies" />
+            <MovieListAll
+              handleOrder={setOrder}
+              items={productList}
+              title="Movies"
+            />
           </div>
           <CustomPagination page={lastVisiblePage} handlePage={setPage} />
         </Grid>

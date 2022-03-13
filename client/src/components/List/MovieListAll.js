@@ -5,7 +5,7 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import styles from "./MovieListAll.module.css";
 import CustomSelect from "../UI/CustomSelect";
 const MovieListAll = (props) => {
-  const { title, items } = props;
+  const { title, items, handleOrder } = props;
   return (
     <Grid container columnSpacing={5}>
       <Grid item xs={12}>
@@ -19,7 +19,7 @@ const MovieListAll = (props) => {
             <Grid item xs={6} sm={4}>
               <div className={styles["product__page__filter"]}>
                 <p>Order by:</p>
-                <CustomSelect />
+                <CustomSelect handleOrder={handleOrder} />
                 {/* <select>
                   <option value="">A-Z</option>
                   <option value="">1-10</option>

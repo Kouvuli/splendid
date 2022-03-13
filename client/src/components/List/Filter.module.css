@@ -99,7 +99,21 @@
 .filter-toggle-box {
     display: none;
 }
+.header__right {
+	text-align: right;
+	padding: 20px 0 15px;
+}
 
+.header__right a {
+	display: inline-block;
+	font-size: 18px;
+	color: #ffffff;
+	margin-right: 30px;
+}
+
+.header__right a:last-child {
+	margin-right: 0;
+}
 @media only screen and (max-width:1200px){
     .filter-toggle-box {
         display: block;

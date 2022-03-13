@@ -21,13 +21,13 @@ export const ThemeLight = createTheme({
 export const ThemeDark = createTheme({
   palette: {
     mode: "light",
-    primary: {
+    secondary: {
       main: "#0cb994",
       light: "#397376",
       dark: "#05383A",
     },
-    secondary: {
-      main: "#fd5557",
+    primary: {
+      main: "#e53637",
       light: "#FD7778",
       dark: "#B13B3C",
     },

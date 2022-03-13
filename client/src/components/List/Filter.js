@@ -1,8 +1,40 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
 import animeApi from "../../apis/animeApi";
 import styles from "./Filter.module.css";
+import { styled, alpha } from "@mui/material/styles";
 const status = ["Airing", "Upcoming", "Complete"];
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  width: "100%",
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+  },
+}));
 const Filter = (props) => {
   const [genres, setGenres] = useState([]);
   const [checkedGenres, setCheckedGenres] = useState([]);
@@ -51,6 +83,19 @@ const Filter = (props) => {
           close
         </button>
       </div>
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <div className={styles["header__right"]}>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+        </div>
+      </Box>
       <div className={`${styles["section-title"]}`}>
         <h5>Status</h5>
       </div>

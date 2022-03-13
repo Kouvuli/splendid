@@ -6,7 +6,7 @@ import styles from "./Carousel.module.css";
 import { styled, alpha } from "@mui/material/styles";
 // import styled from "styled-components";
 import CardCarouselItem from "../Item/CardCarouselItem";
-
+import MovieItem from "../Item/MovieItem";
 const CustomOwlCarousel = styled(OwlCarousel)(({ theme }) => ({
   "&.owl-carousel .owl-stage-outer": {},
   "&.owl-carousel .owl-nav button": {
@@ -118,18 +118,75 @@ const options = {
   autoplay: false,
   mouseDrag: true,
 };
+const options2 = {
+  loop: true,
+  margin: 10,
+  dots: false,
+  nav: true,
+  responsiveClass: true,
+  responsive: {
+    0: {
+      items: 1,
+      nav: true,
+    },
+    300: {
+      items: 2,
+      nav: true,
+    },
+    600: {
+      items: 3,
+      nav: true,
+    },
+    900: {
+      items: 4,
+      nav: true,
+    },
+  },
+  navText: [
+    "<span class='button arrow_carrot-left'></span>",
+    "<span class='arrow_carrot-right'></span>",
+  ],
+  animateOut: "fadeOut",
+  animateIn: "fadeIn",
+  smartSpeed: 1200,
+  autoplay: false,
+  mouseDrag: true,
+};
 const CardCarousel = (props) => {
-  const { data } = props;
+  const { data, type } = props;
+  console.log(data);
   return (
-    <CustomOwlCarousel className={styles["carousel-container"]} {...options}>
-      {data.map((item, index) => {
-        return (
-          <div key={index} className="item">
-            <CardCarouselItem {...item.entry} />
-          </div>
-        );
-      })}
-    </CustomOwlCarousel>
+    <>
+      {type === "1" && (
+        <CustomOwlCarousel
+          className={styles["carousel-container"]}
+          {...options}
+        >
+          {data.map((item, index) => {
+            console.log(item);
+            return (
+              <div key={index} className="item">
+                <CardCarouselItem data={item.entry} />
+              </div>
+            );
+          })}
+        </CustomOwlCarousel>
+      )}
+      {type === "2" && (
+        <CustomOwlCarousel
+          className={styles["carousel-container"]}
+          {...options2}
+        >
+          {data.map((item, index) => {
+            return (
+              <div key={index} className="item">
+                <CardCarouselItem data={item} />
+              </div>
+            );
+          })}
+        </CustomOwlCarousel>
+      )}
+    </>
   );
 };
 

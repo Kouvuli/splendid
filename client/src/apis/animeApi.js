@@ -5,9 +5,9 @@ const animeApi = {
     const url = "/anime";
     return axiosClient.get(url, { params });
   },
-  getTop: (params) => {
+  getTop: () => {
     const url = "/top/anime";
-    return axiosClient.get(url, { params });
+    return axiosClient.get(url);
   },
   getAnimeById: (id) => {
     const url = "/anime/" + id;
