@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient"
 import { SPLENDID_API } from "./apiURL"
-
+import authHeader from "./auth-header"
 const request = axiosClient(SPLENDID_API)
 
 const splendidApi = {
@@ -14,15 +14,15 @@ const splendidApi = {
   },
   insertPost: (data) => {
     const url = "/post"
-    return request.post(url, data)
+    return request.post(url, data, { headers: authHeader() })
   },
   updatePost: (id, data) => {
     const url = `/post/${id}`
-    return request.post(url, data)
+    return request.post(url, data, { headers: authHeader() })
   },
   deletePost: (id) => {
     const url = `/post/${id}`
-    return request.delete(url)
+    return request.delete(url, { headers: authHeader() })
   },
   registerUser: (fullname, dob, username, password, isAdmin) => {
     const url = `/auth/signup`
@@ -36,7 +36,13 @@ const splendidApi = {
   },
   authenticateUser: (username, password) => {
     const url = `/auth/signin`
-    return request.get(url, { username, password })
+    return request.get(url, { username, password }).then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem("user", JSON.stringify(response.data))
+      }
+
+      return response.data
+    })
   },
   getCharacterById: (id) => {
     const url = `/anime/${id}/characters`
