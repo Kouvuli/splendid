@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import styles from "./Login.module.css";
-import SignUpForm from "../../components/Form/SignUpForm";
-import SignInForm from "../../components/Form/SignInForm";
-import Box from "@mui/material/Box";
-import { Card } from "@mui/material";
+import React, { useState } from "react"
+import styles from "./Login.module.css"
+import SignUpForm from "../../components/Form/SignUpForm"
+import SignInForm from "../../components/Form/SignInForm"
+import Box from "@mui/material/Box"
+import { Card } from "@mui/material"
+import OvalButton from "../../components/UI/Button/OvalButton"
 
 export const Login = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true)
 
   const signInHandler = () => {
     setIsSignIn((prevIsSignIn) => {
-      return !prevIsSignIn;
-    });
-  };
+      return !prevIsSignIn
+    })
+  }
   return (
     <Box className={styles.main} sx={{ backgroundColor: "background.default" }}>
       <Card
@@ -40,13 +41,7 @@ export const Login = () => {
               <p className={styles.subtitle}>
                 To keep connected with us please login with your personal info
               </p>
-              <button
-                className={`${styles["btn"]} ${styles["ghost"]}`}
-                id={`${styles["signIn"]}`}
-                onClick={signInHandler}
-              >
-                Sign In
-              </button>
+              <OvalButton title="Sign In" handler={signInHandler} outlined />
             </div>
             <div
               className={`${styles["overlay-panel"]} ${styles["overlay-right"]}`}
@@ -55,19 +50,20 @@ export const Login = () => {
               <p className={styles.subtitle}>
                 Enter your personal details and start journey with us
               </p>
-              <button
+              <OvalButton title="Sign Up" handler={signInHandler} outlined />
+              {/* <button
                 className={`${styles["btn"]} ${styles["ghost"]}`}
                 id={`${styles["signUp"]}`}
                 onClick={signInHandler}
               >
                 Sign Up
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
       </Card>
     </Box>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

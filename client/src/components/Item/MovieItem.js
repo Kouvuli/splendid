@@ -44,7 +44,7 @@ const MovieItem = (props) => {
           )}
 
           <h5>
-            <a href={`/category/${props.mal_id}`}>{props.title}</a>
+            <a href={`/anime/${props.mal_id}`}>{props.title}</a>
           </h5>
         </div>
       </div>

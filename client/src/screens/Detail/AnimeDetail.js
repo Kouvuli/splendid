@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import BreadCrumb from "../../components/UI/BreadCrumb";
 import SideBarList3 from "../../components/List/SideBarList/SideBarList3";
-import styles from "./MovieDetail.module.css";
+import styles from "./AnimeDetail.module.css";
 import Tabs from "@mui/material/Tabs";
 import TabPanel from "../../components/UI/TabPanel";
 import Tab from "@mui/material/Tab";

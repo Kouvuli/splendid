@@ -3,6 +3,7 @@
 	padding-top: 60px;
 	padding-bottom: 40px;
 	position: relative;
+	z-index: 1;
 }
 
 .page-up {

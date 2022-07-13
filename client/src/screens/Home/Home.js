@@ -11,6 +11,7 @@ import MovieList from "../../components/List/MovieList";
 import Header from "../../components/Header/Header";
 import animeApi from "../../apis/animeApi";
 import CardCarousel from "../../components/Carousel/CardCarousel";
+import SideNavBar from "../../components/Bar/SideNavBar";
 
 const items = [
   {

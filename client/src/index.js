@@ -6,7 +6,7 @@ import { ThemeLight, ThemeDark } from "./theme/Theme";
 import { ThemeProvider } from "@mui/material/styles";
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={ThemeDark}>
+    <ThemeProvider theme={ThemeLight}>
       <App />
     </ThemeProvider>
   </React.StrictMode>,

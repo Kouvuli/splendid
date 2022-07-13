@@ -1,99 +1,209 @@
-import React, { useRef, useEffect, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/icons-material/Menu";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import styles from "./Header.module.css";
+import * as React from "react"
+import { Link } from "react-router-dom"
 
-const headerNav = [
-  {
-    display: "Home",
-    path: "/",
-  },
-  {
-    display: "Anime",
-    path: "/category",
-  },
-  {
-    display: "Manga",
-    path: "/tv",
-  },
-];
+import styles from "./styles.module.scss"
+import clsx from "clsx"
 
-const Header = () => {
-  const { pathname } = useLocation();
-  const headerRef = useRef(null);
-  const openMenuRef = useRef(null);
-  const active = headerNav.findIndex((e) => e.path === pathname);
+import RoundButton from "../UI/Button/RoundButton"
+import { PATHS } from "../../routes"
 
-  useEffect(() => {
-    const shrinkHeader = () => {
-      if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
-      ) {
-        headerRef.current.classList.add(styles["shrink"]);
-      } else {
-        headerRef.current.classList.remove(styles["shrink"]);
-      }
-    };
-    window.addEventListener("scroll", shrinkHeader);
-    return () => {
-      window.removeEventListener("scroll", shrinkHeader);
-    };
-  }, []);
-  const toggleMenuHandler = () => {
-    openMenuRef.current.classList.add(styles["active"]);
-  };
-  const closeMenuHandler = () => {
-    openMenuRef.current.classList.remove(styles["active"]);
-  };
+import NavBar from "../NavBar"
+import Drawer from "../Drawer"
+
+import AppBar from "@mui/material/AppBar"
+import Box from "@mui/material/Box"
+import Toolbar from "@mui/material/Toolbar"
+import IconButton from "@mui/material/IconButton"
+import Badge from "@mui/material/Badge"
+import MenuItem from "@mui/material/MenuItem"
+import Menu from "@mui/material/Menu"
+
+import MenuIcon from "@mui/icons-material/Menu"
+import Logo from "../../assets/images/logo.png"
+import NotificationsIcon from "@mui/icons-material/Notifications"
+import ForumIcon from "@mui/icons-material/Forum"
+import SettingsIcon from "@mui/icons-material/Settings"
+import AutoStoriesIcon from "@mui/icons-material/AutoStories"
+import AccountBoxIcon from "@mui/icons-material/AccountBox"
+import PersonIcon from "@mui/icons-material/Person"
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded"
+import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined"
+import LogoutIcon from "@mui/icons-material/Logout"
+
+export default function PrimarySearchAppBar() {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
+
+  const isMenuOpen = Boolean(anchorEl)
+  const isMobileDrawerOpen = Boolean(mobileMoreAnchorEl)
+
+  // fake user state
+  const [user, setUser] = React.useState(false)
+
+  const browseItems = [
+    { Icon: PlayArrowRoundedIcon, label: "Anime", linkTo: PATHS.ANIME },
+    { Icon: AutoStoriesIcon, label: "Manga", linkTo: PATHS.MANGA },
+    {
+      Icon: AccountBoxOutlinedIcon,
+      label: "Characters",
+      linkTo: PATHS.CHARACTERS
+    },
+    { Icon: ForumIcon, label: "Forum", linkTo: PATHS.FORUM }
+  ]
+
+  const userItems = [
+    { Icon: PersonIcon, label: "Profile", linkTo: PATHS.PROFILE },
+    {
+      Icon: NotificationsIcon,
+      label: "Notifications",
+      linkTo: PATHS.NOTIFICATIONS
+    },
+    { Icon: SettingsIcon, label: "Settings", linkTo: PATHS.SETTINGS },
+    { Icon: LogoutIcon, label: "Logout", linkTo: PATHS.LOGOUT }
+  ]
+
+  const buttons = [
+    {
+      outlined: true,
+      className: styles.btnLogin,
+      label: "Login",
+      href: PATHS.LOGIN
+    },
+    {
+      className: styles.btnSignUp,
+      label: "Sign Up",
+      href: PATHS.SIGNUP
+    }
+  ]
+
+  const buttonsMobile = [
+    {
+      outlined: true,
+      className: `${styles.btnLogin} ${styles.btnMobile}`,
+      label: "Login",
+      href: PATHS.LOGIN
+    },
+    {
+      className: `${styles.btnSignUp} ${styles.btnMobile}`,
+      label: "Sign Up",
+      href: PATHS.SIGNUP
+    }
+  ]
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleMobileDrawerClose = () => {
+    setMobileMoreAnchorEl(null)
+  }
+
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+    handleMobileDrawerClose()
+  }
+
+  const handleMobileDrawerOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget)
+  }
+
+  const menuId = "primary-search-account-menu"
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right"
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right"
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      {userItems.map((item) => (
+        <MenuItem component={Link} to={item.linkTo} key={item.label}>
+          {item.label}
+        </MenuItem>
+      ))}
+    </Menu>
+  )
+
+  const mobileDrawerId = "mobile drawer"
+  const renderMobileDrawer = (
+    <Drawer
+      browseItems={browseItems}
+      buttons={buttonsMobile}
+      user={user}
+      userItems={userItems}
+      open={isMobileDrawerOpen}
+      onClose={handleMobileDrawerClose}
+    />
+  )
+
   return (
-    <div ref={headerRef} className={styles["header"]}>
-      <div className={`${styles["mobile-menu"]} ${styles["container"]}`}>
-        <div className={styles["logo"]}>
-          <Link to="/" style={{ textAlign: "center" }}>
-            <img src={logo} alt="" />
-          </Link>
-        </div>
-
-        <IconButton
-          className={styles["mb-menu-toggle"]}
-          onClick={toggleMenuHandler}
-          size="large"
-          color="primary"
-        >
-          <i class="bx bx-menu"></i>
-        </IconButton>
-      </div>
-      <div
-        className={`${styles["header__wrap"]} ${styles["container"]}`}
-        ref={openMenuRef}
-        id="header__wrap"
-      >
-        <span
-          className={`${styles["mb-menu-close"]}`}
-          onClick={closeMenuHandler}
-        >
-          <IconButton color="primary" size="large">
-            <i className="bx bx-x"></i>
-          </IconButton>
-        </span>
-        <div className={styles["logo"]}>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" className={styles.header}>
+        <Toolbar>
           <Link to="/">
-            <img src={logo} alt="" />
+            <img style={{ width: "90px" }} src={Logo} alt="Logo" />
           </Link>
-        </div>
-        <ul className={styles["header__nav"]}>
-          {headerNav.map((e, i) => (
-            <li key={i} className={`${i === active ? "active" : ""}`}>
-              <Link to={e.path}>{e.display}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-export default Header;
+          <Box sx={{ flexGrow: 1 }} />
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              flexGrow: 1,
+              justifyContent: "space-between"
+            }}
+          >
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <NavBar items={browseItems} />
+            </Box>
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              {user ? (
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <PersonIcon />
+                </IconButton>
+              ) : (
+                buttons.map((button) => (
+                  <RoundButton
+                    outlined={button.outlined}
+                    href={button.href}
+                    className={button.className}
+                    key={button.label}
+                  >
+                    {button.label}
+                  </RoundButton>
+                ))
+              )}
+            </Box>
+          </Box>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-controls={mobileDrawerId}
+              aria-haspopup="true"
+              onClick={handleMobileDrawerOpen}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      {renderMobileDrawer}
+      {renderMenu}
+    </Box>
+  )
+}

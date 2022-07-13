@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import FilterList from "../../components/List/FilterList";
 import SideBarList from "../../components/List/SideBarList/SideBarList";
-import styles from "./Category.module.css";
+import styles from "./Anime.module.css";
 import MovieList from "../../components/List/MovieList";
 import CustomPagination from "../../components/UI/CustomPagination";
 import Filter from "../../components/List/Filter";
