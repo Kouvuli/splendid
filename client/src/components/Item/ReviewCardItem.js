@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import moment from "moment";
-import ReadMore from "../UI/ReadMore";
-import styles from "./ReviewCardItem.module.css";
+import React, { useState } from "react"
+import moment from "moment"
+import ReadMore from "../UI/ReadMore"
+import styles from "./ReviewCardItem.module.scss"
 const ReviewCardItem = (props) => {
-  const [isToggleOn, setIsToggleOn] = useState(false);
+  const [isToggleOn, setIsToggleOn] = useState(false)
   const scoreHandler = () => {
     setIsToggleOn((prevState) => {
-      return !prevState;
-    });
-  };
-  const { data } = props;
+      return !prevState
+    })
+  }
+  const { data } = props
   return (
     <div className={styles["review__item"]}>
       <div className={styles["spaceit"]}>
@@ -79,14 +79,14 @@ const ReviewCardItem = (props) => {
           clear: "both",
           borderTop: "1px solid #ebebeb",
           wordBreak: "break-word",
-          wordWrap: "break-word",
+          wordWrap: "break-word"
         }}
       >
         <div
           style={{
             float: "left",
             margin: "5px 10px 10px 0px",
-            display: isToggleOn ? "block" : "none",
+            display: isToggleOn ? "block" : "none"
           }}
         >
           <table
@@ -159,7 +159,7 @@ const ReviewCardItem = (props) => {
         <ReadMore>{data.review}</ReadMore>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ReviewCardItem;
+export default ReviewCardItem

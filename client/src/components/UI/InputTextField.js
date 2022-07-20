@@ -1,8 +1,8 @@
-import React from "react";
-import TextField from "@mui/material/TextField";
-import makeStyles from "@mui/styles/makeStyles";
-import styles from "./InputTextField.module.css";
-import styled from "styled-components";
+import React from "react"
+import TextField from "@mui/material/TextField"
+import makeStyles from "@mui/styles/makeStyles"
+import styles from "./InputTextField.module.scss"
+import styled from "styled-components"
 
 // const CustomTextField = styled(TextField)`
 //   background-color: #fff;
@@ -12,15 +12,16 @@ import styled from "styled-components";
 //   width: 100%;
 // `;
 const InputTextField = (props) => {
-  const { label, type, value, error, onChange, helperText, required } = props;
+  const { label, type, value, error, onChange, helperText, required } = props
   return (
     <TextField
       InputLabelProps={{
-        shrink: true,
+        shrink: true
       }}
       id="outlined-basic"
       size="small"
       type={type}
+      color="secondary"
       value={value}
       error={error}
       helperText={helperText}
@@ -30,7 +31,7 @@ const InputTextField = (props) => {
       required={required}
       variant="outlined"
     />
-  );
-};
+  )
+}
 
-export default InputTextField;
+export default InputTextField

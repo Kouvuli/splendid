@@ -1,0 +1,102 @@
+@import '../../styles/config';
+
+
+
+.paddingTopNone{
+    padding-top:0px!important;
+}
+.commentTitle{
+
+    display:flex;
+}
+.commentTitle > p {
+    font-weight: 500;
+    color:$color-text-bold;
+}
+
+.listItem {
+    transition: all 0.3s;
+    
+    &:hover {
+        color: $color-pr-1;
+        transition: all 0.3s;
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+}
+.avatar {
+    margin-right: 10px;
+    width: 57px;
+    height: 57px;
+}
+.listItemAvatar {
+    display: flex;
+
+}
+
+.listItemText{
+    color:$color-white;
+    margin-top:15px;
+    margin-bottom: 15px;
+
+}
+.postTitle{
+    margin-top: 40px;
+    font-size:20px;
+    font-weight:600;
+    color: $color-white;
+
+}
+
+.authorName {
+    padding-top:5px;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: $color-pr-1;
+    font-size: 16px !important;
+    font-weight: 700;
+    &:hover {
+        text-decoration: underline;
+        transition: all 0.3s;
+
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+
+    cursor: pointer;
+}
+
+.post {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color:$color-bg-dark ;
+    padding: 15px;
+    
+}
+
+.time{
+    color:$color-text-md
+}
+
+.commentBtn{
+    background-color:$color-pr-3!important;
+    margin-right:10px!important;
+}
+.heartBtn{
+    background-color: $color-heart!important;
+}
+
+.postBtn button{
+    &:hover {
+        box-shadow: none;
+    }
+    box-shadow: none;
+
+}

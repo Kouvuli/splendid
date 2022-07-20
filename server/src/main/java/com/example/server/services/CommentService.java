@@ -2,10 +2,8 @@ package com.example.server.services;
 
 import com.example.server.models.Comment;
 import com.example.server.models.Post;
-import com.example.server.repositories.CommentCriteriaRepository;
-import com.example.server.repositories.CommentRepository;
-import com.example.server.repositories.PostCriteriaRepository;
-import com.example.server.repositories.PostRepository;
+import com.example.server.models.User;
+import com.example.server.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -20,15 +18,29 @@ public class CommentService {
 
     private  CommentCriteriaRepository commentCriteriaRepository;
 
-    public CommentService(CommentRepository commentRepository, CommentCriteriaRepository commentCriteriaRepository) {
+    private UserRepository userRepository;
+
+    private PostRepository postRepository;
+
+    public CommentService(CommentRepository commentRepository, CommentCriteriaRepository commentCriteriaRepository, UserRepository userRepository, PostRepository postRepository) {
         this.commentRepository = commentRepository;
         this.commentCriteriaRepository = commentCriteriaRepository;
+        this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
-
 
     public Page<Comment> getComment(String postId, int page, int limit){
         return commentCriteriaRepository.findCommentWithFilterPagination(postId,page,limit);
     }
+
+    public User getUserById(int id){
+        return userRepository.findById(id).get();
+    }
+
+    public Post getPostById(int id){
+        return postRepository.findById(id).get();
+    }
+
 
 
     public Optional<Comment> getCommentById(int id){

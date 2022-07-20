@@ -1,0 +1,22 @@
+@import '../../styles/config';
+
+.text{
+  display: inline;
+  width: 100%;
+  color: $color-white;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+  
+.read-or-hide{
+  color: rgb(192,192,192);
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.read-or-hide:hover{
+text-decoration: underline;
+}

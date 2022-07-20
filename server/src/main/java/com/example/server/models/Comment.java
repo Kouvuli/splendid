@@ -1,10 +1,13 @@
 package com.example.server.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Comment {
@@ -18,18 +21,25 @@ public class Comment {
     @Column(name = "create_at")
     private Timestamp createAt;
 
-    @Column(name = "post_id")
-    private int postId;
+    @OneToMany(mappedBy = "comment")
+    @JsonIgnore
+    private Set<Reaction> reactions=new HashSet<>();
 
-    @Column(name = "author_id")
-    private int authorId;
+    @ManyToOne
+    @JoinColumn(name = "post_id",referencedColumnName = "id")
+    private Post post;
 
-    public Comment(int id, String content, Timestamp createAt, int postId, int authorId) {
+
+    @ManyToOne
+    @JoinColumn(name = "author_id",referencedColumnName = "id")
+    private User author;
+
+    public Comment(int id, String content, Timestamp createAt, Post post, User author) {
         this.id = id;
         this.content = content;
         this.createAt = createAt;
-        this.postId = postId;
-        this.authorId = authorId;
+        this.post = post;
+        this.author = author;
     }
 
     public Comment() {
@@ -60,20 +70,28 @@ public class Comment {
         this.createAt = createAt;
     }
 
-    public int getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public Set<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(Set<Reaction> reactions) {
+        this.reactions = reactions;
     }
 
     @Override
@@ -82,8 +100,9 @@ public class Comment {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", createAt=" + createAt +
-                ", postId=" + postId +
-                ", authorId=" + authorId +
+                ", reactions=" + reactions +
+                ", post=" + post +
+                ", author=" + author +
                 '}';
     }
 }

@@ -1,0 +1,8 @@
+.reviews__list{
+    position: relative;
+    max-height: 535px;
+    overflow:auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

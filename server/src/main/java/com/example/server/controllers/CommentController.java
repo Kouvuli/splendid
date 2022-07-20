@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Timestamp;
 import java.util.Optional;
 
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/comment")
 public class CommentController {
@@ -36,7 +38,7 @@ public class CommentController {
         }
         Page<Comment> commentPage=commentService.getComment(postId,page,limit);
         return ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObjectPagination(new Pagination(commentPage.getTotalPages()-1,commentPage.hasNext(),page,limit),"ok","",commentPage.getContent())
+                new ResponseObjectPagination(new Pagination(commentPage.getTotalPages(),commentPage.hasNext(),page,limit),"ok","",commentPage.getContent())
         );
     }
 
@@ -54,6 +56,8 @@ public class CommentController {
 
     @PostMapping("")
     ResponseEntity<ResponeObject> insertComment(@RequestBody Comment newComment){
+        newComment.setAuthor(commentService.getUserById(newComment.getAuthor().getId()));
+        newComment.setPost(commentService.getPostById(newComment.getPost().getId()));
         newComment.setCreateAt(new Timestamp(System.currentTimeMillis()));
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponeObject("ok","Insert comment succesfully",commentService.addComment(newComment))
@@ -69,6 +73,7 @@ public class CommentController {
                     return commentService.addComment(comment);
                 }).orElseGet(()->{
                     newComment.setId(id);
+                    newComment.setCreateAt(new Timestamp(System.currentTimeMillis()));
                     return commentService.addComment(newComment);
                 });
         return ResponseEntity.status(HttpStatus.OK).body(

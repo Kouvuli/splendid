@@ -29,10 +29,13 @@ import PersonIcon from "@mui/icons-material/Person"
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded"
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined"
 import LogoutIcon from "@mui/icons-material/Logout"
+import { Dialog, DialogContent } from "@mui/material"
+import Login from "../../screens/Login/Login"
 
-export default function PrimarySearchAppBar() {
+export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
+  const [open, setOpen] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileDrawerOpen = Boolean(mobileMoreAnchorEl)
@@ -61,18 +64,25 @@ export default function PrimarySearchAppBar() {
     { Icon: SettingsIcon, label: "Settings", linkTo: PATHS.SETTINGS },
     { Icon: LogoutIcon, label: "Logout", linkTo: PATHS.LOGOUT }
   ]
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
 
+  const handleClose = () => {
+    setOpen(false)
+  }
   const buttons = [
     {
       outlined: true,
       className: styles.btnLogin,
       label: "Login",
-      href: PATHS.LOGIN
+      handler: handleClickOpen
     },
     {
       className: styles.btnSignUp,
       label: "Sign Up",
-      href: PATHS.SIGNUP
+      href: PATHS.SIGNUP,
+      handler: handleClickOpen
     }
   ]
 
@@ -81,12 +91,13 @@ export default function PrimarySearchAppBar() {
       outlined: true,
       className: `${styles.btnLogin} ${styles.btnMobile}`,
       label: "Login",
-      href: PATHS.LOGIN
+      onClick: handleClickOpen
     },
     {
       className: `${styles.btnSignUp} ${styles.btnMobile}`,
       label: "Sign Up",
-      href: PATHS.SIGNUP
+      href: PATHS.SIGNUP,
+      onClick: handleClickOpen
     }
   ]
   const handleProfileMenuOpen = (event) => {
@@ -145,6 +156,9 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Dialog maxWidth="lg" open={open} onClose={handleClose}>
+        <Login isSignIn={true} handler={setOpen} />
+      </Dialog>
       <AppBar position="static" className={styles.header}>
         <Toolbar>
           <Link to="/">
@@ -178,7 +192,7 @@ export default function PrimarySearchAppBar() {
                 buttons.map((button) => (
                   <RoundButton
                     outlined={button.outlined}
-                    href={button.href}
+                    handler={button.handler}
                     className={button.className}
                     key={button.label}
                   >

@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./CharacterCardItem.module.css";
+import React from "react"
+import styles from "./CharacterCardItem.module.scss"
 const CharacterCardItem = (props) => {
-  const { data } = props;
+  const { data } = props
   return (
     <div className={styles["character__item"]}>
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -47,46 +47,47 @@ const CharacterCardItem = (props) => {
                 className="js-anime-character-va"
               >
                 <tbody>
-                  {data.voice_actors.map((actor) => {
-                    return (
-                      <tr className="js-anime-character-va-lang">
-                        <td
-                          style={{
-                            padding: "0 4px",
-                            verticalAlign: "top",
-                            textAlign: "right",
-                          }}
-                          nowrap=""
-                          className={styles["bgColor2"]}
-                        >
-                          <div className={styles["spaceit_pad"]}>
-                            <a href={actor.person.url}>{actor.person.name}</a>
-                          </div>
-                          <div
-                            className={`${styles["spaceit_pad"]} ${styles["js-anime-character-language"]}`}
+                  {data.voice_actors &&
+                    data.voice_actors.map((actor) => {
+                      return (
+                        <tr className="js-anime-character-va-lang">
+                          <td
+                            style={{
+                              padding: "0 4px",
+                              verticalAlign: "top",
+                              textAlign: "right"
+                            }}
+                            nowrap=""
+                            className={styles["bgColor2"]}
                           >
-                            {actor.language}
-                          </div>
-                        </td>
-                        <td
-                          style={{ verticalAlign: "top" }}
-                          className={styles["bgColor2"]}
-                        >
-                          <div className={styles["picSurround"]}>
-                            <a href={actor.person.url}>
-                              <img
-                                alt={actor.person.name}
-                                width="42"
-                                height="62"
-                                className=" lazyloaded"
-                                src={actor.person.images.jpg.image_url}
-                              />
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                            <div className={styles["spaceit_pad"]}>
+                              <a href={actor.person.url}>{actor.person.name}</a>
+                            </div>
+                            <div
+                              className={`${styles["spaceit_pad"]} ${styles["js-anime-character-language"]}`}
+                            >
+                              {actor.language}
+                            </div>
+                          </td>
+                          <td
+                            style={{ verticalAlign: "top" }}
+                            className={styles["bgColor2"]}
+                          >
+                            <div className={styles["picSurround"]}>
+                              <a href={actor.person.url}>
+                                <img
+                                  alt={actor.person.name}
+                                  width="42"
+                                  height="62"
+                                  className=" lazyloaded"
+                                  src={actor.person.images.jpg.image_url}
+                                />
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      )
+                    })}
                 </tbody>
               </table>
             </td>
@@ -94,7 +95,7 @@ const CharacterCardItem = (props) => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default CharacterCardItem;
+export default CharacterCardItem

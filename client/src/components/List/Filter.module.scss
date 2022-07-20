@@ -1,0 +1,222 @@
+@import "../../styles/config";
+.price-range {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    & input {
+        width: 40%;
+        outline: none;
+        padding: 5px;
+    }
+    & span {
+        flex-grow: 1;
+        text-align: center;
+        margin: 0 10px;
+    }
+}
+/* .price-range input {
+    width: 40%;
+    outline: none;
+    padding: 5px;
+} */
+.group-checkbox {
+    text-align: left;
+    & input {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        cursor: pointer;
+    }
+    & input:checked {
+        &+label{
+            & i{
+                transform: scale(1);
+            }
+        }
+        
+    }
+    & label {
+        cursor: pointer;
+        padding-left: 40px;
+        position: relative;
+        color: #fff;
+        & span {
+            cursor: pointer;
+            position: relative;
+            font-size: 16px;
+            color: #fff;
+        }
+        & > i {
+            position: absolute;
+            left: 2px;
+            top: -2px;
+            color: #ffffff;
+            transform: scale(0);
+            font-size: 21px;
+            transition: transform 0.1s ease-in-out;
+        }
+    }
+    & label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -4px;
+        width: 22px;
+        height: 22px;
+        background-color: transparent;
+        border: 2px solid #ffffff;
+    }
+    
+}
+/* .group-checkbox input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+}
+.group-checkbox label {
+    cursor: pointer;
+    padding-left: 40px;
+    position: relative;
+    color: #fff;
+}
+.group-checkbox label span {
+    cursor: pointer;
+    position: relative;
+    font-size:16px;
+    color: #fff;
+}
+.group-checkbox label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+}
+.group-checkbox label > i {
+    position: absolute;
+    left: 2px;
+    top: -2px;
+    color: #ffffff;
+    transform: scale(0);
+    font-size: 21px;
+    transition: transform 0.1s ease-in-out;
+} */
+/* .group-checkbox input:checked + label i {
+    transform: scale(1);
+} */
+
+.section-title {
+    margin-top: 17px;
+    margin-bottom: 17px;
+    & h5 {
+        color: #ffffff;
+        font-weight: 700;
+        line-height: 21px;
+        text-transform: uppercase;
+        padding-left: 20px;
+        position: relative;
+    }
+    & h5:after {
+        position: absolute;
+        left: 0;
+        top: -6px;
+        height: 32px;
+        width: 4px;
+        background: $color-pr-1;
+        content: "";
+    }
+}
+
+
+
+/* .section-title h5 {
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 21px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+}
+.section-title h5:after {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 32px;
+    width: 4px;
+    background: #e53637;
+    content: "";
+} */
+.filter-list{
+    & > li{
+        margin-bottom: 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+    & > li:last-child {
+        margin-bottom: 0;
+    }
+    & >li.active {
+        color: $color-pr-1;
+    }
+    & > li:hover {
+        color: $color-pr-1;
+    }
+}
+/* .filter-list > li {
+    
+}
+.filter-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.filter-list > li.active {
+    color:#e53637;
+}
+.filter-list > li:hover{
+    color: #e53637;
+} */
+.filter-toggle-box {
+    display: none;
+}
+.header__right {
+	text-align: right;
+	padding: 20px 0 15px;
+    & a {
+        display: inline-block;
+        font-size: 18px;
+        color: #ffffff;
+        margin-right: 30px;
+    }
+    & a:last-child {
+        margin-right: 0;
+    }
+}
+
+
+@media only screen and (max-width:1200px){
+    .filter-toggle-box {
+        display: block;
+    }
+
+    .filter-col {
+        position: fixed;
+        width: 100%;
+        background-color: var(--main-bg-color);
+        z-index: 98;
+        left: 100%;
+        height: 80vh;
+        overflow-y: scroll;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        transition: left 0.2s ease-in-out;
+        &.active {
+            left: 0;
+        }
+    }
+
+   
+    
+}

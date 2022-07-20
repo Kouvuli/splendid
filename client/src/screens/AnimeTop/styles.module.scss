@@ -1,0 +1,29 @@
+.movie-section {
+    padding-right: 20px;
+}
+
+@media only screen and (max-width:1200px) {
+
+    .movie-section {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+}
+
+@media only screen and (max-width:900px) {
+
+    .movie-section {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+
+    .movie-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+}

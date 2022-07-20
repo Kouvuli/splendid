@@ -77,7 +77,7 @@ export default function Component({
                   outlined={button.outlined}
                   className={button.className}
                   // style={{ width: "100%!important" }}
-                  href={button.href}
+                  handler={button.onClick}
                 >
                   {button.label}
                 </Button>

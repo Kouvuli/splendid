@@ -1,15 +1,26 @@
-import React, { useState } from "react";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import { styled, alpha } from "@mui/material/styles";
-const VerticalSelect = styled(Select)(({ theme }) => ({}));
-const CustomSelect = (props) => {
-  const [order, setOrder] = useState("type");
+import React, { useState } from "react"
+import Select from "@mui/material/Select"
+import MenuItem from "@mui/material/MenuItem"
+import { styled, alpha } from "@mui/material/styles"
+import { useDispatch } from "react-redux"
+import animeSlice from "../../redux/reducers/animeSlice"
+import mangaSlice from "../../redux/reducers/mangaSlice"
+const VerticalSelect = styled(Select)(({ theme }) => ({}))
+const CustomSelect = ({ type = "Anime" }) => {
+  const [order, setOrder] = useState("type")
+  const dispatch = useDispatch()
+  var slice
 
+  if (type === "Anime") {
+    slice = animeSlice
+  } else {
+    slice = mangaSlice
+  }
   const handleChange = (event) => {
-    setOrder(event.target.value);
-    props.handleOrder(event.target.value);
-  };
+    setOrder(event.target.value)
+    dispatch(slice.actions.changeOrder(event.target.value))
+    // props.handleOrder(event.target.value)
+  }
   return (
     <Select
       value={order}
@@ -26,7 +37,7 @@ const CustomSelect = (props) => {
       <MenuItem value="favorites">Favorites</MenuItem>
       <MenuItem value="rank">Rank</MenuItem>
     </Select>
-  );
-};
+  )
+}
 
-export default CustomSelect;
+export default CustomSelect

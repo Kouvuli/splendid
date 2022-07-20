@@ -1,8 +1,0 @@
-.characters__list{
-    position: relative;
-    max-height: 535px;
-    overflow:auto;
-}
-.characters__list::-webkit-scrollbar {
-    display: none;
-}

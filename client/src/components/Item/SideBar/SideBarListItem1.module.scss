@@ -1,0 +1,96 @@
+@import "../../../styles/config";
+
+.product__sidebar__view__item {
+    height: 190px;
+    max-width: 100%;
+    background-size: cover;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    & .ep {
+        font-size: 13px;
+        color: #ffffff;
+        background: $color-pr-1;
+        display: inline-block;
+        padding: 2px 12px;
+        border-radius: 4px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    & .view {
+        font-size: 13px;
+        color: $color-white;
+        background: #3d3d3d;
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 4px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    & img {   
+        max-height: 190px;
+
+    }
+    & h5 {
+        position: absolute;
+        left: 0;
+        bottom: 25px;
+        width: 100%;
+        padding: 0 30px 0 20px;
+        & a {
+            color: $color-white;
+            font-weight: 700;
+            line-height: 26px;
+            text-decoration: none;
+            background-color: transparent;
+        }
+    }
+}
+
+/* .product__sidebar__view__item .ep {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e53637;
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 4px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.product__sidebar__view__item .view {
+    font-size: 13px;
+    color: #ffffff;
+    background: #3d3d3d;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.product__sidebar__view__item img {
+    
+    max-height: 190px;
+    
+    
+}
+
+.product__sidebar__view__item h5 {
+    position: absolute;
+    left: 0;
+    bottom: 25px;
+    width: 100%;
+    padding: 0 30px 0 20px;
+}
+
+.product__sidebar__view__item h5 a {
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 26px;
+        text-decoration: none;
+    background-color: transparent;
+} */

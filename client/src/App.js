@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import "./assets/css/reset.css"
 // import FriendRequestList from "./components/Friends/FriendRequestList";
 // import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
@@ -8,6 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import HomeTemplate from "./screens"
 import PageNotFound from "./screens/PageNotFound"
 import { routeHome } from "./routes"
+import Loader from "./components/Preloader"
 // import RegisterForm from "./components/Form/RegisterForm";
 // import Login from "./pages/Login/Login";
 // import HomePage from "./pages/HomePage/HomePage";
@@ -29,12 +31,14 @@ function App() {
     }
   }
   return (
-    <BrowserRouter>
-      <Switch>
-        {showLayoutHome(routeHome)}
-        <Route path="" component={PageNotFound} />
-      </Switch>
-    </BrowserRouter>
+    <Suspense fallback={<Loader />}>
+      <BrowserRouter>
+        <Switch>
+          {showLayoutHome(routeHome)}
+          <Route path="" component={PageNotFound} />
+        </Switch>
+      </BrowserRouter>
+    </Suspense>
   )
 }
 

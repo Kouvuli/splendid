@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./CommentItem.module.css";
+import React from "react"
+import styles from "./CommentItem.module.scss"
 const CommentItem = () => {
   return (
     <div className={styles["anime__review__item"]}>
@@ -16,7 +16,7 @@ const CommentItem = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CommentItem;
+export default CommentItem

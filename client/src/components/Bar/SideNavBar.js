@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import HomeIcon from "@mui/icons-material/Home";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import MovieIcon from "@mui/icons-material/Movie";
-import styles from "./SideNavBar.module.css";
-import Tooltip from "@mui/material/Tooltip";
+import React, { useState } from "react"
+import HomeIcon from "@mui/icons-material/Home"
+import MenuBookIcon from "@mui/icons-material/MenuBook"
+import MovieIcon from "@mui/icons-material/Movie"
+import styles from "./styles.module.scss"
+import Tooltip from "@mui/material/Tooltip"
 const SideNavBar = () => {
-  const [isHome, setIsHome] = useState(true);
-  const [isManga, setIsManga] = useState(false);
-  const [isAnime, setIsAnime] = useState(false);
+  const [isHome, setIsHome] = useState(true)
+  const [isManga, setIsManga] = useState(false)
+  const [isAnime, setIsAnime] = useState(false)
   const homeHandler = () => {
-    setIsHome(true);
-    setIsManga(false);
-    setIsAnime(false);
-  };
+    setIsHome(true)
+    setIsManga(false)
+    setIsAnime(false)
+  }
   const mangaHandler = () => {
-    setIsManga(true);
-    setIsHome(false);
-    setIsAnime(false);
-  };
+    setIsManga(true)
+    setIsHome(false)
+    setIsAnime(false)
+  }
   const animeHandler = () => {
-    setIsAnime(true);
-    setIsHome(false);
-    setIsManga(false);
-  };
+    setIsAnime(true)
+    setIsHome(false)
+    setIsManga(false)
+  }
   return (
     <nav className={styles["sidebar-navigation"]}>
       <ul>
@@ -52,7 +52,7 @@ const SideNavBar = () => {
         </Tooltip>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default SideNavBar;
+export default SideNavBar

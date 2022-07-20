@@ -1,0 +1,41 @@
+@import '../../styles/config';
+
+.sidebar-navigation {
+  display: inline-block;
+  position:fixed;
+  border-radius: 15px;
+  top:50%;
+  margin-top: -300px;
+  left: 5px;
+  z-index: 2;
+  min-height: 50vh;
+  width: 80px;
+  background-color: #313443;
+  float: left;
+  & ul {
+    text-align: center;
+    color: $color-white;
+    & li {
+      border-radius: 15px;
+      padding: 28px 0;
+      cursor: pointer;
+      transition: all ease-out 120ms;
+      & i {
+        display: block;
+        font-size: 24px;
+        transition: all ease 450ms;
+      }
+      & li:hover {
+        background-color: $color-bg-dark;
+      }
+      & li.active {
+        background-color: $color-bg-dark;
+        & svg {
+          color: $color-pr-4;
+        }
+      }
+    }
+  }
+}
+
+ 

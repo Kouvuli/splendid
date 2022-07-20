@@ -1,0 +1,65 @@
+@import "../../styles/config";
+
+.product__sidebar__comment__item {
+    margin-bottom: 20px;
+    overflow: hidden;
+    display:flex;
+}
+.product__sidebar__comment__item__pic {
+    float: left;
+    margin-right: 15px;
+    & img {
+        max-width: 90px;
+        height: 130px;
+        object-fit: cover;
+        border-style: none;
+    }
+}
+
+
+
+.product__sidebar__comment__item__text {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    & h5 {
+        margin-bottom: 10px;
+    }
+    & p {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    & a {
+        color: rgb(192, 192, 192);
+        font-size: 14px;
+        font-weight: 600;
+    
+    }
+    & a:hover {
+        text-decoration: underline;
+    }
+    & h5{
+        & a {
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 26px;
+            text-decoration: none;
+            background-color: transparent;
+        }
+    } 
+}
+
+
+
+.spaceit {
+       font-size: 13px;
+    font-weight: 500;
+    margin: 3px 0;
+    padding: 3px 0;
+}
+.lightLink, .lightLink:link, .lightLink:visited, .lightLink:active {
+    color: #888;
+}

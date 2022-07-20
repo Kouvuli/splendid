@@ -33,19 +33,20 @@ public class CommentCriteriaRepository {
         Root<Comment> root=query.from(Comment.class);
         List<Predicate> predicates=new ArrayList<>();
         if(postId!=null){
-            predicates.add(cb.equal(root.get("postId"),postId));
+            predicates.add(cb.equal(root.get("post").get("id"),postId));
         }
 
 
         Predicate predicate=cb.and(predicates.toArray(new Predicate[0]));
+        query.orderBy(cb.desc(root.get("createAt")));
         query.where(predicate);
 
         TypedQuery<Comment> typedQuery=entityManager.createQuery(query);
-        typedQuery.setFirstResult(page*limit);
+        typedQuery.setFirstResult((page-1)*limit);
         typedQuery.setMaxResults(limit);
 
 
-        Pageable pageable= PageRequest.of(page,limit);
+        Pageable pageable= PageRequest.of(page-1,limit);
 
         long commentCount=getCommentCount(predicate);
         return new PageImpl<>(typedQuery.getResultList(),pageable,commentCount);

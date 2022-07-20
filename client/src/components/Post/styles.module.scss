@@ -1,0 +1,73 @@
+@import '../../styles/config';
+
+.listItemHeader {
+    transition: all 0.3s;
+    text-decoration: none;
+    color:$color-white;
+    font-weight: 700;
+    &:hover {
+        color: $color-pr-1;
+        transition: all 0.3s;
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+    &:link {
+        text-decoration: none;
+    }
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.listItemLink {
+    &:link {
+        text-decoration: none;
+    }
+
+    text-decoration: none;
+}
+
+.listItem {
+    border-radius: 3px;
+    background-color:$color-se-1;
+    padding:1px 10px 10px 10px;
+    margin-bottom: 10px;
+
+    &:link {
+        text-decoration: none;
+    }
+
+    text-decoration: none;
+
+}
+
+.listItemAvatar {
+    display:flex;
+    
+}
+.avatar {
+    margin-right:10px;
+
+}
+.authorName{
+    padding-top:2px;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: $color-pr-3;
+    font-size: 13px!important;
+    &:hover {
+        text-decoration: underline;
+        transition: all 0.3s;
+
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+
+    cursor: pointer;
+}
+

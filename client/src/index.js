@@ -1,17 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { ThemeLight, ThemeDark } from "./theme/Theme";
-import { ThemeProvider } from "@mui/material/styles";
+import React from "react"
+import ReactDOM from "react-dom"
+import "./index.css"
+import App from "./App"
+import { Provider } from "react-redux"
+import store from "./redux/store"
+import { ThemeLight, ThemeDark } from "./theme"
+import { ThemeProvider } from "@mui/material/styles"
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={ThemeLight}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

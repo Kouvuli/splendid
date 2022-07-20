@@ -1,0 +1,104 @@
+@import '../../styles/config';
+
+.spad {
+    padding-top: 106px;
+    padding-bottom: 106px;
+}
+
+
+.news-section{
+    padding-right: 20px;
+}
+
+.movie-section{
+    padding-right: 20px;
+}
+.section-title {
+
+    margin-bottom: 30px;
+    & h4,h5{
+        margin: 0;
+        color: #ffffff;
+        font-weight: 700;
+        line-height: 21px;
+        text-transform: uppercase;
+        padding-left: 20px;
+        position: relative;
+    }
+    & h4:after,h5:after {
+        position: absolute;
+        left: 0;
+        top: -6px;
+        height: 32px;
+        width: 4px;
+        background: $color-pr-1;
+        content: "";
+    }
+}
+
+
+/* .primary-btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-top: -10px;
+}
+
+.btn__all {
+    text-align: right;
+}
+
+a.primary-btn {
+    text-decoration: none;
+}
+
+.arrow_right {
+    font-size: 18px;
+    margin-left: 5px;
+    position: relative;
+    top: 6px;
+
+} */
+
+
+
+@media only screen and (max-width:1200px) {
+    .carousel-section{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .movie-section{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+}
+@media only screen and (max-width:900px) {
+    .news-section{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .movie-section{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media only screen and (max-width:600px) {
+    .carousel-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .news-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .movie-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+}

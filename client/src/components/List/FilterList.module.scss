@@ -1,0 +1,60 @@
+@import "../../styles/config";
+
+.section-title {
+    margin-top: 17px;
+    margin-bottom: 30px;
+    & h5 {
+        color: #ffffff;
+        font-weight: 700;
+        line-height: 21px;
+        text-transform: uppercase;
+        padding-left: 20px;
+        position: relative;
+    }
+    & h5:after {
+        position: absolute;
+        left: 0;
+        top: -6px;
+        height: 32px;
+        width: 4px;
+        background: $color-pr-1;
+        content: "";
+    }
+}
+
+/* .section-title h5 {
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 21px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+}
+.section-title h5:after {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 32px;
+    width: 4px;
+    background: #e53637;
+    content: "";
+} */
+
+@media only screen and (max-width:1200px) {
+    .product__sidebar{
+        padding-right:50px;
+    }
+}
+@media only screen and (max-width:900px) {
+    .product__sidebar{
+        padding-right:50px;
+        padding-left:50px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .product__sidebar{
+        padding-right:10px;
+        padding-left: 10px;
+    }
+}

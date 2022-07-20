@@ -3,6 +3,7 @@ package com.example.server.controllers;
 
 import com.example.server.models.Pagination;
 import com.example.server.models.Post;
+import com.example.server.models.User;
 import com.example.server.payloads.response.ResponeObject;
 import com.example.server.payloads.response.ResponseObjectPagination;
 import com.example.server.services.PostService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Timestamp;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/post")
 public class PostController {
@@ -41,7 +43,7 @@ public class PostController {
         }
         Page<Post> postPage=postService.getPost(authorId,page,limit);
         return ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObjectPagination(new Pagination(postPage.getTotalPages()-1,postPage.hasNext(),page,limit),"ok","",postPage.getContent())
+                new ResponseObjectPagination(new Pagination(postPage.getTotalPages(),postPage.hasNext(),page,limit),"ok","",postPage.getContent())
                 );
     }
 
@@ -60,6 +62,8 @@ public class PostController {
 
     @PostMapping("")
     ResponseEntity<ResponeObject> insertPost(@RequestBody Post newPost){
+        int authorId =newPost.getAuthor().getId();
+        newPost.setAuthor(postService.getUserById(authorId));
         newPost.setCreateAt(new Timestamp(System.currentTimeMillis()));
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponeObject("ok","Insert post succesfully",postService.addPost(newPost))
@@ -73,7 +77,7 @@ public class PostController {
                     post.setContent(newPost.getContent());
                     post.setTitle(newPost.getTitle());
                     post.setCreateAt(new Timestamp(System.currentTimeMillis()));
-                    post.setAuthorId(newPost.getAuthorId());
+                    post.setAuthor(postService.getUserById(newPost.getAuthor().getId()));
                     return postService.addPost(post);
                 }).orElseGet(()->{
                     newPost.setId(id);

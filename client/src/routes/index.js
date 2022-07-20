@@ -1,9 +1,19 @@
-import Anime from "../screens/Anime/Anime";
-import Home from "../screens/Home/Home";
-import AnimeDetail from "../screens/Detail/AnimeDetail";
-import Login from "../screens/Login/Login";
+import Anime from "../screens/Anime"
+import Home from "../screens/Home"
+import AnimeDetail from "../screens/AnimeDetail"
+import Login from "../screens/Login/Login"
+import AnimeTop from "../screens/AnimeTop"
+import MangaTop from "../screens/MangaTop"
+import ComingSoon from "../screens/ComingSoon"
+import Forum from "../screens/Forum"
+import Character from "../screens/Character"
+import Manga from "../screens/Manga"
+import MangaDetail from "../screens/MangaDetail"
+import PostDetail from "../screens/PostDetail"
 const PATHS = {
   ANIME: "/anime",
+  TOPANIME: "/top/anime",
+  TOPMANGA: "/top/manga",
   MANGA: "/manga",
   CHARACTERS: "/character",
   FORUM: "/forum",
@@ -13,25 +23,61 @@ const PATHS = {
   PROFILE: "/profile",
   NOTIFICATIONS: "/notifications",
   SETTINGS: "/settings",
-  LOGOUT: "/logout",
-};
+  LOGOUT: "/logout"
+}
 
 const routeHome = [
   {
     exact: true,
     path: "/",
-    component: Home,
+    component: Home
   },
   {
     exact: true,
     path: PATHS.ANIME,
-    component: Anime,
+    component: Anime
   },
   {
     exact: true,
     path: `${PATHS.ANIME}/:id`,
-    component: AnimeDetail,
+    component: AnimeDetail
   },
+  {
+    exact: true,
+    path: PATHS.TOPMANGA,
+    component: MangaTop
+  },
+  {
+    exact: true,
+    path: PATHS.TOPANIME,
+    component: AnimeTop
+  },
+  {
+    exact: true,
+    path: PATHS.FORUM,
+    component: Forum
+  },
+  {
+    exact: true,
+    path: `${PATHS.FORUM}/:id`,
+    component: PostDetail
+  },
+  {
+    exact: true,
+    path: PATHS.CHARACTERS,
+    component: Character
+  },
+  {
+    exact: true,
+    path: PATHS.MANGA,
+    component: Manga
+  },
+  {
+    exact: true,
+    path: `${PATHS.MANGA}/:id`,
+    component: MangaDetail
+  },
+
   //   {
   //     exact: false,
   //     path: PATHS.MANGA.SEARCH,
@@ -80,18 +126,18 @@ const routeHome = [
   {
     exact: true,
     path: PATHS.LOGIN,
-    component: Login,
+    component: Login
   },
   //   {
   //     exact: true,
   //     path: PATHS.FORGOT_PASSWORD,
   //     component: ForgotPassword,
   //   },
-  //   {
-  //     exact: true,
-  //     path: PATHS.PROFILE,
-  //     component: ComingSoon,
-  //   },
+  {
+    exact: true,
+    path: PATHS.PROFILE,
+    component: ComingSoon
+  }
   //   {
   //     exact: true,
   //     path: PATHS.NOTIFICATIONS,
@@ -107,6 +153,6 @@ const routeHome = [
   //     path: PATHS.LOGOUT,
   //     component: ComingSoon,
   //   },
-];
+]
 
-export { routeHome, PATHS };
+export { routeHome, PATHS }

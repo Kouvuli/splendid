@@ -1,10 +1,13 @@
 package com.example.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -18,21 +21,37 @@ public class Post {
     @Column(name = "create_at")
     private Timestamp createAt;
 
-    @Column(name = "author_id")
-    private int authorId;
+    @OneToMany(mappedBy = "post")
+    @JsonIgnore
+    private Set<Comment> comments=new HashSet<>();
+
+    @OneToMany(mappedBy = "post")
+    @JsonIgnore
+    private Set<Reaction> reactions=new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "author_id",referencedColumnName = "id")
+    private User author;
 
     private String title;
 
-    public Post(int id, String content, Timestamp createAt, int authorId, String title) {
+    public Post(int id, String content, Timestamp createAt, User author, String title) {
         this.id = id;
         this.content = content;
         this.createAt = createAt;
-        this.authorId = authorId;
+        this.author = author;
         this.title = title;
     }
 
     public Post() {}
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     public int getId() {
         return id;
@@ -58,13 +77,6 @@ public class Post {
         this.createAt = createAt;
     }
 
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
 
     public String getTitle() {
         return title;
@@ -74,13 +86,31 @@ public class Post {
         this.title = title;
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Set<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(Set<Reaction> reactions) {
+        this.reactions = reactions;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", createAt=" + createAt +
-                ", authorId=" + authorId +
+                ", comments=" + comments +
+                ", reactions=" + reactions +
+                ", author=" + author+
                 ", title='" + title + '\'' +
                 '}';
     }

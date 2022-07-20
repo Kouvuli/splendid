@@ -1,0 +1,20 @@
+
+@media only screen and (max-width:1200px) {
+    .product__sidebar{
+        padding-right:50px;
+        padding-left: 50px;
+    }
+}
+@media only screen and (max-width:900px) {
+    .product__sidebar{
+        padding-right:50px;
+        padding-left:50px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .product__sidebar{
+        padding-right:10px;
+        padding-left: 10px;
+    }
+}

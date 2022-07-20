@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./OvalButton.module.css"
+import styles from "./OvalButton.module.scss"
 const OvalButton = ({ title, handler, outlined }) => {
   return (
     <>

@@ -1,0 +1,85 @@
+@import '../../styles/config';
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+.normal-breadcrumb {
+    height: 300px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.normal__breadcrumb__text  {
+    text-align: center;
+    & h2{
+        
+        color: #ffffff;
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 22px;
+    }
+    & p {
+        color: #ffffff;
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+}
+
+
+.createPostBar{
+    margin-top: 24px;
+    display:flex;
+}
+.createPostBtn{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.paddingTopNone{
+    padding-top:0px!important;
+}
+.titleBar{
+    display:flex;
+    margin:10px 0;
+}
+.titleBar > p {
+    font-weight: 700;
+    color:$color-white;
+}
+.viewAllBtn{
+    font-size:13px;
+    font-weight: 300;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        color: $color-pr-1;
+        transition: all 0.3s;
+
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+}
+.listItem {
+    transition: all 0.3s;
+    
+    &:hover {
+        color: $color-pr-1;
+        transition: all 0.3s;
+        div {
+            transition: all 0.3s;
+            color: $color-pr-1;
+        }
+
+    }
+}

@@ -1,10 +1,11 @@
-import { Box, Container } from "@mui/material";
-import React from "react";
-import { Route } from "react-router";
-import SideNavBar from "../components/Bar/SideNavBar";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
-import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import { Box, Container } from "@mui/material"
+import React from "react"
+import { Route } from "react-router"
+import SideNavBar from "../components/Bar/SideNavBar"
+import FloatingButton from "../components/FloatingButton"
+import Footer from "../components/Footer"
+import Header from "../components/Header/Header"
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop"
 const LayoutHome = (props) => {
   //   let isLogin = false;
   //   if (localStorage.getItem("User")) {
@@ -16,15 +17,15 @@ const LayoutHome = (props) => {
       {/* <LandingSlider /> */}
 
       <Box sx={{ flexGrow: 1, backgroundColor: "background.default" }}>
-        <SideNavBar />
         <Header />
         {props.children}
         <Footer />
         <ScrollToTop />
+        {/* <FloatingButton /> */}
       </Box>
     </>
-  );
-};
+  )
+}
 const HomeTemplate = ({ Component, ...props }) => {
   return (
     <Route
@@ -34,9 +35,9 @@ const HomeTemplate = ({ Component, ...props }) => {
           <LayoutHome>
             <Component {...propsComponent} />
           </LayoutHome>
-        );
+        )
       }}
     />
-  );
-};
-export default HomeTemplate;
+  )
+}
+export default HomeTemplate

@@ -1,0 +1,48 @@
+@import "../../styles/config";
+
+.section-title {
+
+    margin-bottom: 30px;
+    & h4,h5{
+        margin: 0;
+        color: $color-white;
+        font-weight: 700;
+        line-height: 21px;
+        text-transform: uppercase;
+        padding-left: 20px;
+        position: relative;
+    }
+    & h4:after, h5:after {
+        position: absolute;
+        left: 0;
+        top: -6px;
+        height: 32px;
+        width: 4px;
+        background: $color-pr-1;
+        content: "";
+    }
+}
+
+
+.primary-btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-white;
+    letter-spacing: 2px;
+    margin-top:-10px;
+}
+.btn__all {
+    text-align: right;
+}
+a.primary-btn  {
+    text-decoration: none;
+}
+.arrow_right{
+    font-size: 18px;
+    margin-left: 5px;
+    position: relative;
+    top: 6px;
+
+}

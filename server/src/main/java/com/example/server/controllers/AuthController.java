@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins="*",maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
@@ -40,6 +40,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -54,9 +55,9 @@ public class AuthController {
 //                .map(item -> item.getAuthority())
 //                .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        return ResponseEntity.ok(new ResponeObject("ok","successfully get user",new JwtResponse(jwt,
                 userDetails.getId(),
-                userDetails.getUsername()));
+                userDetails.getUsername())));
     }
 
     @PostMapping("/signup")

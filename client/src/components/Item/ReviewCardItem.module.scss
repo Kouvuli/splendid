@@ -1,0 +1,92 @@
+@import "../../styles/config";
+
+
+.review__item{
+    & div{
+        &.picSurround {
+            & img {
+                background-color: #fff;
+                border: 1px solid #bebebe;
+                display: block;
+                margin: 0;
+                padding: 1px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    & a, a:visited {
+        cursor: pointer;
+        text-decoration: none;
+        color: #ffffff;
+    }
+    & a:hover {
+        text-decoration: underline;
+    }
+    & td {
+        font-size: 13px;
+        line-height: 1.5em;
+    }
+    & .spaceit {
+        margin: 3px 0;
+        padding: 3px 0;
+    }
+    & p, span {
+        line-height: 1.5em;
+        margin: 0;
+        padding: 0;
+    }
+    & .lightLink,
+    .lightLink:link,
+    .lightLink:visited,
+    .lightLink:active {
+        color: #888;
+    }
+    & .borderClass {
+        border-color: #ebebeb;
+        border-style: solid;
+        border-width: 0 0 1px;
+        padding: 2px;
+    }
+    & .bgColor1 {
+        background-color: #f6f6f6;
+    }
+}
+
+
+/* .review__item a, .review__item a:visited {
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+}
+.review__item a:hover{
+    text-decoration: underline;
+}
+
+.review__item td {
+    font-size: 13px;
+    line-height: 1.5em;
+}
+.review__item .spaceit {
+    margin: 3px 0;
+    padding: 3px 0;
+}
+
+.review__item p, .review__item span {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+.review__item .lightLink, .review__item .lightLink:link, .review__item .lightLink:visited, .review__item .lightLink:active {
+    color: #888;
+}
+
+.review__item .borderClass {
+    border-color: #ebebeb;
+    border-style: solid;
+    border-width: 0 0 1px;
+    padding: 2px;
+}
+
+.review__item .bgColor1 {
+    background-color: #f6f6f6;
+} */

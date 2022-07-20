@@ -1,0 +1,32 @@
+@import '../../styles/config';
+
+.forgot-password-link {
+	font-size: 14px;
+	text-decoration: none!important;
+	margin: 15px 0!important;
+}
+
+.btn {
+	border-radius: 20px;
+	border: 1px solid $color-pr-3;
+	background-color: $color-pr-3;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	&:active {
+		transform: scale(0.95);
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+
+
+

@@ -1,43 +1,59 @@
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import FilterList from "../../components/List/FilterList";
-import SideBarList from "../../components/List/SideBarList/SideBarList";
-import styles from "./Anime.module.css";
-import MovieList from "../../components/List/MovieList";
-import CustomPagination from "../../components/UI/CustomPagination";
-import Filter from "../../components/List/Filter";
-import MovieListAll from "../../components/List/MovieListAll";
-import animeApi from "../../apis/animeApi";
-import useQuery from "../../hooks/useQuery";
-const Category = () => {
-  const [page, setPage] = useState(null);
-  const [genres, setGenres] = useState("");
-  const [status, setStatus] = useState("");
-  const [order, setOrder] = useState("type");
-  const [lastVisiblePage, setLastVisiblePage] = useState(null);
-  const [productList, setProductList] = useState([]);
+import React, { useEffect } from "react"
+import Grid from "@mui/material/Grid"
+import styles from "./styles.module.scss"
+import CustomPagination from "../../components/UI/CustomPagination"
+import Filter from "../../components/List/Filter"
+import ListFilter from "../../components/List/ListFilter"
+import { useSelector, useDispatch } from "react-redux"
+import { animeListSelector } from "../../redux/selectors"
+import { fetchAllAnimes } from "../../redux/reducers/animeSlice"
+const Anime = () => {
+  const dispatch = useDispatch()
+
+  const { loading, data, error, page, limit, genres, status, order } =
+    useSelector(animeListSelector)
+
+  // const [page, setPage] = useState(null)
+  // const [genres, setGenres] = useState("")
+  // const [status, setStatus] = useState("")
+  // const [order, setOrder] = useState("type")
+  // const [lastVisiblePage, setLastVisiblePage] = useState(null)
+  // const [productList, setProductList] = useState(null)
   useEffect(() => {
-    const fetchAllMovie = async () => {
-      try {
-        const params = {
-          page: page,
-          limit: 18,
-          genres,
-          status,
-          order_by: order,
-        };
-        const response = await animeApi.getAll(params);
-        setProductList(response.data);
-        setLastVisiblePage(response.pagination.last_visible_page);
-        console.log(productList);
-      } catch (error) {
-        throw error;
-      }
-    };
-    fetchAllMovie();
-  }, [order, page, genres, status]);
-  console.log(productList);
+    // const fetchAllMovie = async () => {
+    //   try {
+    //     const params = {
+    //       page,
+    //       limit,
+    //       genres,
+    //       status,
+    //       order_by: order
+    //     }
+    //     const response = await animeApi.getAll(params)
+    //     setProductList(response.data)
+    //     setLastVisiblePage(response.pagination.last_visible_page)
+    //   } catch (error) {
+    //     throw error
+    //   }
+    // }
+    // fetchAllMovie()
+    const params = {
+      page,
+      limit,
+      genres: genres.join(),
+      status,
+      order_by: order
+    }
+
+    dispatch(fetchAllAnimes(params))
+
+    // setLastVisiblePage(data.pagination.last_visible_page)
+    // setProductList(data.data)
+    // if (data.length > 0) {
+    //   setLastVisiblePage(data.pagination.last_visible_page)
+    //   setProductList(data.data)
+    // }
+  }, [dispatch, page, limit, genres, status, order])
   return (
     <>
       <Grid
@@ -48,28 +64,33 @@ const Category = () => {
         marginRight="auto"
         paddingTop="106px"
         paddingBottom="106px"
+        spacing={0}
       >
         <Grid item xs={12} md={8}>
           <div className={styles["movie-section"]}>
-            <MovieListAll
-              handleOrder={setOrder}
-              items={productList}
-              title="Movies"
+            <ListFilter
+              // handleOrder={setOrder}
+              items={data.data}
+              error={error}
+              title="Anime"
+              loading={loading}
             />
           </div>
-          <CustomPagination page={lastVisiblePage} handlePage={setPage} />
+          <CustomPagination
+          // handlePage={setPage}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
           <Filter
             status={status}
-            handleStatus={setStatus}
-            handleGenres={setGenres}
+            // handleStatus={setStatus}
+            // handleGenres={setGenres}
             title="Genres"
           />
         </Grid>
       </Grid>
     </>
-  );
-};
+  )
+}
 
-export default Category;
+export default Anime

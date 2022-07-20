@@ -1,0 +1,54 @@
+@import '../../styles/config';
+
+.postTitle{
+    padding: 8px;
+    width: 100%;
+    color:$color-text-bold;
+    font-weight: 600;
+    outline: none;
+    border:none;
+    background-color:$color-bg-input;
+    input:focus {
+        outline: none;
+    }
+}
+
+.postContent{
+    font-family: inherit;
+    padding: 8px;
+    width: 100%;
+    outline: none;
+    color: $color-text-bold;
+    border: none;
+    background-color: $color-bg-input;
+    max-width: 500px;
+    min-width: 500px;
+    min-height: 60px;
+}
+
+
+
+.form {
+    .formGroup {
+        width: 500px;
+
+        margin-bottom: 12px;
+    }
+}
+
+.buttonBar{
+    button{
+        color:$color-pr-1;
+    }
+}
+
+.button {
+    background-color: $color-pr-1 !important;
+    color: white !important;
+    float: right;
+}
+
+.errorMessage {
+    font-size: 13px;
+    color: $color-danger;
+}

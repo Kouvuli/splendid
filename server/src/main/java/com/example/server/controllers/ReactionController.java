@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/reaction")
 public class ReactionController {
@@ -33,15 +35,17 @@ public class ReactionController {
             );
         }
 
-        long reactionCount=0;
+//        long reactionCount=0;
+        List<Reaction> foundReactions=new ArrayList<>();
         if(postId!=null){
-
-            reactionCount=reactionService.getTargetCountByPostId(String.valueOf(postId));
+            foundReactions=reactionService.getReacionsByPostId(postId);
+//            reactionCount=reactionService.getTargetCountByPostId(String.valueOf(postId));
         } else if (commentId!=null) {
-            reactionCount=reactionService.getTargetCountByCommentId(String.valueOf(commentId));
+            foundReactions=reactionService.getReacionsByCommentId(commentId);
+//            reactionCount=reactionService.getTargetCountByCommentId(String.valueOf(commentId));
         }
         return ResponseEntity.status(HttpStatus.OK).body(
-              new ResponeObject("ok","get reaction count succesfully",reactionCount)
+              new ResponeObject("ok","get reaction succesfully",foundReactions)
         );
     }
 
@@ -59,17 +63,38 @@ public class ReactionController {
 
     @PostMapping("")
     ResponseEntity<ResponeObject> insertReaction(@RequestBody Reaction newReaction){
+        if(newReaction.getPost()!=null){
+
+            newReaction.setPost(reactionService.getPostById(newReaction.getPost().getId()));
+        }
+        else if(newReaction.getComment()!=null){
+            newReaction.setComment(reactionService.getCommentById(newReaction.getComment().getId()));
+        }
+        newReaction.setAuthor(reactionService.getUserById(newReaction.getAuthor().getId()));
         newReaction.setCreateAt(new Timestamp(System.currentTimeMillis()));
+
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponeObject("ok","Insert reaction succesfully",reactionService.addReaction(newReaction))
         );
     }
 
-    @DeleteMapping("/{id}")
-    ResponseEntity<ResponeObject> deleteReaction(@PathVariable int id){
-        boolean exists=reactionService.ifReactionExists(id);
-        if(exists){
-            reactionService.deleteReactionById(id);
+    @DeleteMapping("")
+    ResponseEntity<ResponeObject> deleteReaction(
+            @RequestParam(required = false,name = "author_id") Integer authorId,
+            @RequestParam(required = false,name = "post_id") Integer postId,
+            @RequestParam(required = false,name = "comment_id") Integer commentId
+    ){
+//        boolean exists=reactionService.ifReactionExists(id);
+        Integer reactionId=null;
+        if(postId!=null){
+
+            reactionId=reactionService.getReactionIdByAuthorIdAndPostId(String.valueOf(authorId),String.valueOf(postId));
+        }
+        else{
+            reactionId=reactionService.getReactionIdByAuthorIdAndCommentId(String.valueOf(authorId),String.valueOf(commentId));
+        }
+        if(reactionId!=null){
+            reactionService.deleteReactionById(reactionId);
             return ResponseEntity.status(HttpStatus.OK).body(
                     new ResponeObject("ok","Deleted reaction succesfully","")
             );

@@ -1,0 +1,53 @@
+@import "../../styles/config";
+
+.anime__review__item {
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.anime__review__item__pic {
+	float: left;
+	margin-right: 20px;
+	position: relative;
+	&:before {
+		position: absolute;
+		right: -30px;
+		top: 15px;
+		border-top: 15px solid transparent;
+		border-left: 15px solid #1d1e39;
+		content: "";
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	& img {
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+	}
+}
+
+
+
+
+.anime__review__item__text {
+	overflow: hidden;
+	background: #1d1e39;
+	padding: 18px 30px 16px 20px;
+	border-radius: 10px;
+	& h6 {
+		color: #ffffff;
+		font-weight: 700;
+		margin-bottom: 10px;
+		& span {
+			color: $color-text-md;
+			font-weight: 400;
+		}
+	}
+	& p {
+		color: $color-text-md;
+		line-height: 23px;
+		margin-bottom: 0;
+	}
+}
+

@@ -1,13 +1,13 @@
-import styles from "./styles.module.scss";
-// import Button from "../../components/UI/Button/ComicButton";
+import styles from "./styles.module.scss"
+import Button from "../../components/UI/Button/RoundButton"
 
 const PageNotFound = () => {
   return (
     <div className={styles.container}>
-      {/* <Button className={styles.btnGoHome} href="/"> */}
-      Back To Home
-      {/* </Button> */}
+      <a href="/">
+        <Button className={styles.btnGoHome}>Back To Home</Button>
+      </a>
     </div>
-  );
-};
-export default PageNotFound;
+  )
+}
+export default PageNotFound

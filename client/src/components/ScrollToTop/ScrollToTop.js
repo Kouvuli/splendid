@@ -1,25 +1,31 @@
-import ScrollToTop from "react-scroll-to-top";
-
-import styles from "./styles.module.scss";
+import ScrollToTop from "react-scroll-to-top"
+import { useTheme } from "@mui/material"
+import styles from "./styles.module.scss"
 
 const Image = () => {
   return (
-    <img
-      className={styles.scrollToTopIcon}
-      src="https://img.icons8.com/material/48/18c1f0/circled-up-2--v1.png"
+    <i
       alt="scroll to top"
-    />
-  );
-};
+      className="bx bxs-up-arrow bx-sm"
+      style={{ color: "#ffffff" }}
+    ></i>
+  )
+}
 
 const Component = () => {
+  const theme = useTheme()
   return (
     <ScrollToTop
-      style={{ borderRadius: "50%", width: "48px", height: "48px" }}
+      style={{
+        backgroundColor: theme.palette.primary.main,
+        borderRadius: "5px",
+        width: "50px",
+        height: "50px"
+      }}
       smooth
       component={<Image />}
     ></ScrollToTop>
-  );
-};
+  )
+}
 
-export default Component;
+export default Component

@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
-import animeApi from "../../apis/animeApi";
-import styles from "./Filter.module.css";
-import { styled, alpha } from "@mui/material/styles";
-const status = ["Airing", "Upcoming", "Complete"];
+import React, { useState, useEffect } from "react"
+import Box from "@mui/material/Box"
+import SearchIcon from "@mui/icons-material/Search"
+import InputBase from "@mui/material/InputBase"
+import animeApi from "../../apis/animeApi"
+import styles from "./Filter.module.scss"
+import { styled, alpha } from "@mui/material/styles"
+import { useDispatch, useSelector } from "react-redux"
+import animeSlice from "../../redux/reducers/animeSlice"
+import mangaSlice from "../../redux/reducers/mangaSlice"
+import { fetchAllGenres } from "../../redux/reducers/animeSlice"
+import { fetchAllGenresManga } from "../../redux/reducers/mangaSlice"
+import { animeGenresSelector, mangaGenresSelector } from "../../redux/selectors"
+const statuses = ["Airing", "Upcoming", "Complete"]
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.25)
   },
-  width: "100%",
-}));
+  width: "100%"
+}))
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -23,8 +29,8 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
-}));
+  justifyContent: "center"
+}))
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
@@ -32,47 +38,70 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
-  },
-}));
-const Filter = (props) => {
-  const [genres, setGenres] = useState([]);
-  const [checkedGenres, setCheckedGenres] = useState([]);
+    width: "100%"
+  }
+}))
+const Filter = ({ type = "anime", status }) => {
+  const dispatch = useDispatch()
+
+  // const { allGenres, genres } = useSelector(animeGenresSelector)
+  // console.log(allGenres)
+  // const [genres, setGenres] = useState([])
+  // const [checkedGenres, setCheckedGenres] = useState([])
+  var slice
+  var selector
+  if (type === "anime") {
+    selector = animeGenresSelector
+    slice = animeSlice
+  } else {
+    selector = mangaGenresSelector
+    slice = mangaSlice
+  }
+  const allGenres = useSelector(selector)
   useEffect(() => {
-    const fetchGenres = async () => {
-      try {
-        const params = {
-          filter: "genres",
-        };
-        const response = await animeApi.getGenres(params);
-        setGenres(response.data);
-      } catch (error) {
-        throw error;
-      }
-    };
-    fetchGenres();
-  }, []);
+    // const fetchGenres = async () => {
+    //   try {
+    //     const params = {
+    //       filter: "genres"
+    //     }
+    //     const response = await animeApi.getGenres(params)
+    //     setGenres(response.data)
+    //   } catch (error) {
+    //     throw error
+    //   }
+    // }
+    const params = {
+      filter: "genres"
+    }
+    if (type === "anime") {
+      dispatch(fetchAllGenres(params))
+    } else {
+      dispatch(fetchAllGenresManga(params))
+    }
+    // setGenres(allGenres)
+    // fetchGenres()
+  }, [dispatch])
+
   const handleChangeGenres = (e) => {
     if (e.target.checked) {
-      setCheckedGenres((prevState) => {
-        return [...prevState, e.target.attributes.id.value];
-      });
+      // setCheckedGenres((prevState) => {
+      //   return [...prevState, e.target.attributes.id.value]
+      // })
+      dispatch(slice.actions.addGenres(e.target.attributes.id.value))
     } else {
-      setCheckedGenres(
-        checkedGenres.filter((i) => {
-          return i !== e.target.attributes.id.value;
-        })
-      );
+      dispatch(slice.actions.removeGenres(e.target.attributes.id.value))
+      // setCheckedGenres(
+      //   checkedGenres.filter((i) => {
+      //     return i !== e.target.attributes.id.value
+      //   })
+      // )
     }
-  };
-  props.handleGenres(checkedGenres.join());
+  }
+  // dispatch(animeSlice.actions.changeGenres(checkedGenres))
+  // props.handleGenres(checkedGenres.join())
   const handleChangeStatus = (e) => {
-    props.handleStatus((prevStatus) => {
-      if (prevStatus !== e.target.innerHTML) {
-        return e.target.innerHTML;
-      }
-    });
-  };
+    dispatch(slice.actions.changeStatus(e.target.innerHTML))
+  }
   return (
     <>
       <div className={`${styles["box"]} ${styles["filter-toggle-box"]}`}>
@@ -101,18 +130,16 @@ const Filter = (props) => {
       </div>
       <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
         <ul className={styles["filter-list"]}>
-          {status.map((item, i) => {
+          {statuses.map((item, i) => {
             return (
               <li
                 key={i}
-                className={`${
-                  props.status === item ? styles["active"] : styles[""]
-                }`}
+                className={`${status === item ? styles["active"] : styles[""]}`}
                 onClick={handleChangeStatus}
               >
                 {item}
               </li>
-            );
+            )
           })}
         </ul>
       </Box>
@@ -131,27 +158,29 @@ const Filter = (props) => {
       </div>
       <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
         <ul className={styles["filter-list"]}>
-          {genres.map((genre) => {
-            return (
-              <li>
-                <div className={styles["group-checkbox"]}>
-                  <input
-                    type="checkbox"
-                    id={genre.mal_id}
-                    onChange={handleChangeGenres}
-                  />
-                  <label for={genre.mal_id}>
-                    {genre.name}
-                    <span>({genre.count})</span> <i className="bx bx-check"></i>
-                  </label>
-                </div>
-              </li>
-            );
-          })}
+          {allGenres &&
+            allGenres.map((genre, i) => {
+              return (
+                <li key={i}>
+                  <div className={styles["group-checkbox"]}>
+                    <input
+                      type="checkbox"
+                      id={genre.mal_id}
+                      onChange={handleChangeGenres}
+                    />
+                    <label htmlFor={genre.mal_id}>
+                      {genre.name}
+                      <span>({genre.count})</span>{" "}
+                      <i className="bx bx-check"></i>
+                    </label>
+                  </div>
+                </li>
+              )
+            })}
         </ul>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter

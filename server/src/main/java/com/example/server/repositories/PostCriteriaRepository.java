@@ -1,6 +1,7 @@
 package com.example.server.repositories;
 
 import com.example.server.models.Post;
+import com.example.server.models.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -35,19 +36,20 @@ public class PostCriteriaRepository {
         Root<Post> root=query.from(Post.class);
         List<Predicate> predicates=new ArrayList<>();
         if(authorId!=null){
-            predicates.add(cb.equal(root.get("authorId"),authorId));
+            predicates.add(cb.equal(root.get("author").get("id"),authorId));
         }
 
 
         Predicate predicate=cb.and(predicates.toArray(new Predicate[0]));
+        query.orderBy(cb.desc(root.get("createAt")));
         query.where(predicate);
 
         TypedQuery<Post> typedQuery=entityManager.createQuery(query);
-        typedQuery.setFirstResult(page*limit);
+        typedQuery.setFirstResult((page-1)*limit);
         typedQuery.setMaxResults(limit);
 
 
-        Pageable pageable= PageRequest.of(page,limit);
+        Pageable pageable= PageRequest.of(page-1,limit);
 
         long postCount=getPostCount(predicate);
         return new PageImpl<>(typedQuery.getResultList(),pageable,postCount);

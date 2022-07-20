@@ -15,24 +15,27 @@ public class Reaction {
     @Column(name = "create_at")
     private Timestamp createAt;
 
-    @Column(name = "author_id")
-    private int authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id",referencedColumnName = "id")
+    private User author;
 
-    @Column(name = "post_id")
-    private int postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id",referencedColumnName = "id")
+    private Post post;
 
-    @Column(name = "comment_id")
-    private int commentId;
+    @ManyToOne
+    @JoinColumn(name = "comment_id",referencedColumnName = "id")
+    private Comment comment;
 
     public Reaction() {
     }
 
-    public Reaction(int id, Timestamp createAt, int authorId, int postId, int commentId) {
+    public Reaction(int id, Timestamp createAt, User author, Post post, Comment comment) {
         this.id = id;
         this.createAt = createAt;
-        this.authorId = authorId;
-        this.postId = postId;
-        this.commentId = commentId;
+        this.author = author;
+        this.post = post;
+        this.comment = comment;
     }
 
     public int getId() {
@@ -51,27 +54,38 @@ public class Reaction {
         this.createAt = createAt;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public int getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    public int getCommentId() {
-        return commentId;
+    public Comment getComment() {
+        return comment;
     }
 
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Reaction{" +
+                "id=" + id +
+                ", createAt=" + createAt +
+                ", author=" + author +
+                ", post=" + post +
+                ", comment=" + comment +
+                '}';
     }
 }

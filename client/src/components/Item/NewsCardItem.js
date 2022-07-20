@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./NewsCardItem.module.css";
-import moment from "moment";
+import React from "react"
+import styles from "./NewsCardItem.module.scss"
+import moment from "moment"
 
 const NewsCardItem = (props) => {
-  const { data } = props;
+  const { data } = props
   return (
     <div className={styles["product__sidebar__comment__item"]}>
       <div className={styles["product__sidebar__comment__item__pic"]}>
@@ -25,7 +25,7 @@ const NewsCardItem = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewsCardItem;
+export default NewsCardItem

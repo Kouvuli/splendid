@@ -2,10 +2,12 @@ import IconButton from "@mui/material/IconButton"
 import MenuItem from "@mui/material/MenuItem"
 import clsx from "clsx"
 import { Link } from "react-router-dom"
-
+import { useTheme } from "@mui/material"
 import styles from "./styles.module.scss"
 
 const Component = ({ isMobile, items }) => {
+  const theme = useTheme()
+
   // if (isMobile) {
   //   return (
   //     <>

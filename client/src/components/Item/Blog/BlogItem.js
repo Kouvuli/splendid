@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./BlogItem.module.css";
+import React from "react"
+import styles from "./BlogItem.module.css"
 const BlogItem = (props) => {
-  const { img, title, date, author, category, content, commentNumber } = props;
+  const { img, title, date, author, category, content, commentNumber } = props
   return (
     <div className={styles["blog-post"]}>
       <img src={img} alt="" />
@@ -17,7 +17,7 @@ const BlogItem = (props) => {
         Read more
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default BlogItem;
+export default BlogItem

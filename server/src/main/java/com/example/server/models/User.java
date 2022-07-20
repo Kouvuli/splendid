@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -14,6 +16,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private Set<Post> posts=new HashSet<>();
+
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private Set<Comment> comments=new HashSet<>();
+
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private Set<Reaction> reactions=new HashSet<>();
 
     private String fullname;
 
@@ -36,6 +49,22 @@ public class User {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     public int getId() {
@@ -84,5 +113,28 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public Set<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(Set<Reaction> reactions) {
+        this.reactions = reactions;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", posts=" + posts +
+                ", comments=" + comments +
+                ", reactions=" + reactions +
+                ", fullname='" + fullname + '\'' +
+                ", dob='" + dob + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
     }
 }

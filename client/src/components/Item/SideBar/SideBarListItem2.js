@@ -1,28 +1,28 @@
-import React from "react";
-import styles from "./SideBarListItem2.module.css";
-const SideBarListItem2 = () => {
+import React from "react"
+import styles from "./SideBarListItem2.module.scss"
+const SideBarListItem2 = ({ data }) => {
   return (
     <div className={styles["product__sidebar__comment__item"]}>
       <div className={styles["product__sidebar__comment__item__pic"]}>
-        <img
-          src="https://gamek.mediacdn.vn/133514250583805952/2021/1/21/boruto-3-1-1611215925344947017523.jpg"
-          alt=""
-        />
+        <img src={data.images.jpg.large_image_url} alt="" />
       </div>
       <div className={styles["product__sidebar__comment__item__text"]}>
-        <ul>
-          <li>Active</li>
-          <li>Movie</li>
-        </ul>
+        {data.genres && (
+          <ul>
+            {data.genres.map((genre, i) => {
+              return <li key={i}>{genre.name}</li>
+            })}
+          </ul>
+        )}
         <h5>
-          <a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
+          <a href={`/manga/${data.mal_id}`}>{data.title}</a>
         </h5>
         <span>
-          <i className="fa fa-eye"></i> 19.141 Viewes
+          <i className="fa fa-eye"></i> Score: {data.score}
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SideBarListItem2;
+export default SideBarListItem2
