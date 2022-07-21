@@ -4,7 +4,7 @@
 - Folder Script: Contains database sql scipt for creating table and sample data
 
 
-# 2. Current API Endpoints:
+# 2. API:
 
 ## Documentation and example: [View here](https://documenter.getpostman.com/view/17594467/UzR1K2eW)
 
