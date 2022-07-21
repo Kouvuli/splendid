@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 import Typography from "@mui/material/Typography"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
@@ -15,10 +15,11 @@ import {
   fetchCommentReactions
 } from "../../redux/reducers/commentSlice"
 import commentSlice from "../../redux/reducers/commentSlice"
-const Comment = ({ content, created_at, author, id }) => {
+const Comment = ({ content, create_at, author, id }) => {
   const dispatch = useDispatch()
   const { commentReactionCount, isReacted, currentUser } =
     useSelector(commentSelector)
+  // const [isAlreadyReact, setIsAlreadyReact] = useState(isReacted.includes(id))
   useEffect(() => {
     dispatch(
       commentSlice.actions.addUser(JSON.parse(localStorage.getItem("user")))
@@ -35,7 +36,7 @@ const Comment = ({ content, created_at, author, id }) => {
       comment: { id: id },
       author: { id: currentUser?.id }
     }
-    if (isReacted) {
+    if (isReacted.includes(id)) {
       dispatch(removeReaction(params))
     } else {
       dispatch(createReaction(payload))
@@ -50,19 +51,27 @@ const Comment = ({ content, created_at, author, id }) => {
             {author.username}
           </Typography>
           <Typography className={styles.time}>
-            {timeSince(created_at)}
+            {timeSince(create_at)}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Button
+          {/* <Button
             onClick={handleReact}
             className={styles.heartBtn}
             endIcon={
-              !isReacted ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />
+              !isReacted.includes(id) ? (
+                <FavoriteBorderOutlinedIcon />
+              ) : (
+                <FavoriteIcon />
+              )
             }
             variant="contained"
           >
-            {commentReactionCount}
-          </Button>
+            {commentReactionCount.forEach((i) => {
+              if (i.id === id) {
+                return i.count
+              }
+            })}
+          </Button> */}
         </ListItemAvatar>
         <ListItemText className={styles.listItemHeader} primary={content} />
       </div>

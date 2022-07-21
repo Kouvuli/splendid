@@ -33,7 +33,7 @@ export const createComment = createAsyncThunk(
 )
 
 export const createReaction = createAsyncThunk(
-  "insert-reaction",
+  "insert-reaction-post",
   async (params) => {
     const { data } = await splendidApi.insertReaction(params)
     return data
@@ -41,7 +41,7 @@ export const createReaction = createAsyncThunk(
 )
 
 export const removeReaction = createAsyncThunk(
-  "remove-reaction",
+  "remove-reaction-post",
   async (id) => {
     const { data } = await splendidApi.deleteReaction(id)
     return data
@@ -49,7 +49,7 @@ export const removeReaction = createAsyncThunk(
 )
 
 export const fetchPostComments = createAsyncThunk(
-  "post-comments",
+  "get-post-comments",
   async (params) => {
     const data = await splendidApi.getAllComment(params)
     return data
@@ -57,7 +57,7 @@ export const fetchPostComments = createAsyncThunk(
 )
 
 export const fetchPostReactions = createAsyncThunk(
-  "post-reaction",
+  "get-post-reaction",
   async (params) => {
     const { data } = await splendidApi.getReactionCount(params)
     return data

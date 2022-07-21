@@ -20,13 +20,14 @@ import {
   fetchPostComments,
   fetchPostReactions
 } from "../../redux/reducers/postDetailSlice"
-import { timeSince } from "../../utils"
+import { timeSince, toTimestamp } from "../../utils"
 import Comment from "../../components/Comment"
 import NewCommentDialog from "../../components/NewCommentDialog"
 import { postDetailSelector } from "../../redux/selectors"
 import styles from "./styles.module.scss"
 import postDetailSlice from "../../redux/reducers/postDetailSlice"
 import Preloader from "../../components/Preloader"
+import moment from "moment"
 const PostDetail = () => {
   const { id } = useParams()
   // const { data: currentUserData } = useSelector(selectAuth)
@@ -93,7 +94,7 @@ const PostDetail = () => {
     window.location.reload()
     setOpen(false)
   }
-
+  console.log(post.create_at)
   return (
     <>
       {loading && <Preloader />}
@@ -119,7 +120,7 @@ const PostDetail = () => {
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 <Typography className={styles.time}>
-                  {timeSince(post.created_at)}
+                  {timeSince(post.create_at)}
                 </Typography>
               </ListItemAvatar>
               <ListItemText

@@ -15,33 +15,7 @@ import {
   fetchRecentMangaRec
 } from "../../redux/reducers/homeSlice"
 import { homeSelector } from "../../redux/selectors"
-const items = [
-  {
-    label: "Announcement",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "Bird",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "Bali, Indonesia",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80"
-  },
-  {
-    label: "Goč, Serbia",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "April Lies",
-    imgPath:
-      "https://vnw-img-cdn.popsww.com/api/v2/containers/file2/cms_topic/vertical_poster_revised-26d2c15979b6-1637052315859-STK6iU1K.jpg?v=0&maxW=320"
-  }
-]
+
 const Home = () => {
   const dispatch = useDispatch()
   const {

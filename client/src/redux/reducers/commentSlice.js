@@ -4,14 +4,14 @@ import splendidApi from "../../apis/splendidApi"
 const initialState = {
   currentUser: {},
   reactionLoading: false,
-  commentReactionCount: 0,
-  isReacted: false,
+  commentReactionCount: [],
+  isReacted: [],
   reactions: [],
   reactionError: false
 }
 
 export const createReaction = createAsyncThunk(
-  "insert-reaction",
+  "insert-reaction-comment",
   async (params) => {
     const { data } = await splendidApi.insertReaction(params)
     return data
@@ -19,7 +19,7 @@ export const createReaction = createAsyncThunk(
 )
 
 export const removeReaction = createAsyncThunk(
-  "remove-reaction",
+  "remove-reaction-comment",
   async (id) => {
     const { data } = await splendidApi.deleteReaction(id)
     return data
@@ -27,10 +27,10 @@ export const removeReaction = createAsyncThunk(
 )
 
 export const fetchCommentReactions = createAsyncThunk(
-  "comment-reaction",
+  "get-comment-reaction",
   async (params) => {
     const { data } = await splendidApi.getReactionCount(params)
-    return data
+    return { data: data, id: params.comment_id }
   }
 )
 
@@ -77,13 +77,18 @@ const commentSlice = createSlice({
         // state.charactersLoading = false
       })
       .addCase(fetchCommentReactions.fulfilled, (state, action) => {
-        state.reactions = action.payload
-        state.reactions.forEach((element) => {
+        state.reactions.push(action.payload)
+        action.payload.data.forEach((element) => {
           if (element.author.id === state.currentUser.id) {
-            state.isReacted = true
+            // if (state.isReacted.length === 0) {
+            state.isReacted.push(action.payload.id)
           }
         })
-        state.commentReactionCount = state.reactions.length
+
+        state.commentReactionCount.push({
+          id: action.payload.id,
+          count: action.payload.data.length
+        })
         state.reactionLoading = false
         state.reactionError = false
       })

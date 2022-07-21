@@ -6,52 +6,52 @@ import styles from "./styles.module.scss"
 import { styled, alpha } from "@mui/material/styles"
 // import styled from "styled-components";
 import CarouselItem from "../Item/CarouselItem"
+import img1 from "../../assets/images/Home/blog-1.jpg"
+import img2 from "../../assets/images/Home/blog-2.jpg"
+import img3 from "../../assets/images/Home/blog-4.jpg"
+import img4 from "../../assets/images/Home/blog-5.jpg"
+import img5 from "../../assets/images/Home/blog-6.jpg"
+import img6 from "../../assets/images/Home/blog-7.jpg"
 const images = [
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-    content: "Forum for all user",
+    imgPath: img1,
+    content: "FORUM FOR ALL USER",
     link: "/forum",
     title: "FORUM"
   },
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-    content: "Top anime 2022",
+    imgPath: img2,
+    content: "TOP ANIME 2022",
     title: "TOP ANIME OF ALL TIME",
     link: "/top/anime"
   },
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80",
-    content: "Top manga 2022",
+    imgPath: img3,
+    content: "TOP MANGA 2022",
     title: "TOP MANGA OF ALL TIME",
     link: "/top/manga"
   },
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-    content: "Watch anime with filter",
+    imgPath: img4,
+    content: "WATCH ANIME INFO WITH FILTER",
     title: "ANIME",
     link: "/anime"
   },
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-    content: "Watch manga with filter",
+    imgPath: img5,
+    content: "WATCH MANGA INFO WITH FILTER",
     title: "MANGA",
     link: "/manga"
   },
   {
     label: "20/07/2022",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-    content: "TOP ANIME OF ALL TIME",
+    imgPath: img6,
+    content: "TOP CHARACTER OF ALL TIME",
     title: "CHARACTER",
     link: "/character"
   }
