@@ -1,7 +1,6 @@
 # 1. Folder Struture:
 
 - Folder src: Contains source code of server
-
 - Folder Script: Contains database sql scipt for creating table and sample data
 
 # 2. API:
