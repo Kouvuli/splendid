@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Box from "@mui/material/Box"
 import SearchIcon from "@mui/icons-material/Search"
 import InputBase from "@mui/material/InputBase"
@@ -11,13 +11,14 @@ import mangaSlice from "../../redux/reducers/mangaSlice"
 import { fetchAllGenres } from "../../redux/reducers/animeSlice"
 import { fetchAllGenresManga } from "../../redux/reducers/mangaSlice"
 import { animeGenresSelector, mangaGenresSelector } from "../../redux/selectors"
+import { Button, IconButton } from "@mui/material"
 const statuses = ["Airing", "Upcoming", "Complete"]
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.75),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25)
+    backgroundColor: alpha(theme.palette.common.white, 1)
   },
   width: "100%"
 }))
@@ -36,18 +37,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: "1em",
     transition: theme.transitions.create("width"),
     width: "100%"
   }
 }))
 const Filter = ({ type = "anime", status }) => {
   const dispatch = useDispatch()
-
-  // const { allGenres, genres } = useSelector(animeGenresSelector)
-  // console.log(allGenres)
-  // const [genres, setGenres] = useState([])
-  // const [checkedGenres, setCheckedGenres] = useState([])
+  const [inputSearch, setInputSearch] = useState(null)
+  const [minScore, setMinScore] = useState(0)
+  const [maxScore, setMaxScore] = useState(10)
   var slice
   var selector
   if (type === "anime") {
@@ -59,17 +58,6 @@ const Filter = ({ type = "anime", status }) => {
   }
   const allGenres = useSelector(selector)
   useEffect(() => {
-    // const fetchGenres = async () => {
-    //   try {
-    //     const params = {
-    //       filter: "genres"
-    //     }
-    //     const response = await animeApi.getGenres(params)
-    //     setGenres(response.data)
-    //   } catch (error) {
-    //     throw error
-    //   }
-    // }
     const params = {
       filter: "genres"
     }
@@ -78,27 +66,29 @@ const Filter = ({ type = "anime", status }) => {
     } else {
       dispatch(fetchAllGenresManga(params))
     }
-    // setGenres(allGenres)
-    // fetchGenres()
   }, [dispatch])
-
+  const handleSearch = (e) => {
+    dispatch(slice.actions.search(inputSearch))
+    dispatch(slice.actions.changeMinScore(minScore))
+    dispatch(slice.actions.changeMaxScore(maxScore))
+  }
+  const changeInput = (e) => {
+    setInputSearch(e.target.value)
+  }
+  const changeMinScore = (e) => {
+    setMinScore(e.target.value)
+  }
+  const changeMaxScore = (e) => {
+    setMaxScore(e.target.value)
+  }
   const handleChangeGenres = (e) => {
     if (e.target.checked) {
-      // setCheckedGenres((prevState) => {
-      //   return [...prevState, e.target.attributes.id.value]
-      // })
       dispatch(slice.actions.addGenres(e.target.attributes.id.value))
     } else {
       dispatch(slice.actions.removeGenres(e.target.attributes.id.value))
-      // setCheckedGenres(
-      //   checkedGenres.filter((i) => {
-      //     return i !== e.target.attributes.id.value
-      //   })
-      // )
     }
   }
-  // dispatch(animeSlice.actions.changeGenres(checkedGenres))
-  // props.handleGenres(checkedGenres.join())
+
   const handleChangeStatus = (e) => {
     dispatch(slice.actions.changeStatus(e.target.innerHTML))
   }
@@ -112,17 +102,19 @@ const Filter = ({ type = "anime", status }) => {
           close
         </button>
       </div>
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      <Box>
         <div className={styles["header__right"]}>
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              value={inputSearch}
+              onChange={changeInput}
             />
           </Search>
+          <IconButton sx={{ marginLeft: "10px" }} onClick={handleSearch}>
+            <SearchIcon></SearchIcon>
+          </IconButton>
         </div>
       </Box>
       <div className={`${styles["section-title"]}`}>
@@ -148,9 +140,9 @@ const Filter = ({ type = "anime", status }) => {
       </div>
       <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
         <div className={styles["price-range"]}>
-          <input type="text" />
+          <input type="text" value={minScore} onChange={changeMinScore} />
           <span>-</span>
-          <input type="text" />
+          <input type="text" value={maxScore} onChange={changeMaxScore} />
         </div>
       </Box>
       <div className={`${styles["section-title"]}`}>

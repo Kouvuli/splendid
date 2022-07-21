@@ -10,39 +10,30 @@ import { fetchAllMangas } from "../../redux/reducers/mangaSlice"
 const Manga = () => {
   const dispatch = useDispatch()
 
-  const { loading, data, error, page, limit, genres, status, order } =
-    useSelector(mangaListSelector)
+  const {
+    loading,
+    data,
+    error,
+    page,
+    limit,
+    genres,
+    status,
+    order,
+    search,
+    minScore,
+    maxScore
+  } = useSelector(mangaListSelector)
 
-  // const [page, setPage] = useState(null)
-  // const [genres, setGenres] = useState("")
-  // const [status, setStatus] = useState("")
-  // const [order, setOrder] = useState("type")
-  // const [lastVisiblePage, setLastVisiblePage] = useState(null)
-  // const [productList, setProductList] = useState(null)
   useEffect(() => {
-    // const fetchAllMovie = async () => {
-    //   try {
-    //     const params = {
-    //       page,
-    //       limit,
-    //       genres,
-    //       status,
-    //       order_by: order
-    //     }
-    //     const response = await animeApi.getAll(params)
-    //     setProductList(response.data)
-    //     setLastVisiblePage(response.pagination.last_visible_page)
-    //   } catch (error) {
-    //     throw error
-    //   }
-    // }
-    // fetchAllMovie()
     const params = {
       page,
       limit,
       genres: genres.join(),
       status,
-      order_by: order
+      order_by: order,
+      q: search,
+      min_score: minScore,
+      max_score: maxScore
     }
 
     dispatch(fetchAllMangas(params))
@@ -53,7 +44,7 @@ const Manga = () => {
     //   setLastVisiblePage(data.pagination.last_visible_page)
     //   setProductList(data.data)
     // }
-  }, [dispatch, page, limit, genres, status, order])
+  }, [dispatch, page, limit, genres, status, order, search, minScore, maxScore])
   return (
     <>
       <Grid

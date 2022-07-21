@@ -10,7 +10,10 @@ const initialState = {
   genres: [],
   allGenres: [],
   status: "",
-  order: "type"
+  order: "type",
+  search: "",
+  minScore: 0,
+  maxScore: 10
 }
 export const fetchAllAnimes = createAsyncThunk("anime", async (params) => {
   const data = await animeApi.getAllAnime(params)
@@ -49,6 +52,15 @@ const animeSlice = createSlice({
     },
     changeOrder: (state, action) => {
       state.order = action.payload
+    },
+    search: (state, action) => {
+      state.search = action.payload
+    },
+    changeMinScore: (state, action) => {
+      state.minScore = action.payload
+    },
+    changeMaxScore: (state, action) => {
+      state.maxScore = action.payload
     }
   },
   extraReducers: (builder) => {

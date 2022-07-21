@@ -12,7 +12,9 @@
         flex-grow: 1;
         text-align: center;
         margin: 0 10px;
+        color:white
     }
+
 }
 /* .price-range input {
     width: 40%;
@@ -183,8 +185,8 @@
     display: none;
 }
 .header__right {
-	text-align: right;
-	padding: 20px 0 15px;
+    display:flex;
+	padding: 10px 0 20px;
     & a {
         display: inline-block;
         font-size: 18px;

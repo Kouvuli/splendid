@@ -10,8 +10,19 @@ import { fetchAllAnimes } from "../../redux/reducers/animeSlice"
 const Anime = () => {
   const dispatch = useDispatch()
 
-  const { loading, data, error, page, limit, genres, status, order } =
-    useSelector(animeListSelector)
+  const {
+    loading,
+    data,
+    error,
+    page,
+    limit,
+    genres,
+    status,
+    order,
+    search,
+    minScore,
+    maxScore
+  } = useSelector(animeListSelector)
 
   // const [page, setPage] = useState(null)
   // const [genres, setGenres] = useState("")
@@ -42,7 +53,10 @@ const Anime = () => {
       limit,
       genres: genres.join(),
       status,
-      order_by: order
+      order_by: order,
+      q: search,
+      min_score: minScore,
+      max_score: maxScore
     }
 
     dispatch(fetchAllAnimes(params))
@@ -53,7 +67,7 @@ const Anime = () => {
     //   setLastVisiblePage(data.pagination.last_visible_page)
     //   setProductList(data.data)
     // }
-  }, [dispatch, page, limit, genres, status, order])
+  }, [dispatch, page, limit, genres, status, order, search, minScore, maxScore])
   return (
     <>
       <Grid
