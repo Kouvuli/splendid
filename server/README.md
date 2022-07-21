@@ -1,12 +1,10 @@
-# Folder src:
+# 1. Folder Struture:
 
-## Contains source code of server
+- Folder src: Contains source code of server
+- Folder Script: Contains database sql scipt for creating table and sample data
 
-# Folder Script:
 
-## Contains database sql scipt for creating table and sample data
-
-# Current API Endpoints:
+# 2. Current API Endpoints:
 
 ## Documentation and example: [View here](https://documenter.getpostman.com/view/17594467/UzR1K2eW)
 
