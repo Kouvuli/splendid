@@ -3,6 +3,7 @@ import Box from "@mui/material/Box"
 import SearchIcon from "@mui/icons-material/Search"
 import InputBase from "@mui/material/InputBase"
 import animeApi from "../../apis/animeApi"
+import RoundButton from "../UI/Button/RoundButton"
 import styles from "./Filter.module.scss"
 import { styled, alpha } from "@mui/material/styles"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,6 +13,7 @@ import { fetchAllGenres } from "../../redux/reducers/animeSlice"
 import { fetchAllGenresManga } from "../../redux/reducers/mangaSlice"
 import { animeGenresSelector, mangaGenresSelector } from "../../redux/selectors"
 import { Button, IconButton } from "@mui/material"
+import FloatingFilterButton from "../FloatingFilterButton"
 const statuses = ["Airing", "Upcoming", "Complete"]
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,6 +49,7 @@ const Filter = ({ type = "anime", status }) => {
   const [inputSearch, setInputSearch] = useState(null)
   const [minScore, setMinScore] = useState(0)
   const [maxScore, setMaxScore] = useState(10)
+  const [isFilter, setIsFilter] = useState(false)
   var slice
   var selector
   if (type === "anime") {
@@ -95,81 +98,99 @@ const Filter = ({ type = "anime", status }) => {
   return (
     <>
       <div className={`${styles["box"]} ${styles["filter-toggle-box"]}`}>
-        <button
-          className={`${styles["btn-flat"]} ${styles["btn-hover"]}`}
-          id="filter-close"
-        >
-          close
-        </button>
+        <FloatingFilterButton
+          handler={() => {
+            setIsFilter(true)
+          }}
+        />
       </div>
-      <Box>
-        <div className={styles["header__right"]}>
-          <Search>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              value={inputSearch}
-              onChange={changeInput}
-            />
-          </Search>
-          <IconButton sx={{ marginLeft: "10px" }} onClick={handleSearch}>
-            <SearchIcon></SearchIcon>
-          </IconButton>
+      <Box
+        className={
+          !isFilter
+            ? styles["filter-col"]
+            : `${styles["filter-col"]} ${styles["active"]}`
+        }
+      >
+        <div className={`${styles["box"]} ${styles["filter-toggle-box"]}`}>
+          <RoundButton
+            handler={() => {
+              setIsFilter(false)
+            }}
+          >
+            close
+          </RoundButton>
         </div>
-      </Box>
-      <div className={`${styles["section-title"]}`}>
-        <h5>Status</h5>
-      </div>
-      <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
-        <ul className={styles["filter-list"]}>
-          {statuses.map((item, i) => {
-            return (
-              <li
-                key={i}
-                className={`${status === item ? styles["active"] : styles[""]}`}
-                onClick={handleChangeStatus}
-              >
-                {item}
-              </li>
-            )
-          })}
-        </ul>
-      </Box>
-      <div className={`${styles["section-title"]}`}>
-        <h5>Score</h5>
-      </div>
-      <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
-        <div className={styles["price-range"]}>
-          <input type="text" value={minScore} onChange={changeMinScore} />
-          <span>-</span>
-          <input type="text" value={maxScore} onChange={changeMaxScore} />
+        <Box>
+          <div className={styles["header__right"]}>
+            <Search>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                value={inputSearch}
+                onChange={changeInput}
+              />
+            </Search>
+            <IconButton sx={{ marginLeft: "10px" }} onClick={handleSearch}>
+              <SearchIcon></SearchIcon>
+            </IconButton>
+          </div>
+        </Box>
+        <div className={`${styles["section-title"]}`}>
+          <h5>Status</h5>
         </div>
-      </Box>
-      <div className={`${styles["section-title"]}`}>
-        <h5>Genres</h5>
-      </div>
-      <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
-        <ul className={styles["filter-list"]}>
-          {allGenres &&
-            allGenres.map((genre, i) => {
+        <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
+          <ul className={styles["filter-list"]}>
+            {statuses.map((item, i) => {
               return (
-                <li key={i}>
-                  <div className={styles["group-checkbox"]}>
-                    <input
-                      type="checkbox"
-                      id={genre.mal_id}
-                      onChange={handleChangeGenres}
-                    />
-                    <label htmlFor={genre.mal_id}>
-                      {genre.name}
-                      <span>({genre.count})</span>{" "}
-                      <i className="bx bx-check"></i>
-                    </label>
-                  </div>
+                <li
+                  key={i}
+                  className={`${
+                    status === item ? styles["active"] : styles[""]
+                  }`}
+                  onClick={handleChangeStatus}
+                >
+                  {item}
                 </li>
               )
             })}
-        </ul>
+          </ul>
+        </Box>
+        <div className={`${styles["section-title"]}`}>
+          <h5>Score</h5>
+        </div>
+        <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
+          <div className={styles["price-range"]}>
+            <input type="text" value={minScore} onChange={changeMinScore} />
+            <span>-</span>
+            <input type="text" value={maxScore} onChange={changeMaxScore} />
+          </div>
+        </Box>
+        <div className={`${styles["section-title"]}`}>
+          <h5>Genres</h5>
+        </div>
+        <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
+          <ul className={styles["filter-list"]}>
+            {allGenres &&
+              allGenres.map((genre, i) => {
+                return (
+                  <li key={i}>
+                    <div className={styles["group-checkbox"]}>
+                      <input
+                        type="checkbox"
+                        id={genre.mal_id}
+                        onChange={handleChangeGenres}
+                      />
+                      <label htmlFor={genre.mal_id}>
+                        {genre.name}
+                        <span>({genre.count})</span>{" "}
+                        <i className="bx bx-check"></i>
+                      </label>
+                    </div>
+                  </li>
+                )
+              })}
+          </ul>
+        </Box>
       </Box>
     </>
   )

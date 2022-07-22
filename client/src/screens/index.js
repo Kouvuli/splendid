@@ -1,8 +1,6 @@
 import { Box, Container } from "@mui/material"
 import React from "react"
 import { Route } from "react-router"
-import SideNavBar from "../components/Bar/SideNavBar"
-import FloatingButton from "../components/FloatingButton"
 import Footer from "../components/Footer"
 import Header from "../components/Header/Header"
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop"
@@ -21,7 +19,6 @@ const LayoutHome = (props) => {
         {props.children}
         <Footer />
         <ScrollToTop />
-        {/* <FloatingButton /> */}
       </Box>
     </>
   )

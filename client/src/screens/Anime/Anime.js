@@ -89,10 +89,12 @@ const Anime = () => {
               title="Anime"
               loading={loading}
             />
+            <div className={styles["pagination"]}>
+              <CustomPagination
+              // handlePage={setPage}
+              />
+            </div>
           </div>
-          <CustomPagination
-          // handlePage={setPage}
-          />
         </Grid>
         <Grid item xs={12} md={4}>
           <Filter
