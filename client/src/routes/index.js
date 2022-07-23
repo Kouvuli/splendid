@@ -10,6 +10,7 @@ import Character from "../screens/Character"
 import Manga from "../screens/Manga"
 import MangaDetail from "../screens/MangaDetail"
 import PostDetail from "../screens/PostDetail"
+import Profile from "../screens/Profile"
 const PATHS = {
   ANIME: "/anime",
   TOPANIME: "/top/anime",
@@ -136,23 +137,18 @@ const routeHome = [
   {
     exact: true,
     path: PATHS.PROFILE,
+    component: Profile
+  },
+  {
+    exact: true,
+    path: PATHS.NOTIFICATIONS,
+    component: ComingSoon
+  },
+  {
+    exact: true,
+    path: PATHS.SETTINGS,
     component: ComingSoon
   }
-  //   {
-  //     exact: true,
-  //     path: PATHS.NOTIFICATIONS,
-  //     component: ComingSoon,
-  //   },
-  //   {
-  //     exact: true,
-  //     path: PATHS.SETTINGS,
-  //     component: ComingSoon,
-  //   },
-  //   {
-  //     exact: true,
-  //     path: PATHS.LOGOUT,
-  //     component: ComingSoon,
-  //   },
 ]
 
 export { routeHome, PATHS }

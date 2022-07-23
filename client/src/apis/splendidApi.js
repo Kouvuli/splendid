@@ -76,6 +76,10 @@ const splendidApi = {
   deleteReaction: (params) => {
     const url = `/reaction`
     return request.delete(url, { params, headers: authHeader() })
+  },
+  getUserById: (id) => {
+    const url = `/user/${id}`
+    return request.get(url)
   }
 }
 

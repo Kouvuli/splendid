@@ -34,15 +34,11 @@ const Component = ({ isMobile, items }) => {
   return (
     <>
       {items.map((item) => (
-        <Link
-          to={item.linkTo}
-          className={clsx(styles.item, styles.link)}
-          key={item.label}
-        >
+        <Link to={item.linkTo} className={styles.item} key={item.label}>
           <IconButton
             size="large"
             aria-label={item.label}
-            // sx={{  }}
+            sx={{ borderRadius: "5px" }}
             color="inherit"
           >
             <item.Icon />

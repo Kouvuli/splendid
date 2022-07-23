@@ -1,20 +1,23 @@
 @import '../../styles/config';
 
 .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: inline-block;
+    
+    display:flex;
     background: url(../../assets/images/404.jpg) center/cover no-repeat;
     height: 100vh;
     margin: 0;
+    & a{
+        margin-top:72vh;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
 }
 
 .btnGoHome {
-    position: absolute;
-    top: 70%;
-    left: 45%;
+
+
+
+
     transform: translate(-1px, -1px);
 }

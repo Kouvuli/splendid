@@ -12,6 +12,7 @@ import mangaSlice from "./reducers/mangaSlice"
 import mangaDetailSlice from "./reducers/mangaDetailSlice"
 import postDetailSlice from "./reducers/postDetailSlice"
 import commentSlice from "./reducers/commentSlice"
+import profileSlice from "./reducers/profileSlice"
 const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
@@ -25,7 +26,8 @@ const store = configureStore({
     manga: mangaSlice.reducer,
     mangaDetail: mangaDetailSlice.reducer,
     postDetail: postDetailSlice.reducer,
-    comment: commentSlice.reducer
+    comment: commentSlice.reducer,
+    profile: profileSlice.reducer
   }
 })
 

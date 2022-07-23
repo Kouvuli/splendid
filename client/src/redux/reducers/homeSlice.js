@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import animeApi from "../../apis/animeApi"
 
 const initialState = {
-  loading: false,
-  error: false,
   topAnime: [],
   topAnimeLoading: false,
   topAnimeError: false,

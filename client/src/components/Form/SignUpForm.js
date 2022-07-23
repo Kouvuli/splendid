@@ -1,12 +1,15 @@
 import React, { useState } from "react"
 import InputTextField from "../UI/InputTextField"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import styles from "./SignUpForm.module.scss"
 import { SignUp } from "../../redux/reducers/authSlice"
+import { authSelector } from "../../redux/selectors"
+import CustomizedSnackbars from "../UI/CustomizedSnackbars"
 const SignUpForm = () => {
   const dispatch = useDispatch()
-
+  const { signUpSuccess, signUpLoading, signUpError } =
+    useSelector(authSelector)
   const [name, setName] = useState("")
   const [isNameError, setIsNameError] = useState(false)
   const [nameHelperText, setNameHelperText] = useState("")
@@ -80,13 +83,7 @@ const SignUpForm = () => {
   }
   const submitHandler = (event) => {
     event.preventDefault()
-    console.log({
-      fullname: name,
-      dob: birthday,
-      username,
-      password,
-      is_admin: false
-    })
+
     dispatch(
       SignUp({
         fullname: name,
@@ -103,59 +100,61 @@ const SignUpForm = () => {
     setBirthday("")
   }
   return (
-    <form onSubmit={submitHandler}>
-      <h1
-        style={{ fontSize: "27px", fontWeight: "bold", marginBottom: "10px" }}
-      >
-        Create Account
-      </h1>
-      <InputTextField
-        type="text"
-        error={isNameError}
-        helperText={nameHelperText}
-        value={name}
-        label="Name"
-        onChange={nameHandler}
-        required
-      />
-      <InputTextField
-        type="text"
-        label="Username"
-        error={isUsernameError}
-        helperText={usernameHelperText}
-        value={username}
-        onChange={usernameHandler}
-        required
-      />
-      <InputTextField
-        type="password"
-        label="Password"
-        error={isPasswordError}
-        helperText={passwordHelperText}
-        value={password}
-        onChange={passwordHandler}
-        required
-      />
-      <InputTextField
-        type="password"
-        label="Retype Password"
-        error={isRetypePasswordError}
-        helperText={retypePasswordHelperText}
-        value={retypePassword}
-        onChange={retypePasswordHandler}
-        required
-      />
-      <InputTextField
-        type="date"
-        label="Birthday"
-        value={birthday}
-        onChange={birthdayHandler}
-        required
-      />
-      <button type="submit" className={styles.btn}>
-        Sign Up
-      </button>
-    </form>
+    <>
+      <form>
+        <h1
+          style={{ fontSize: "27px", fontWeight: "bold", marginBottom: "10px" }}
+        >
+          Create Account
+        </h1>
+        <InputTextField
+          type="text"
+          error={isNameError}
+          helperText={nameHelperText}
+          value={name}
+          label="Name"
+          onChange={nameHandler}
+          required
+        />
+        <InputTextField
+          type="text"
+          label="Username"
+          error={isUsernameError}
+          helperText={usernameHelperText}
+          value={username}
+          onChange={usernameHandler}
+          required
+        />
+        <InputTextField
+          type="password"
+          label="Password"
+          error={isPasswordError}
+          helperText={passwordHelperText}
+          value={password}
+          onChange={passwordHandler}
+          required
+        />
+        <InputTextField
+          type="password"
+          label="Retype Password"
+          error={isRetypePasswordError}
+          helperText={retypePasswordHelperText}
+          value={retypePassword}
+          onChange={retypePasswordHandler}
+          required
+        />
+        <InputTextField
+          type="date"
+          label="Birthday"
+          value={birthday}
+          onChange={birthdayHandler}
+          required
+        />
+        <button type="submit" className={styles.btn} onClick={submitHandler}>
+          Sign Up
+        </button>
+      </form>
+    </>
   )
 }
 

@@ -5,10 +5,19 @@ import SignInForm from "../../components/Form/SignInForm"
 import Box from "@mui/material/Box"
 import { Card } from "@mui/material"
 import OvalButton from "../../components/UI/Button/OvalButton"
-
+import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
+import { useSelector } from "react-redux"
+import { authSelector } from "../../redux/selectors"
 export const Login = ({ signIn, handler }) => {
   const [isSignIn, setIsSignIn] = useState(signIn)
-
+  const {
+    loginSuccess,
+    loginLoading,
+    loginError,
+    signUpSuccess,
+    signUpLoading,
+    signUpError
+  } = useSelector(authSelector)
   const signInHandler = () => {
     setIsSignIn((prevIsSignIn) => {
       return !prevIsSignIn
@@ -21,6 +30,18 @@ export const Login = ({ signIn, handler }) => {
       }`}
       id={styles["container"]}
     >
+      {!loginLoading && loginSuccess && (
+        <CustomizedSnackbars title="Successfully sign in" type="success" />
+      )}
+      {!loginLoading && loginError && (
+        <CustomizedSnackbars title="Failed to sign in" type="error" />
+      )}
+      {!signUpLoading && signUpSuccess && (
+        <CustomizedSnackbars title="Successfully sign up" type="success" />
+      )}
+      {!signUpLoading && signUpError && (
+        <CustomizedSnackbars title="Failed to sign up" type="error" />
+      )}
       <div
         className={`${styles["form-container"]} ${styles["sign-up-container"]}`}
       >

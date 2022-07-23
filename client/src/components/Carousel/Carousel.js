@@ -24,14 +24,14 @@ const images = [
     label: "20/07/2022",
     imgPath: img2,
     content: "TOP ANIME 2022",
-    title: "TOP ANIME OF ALL TIME",
+    title: "TOP ANIME",
     link: "/top/anime"
   },
   {
     label: "20/07/2022",
     imgPath: img3,
     content: "TOP MANGA 2022",
-    title: "TOP MANGA OF ALL TIME",
+    title: "TOP MANGA",
     link: "/top/manga"
   },
   {
@@ -51,7 +51,7 @@ const images = [
   {
     label: "20/07/2022",
     imgPath: img6,
-    content: "TOP CHARACTER OF ALL TIME",
+    content: "TOP CHARACTER",
     title: "CHARACTER",
     link: "/character"
   }

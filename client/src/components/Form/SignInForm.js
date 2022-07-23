@@ -2,17 +2,24 @@ import React, { useState } from "react"
 import styles from "./SignInForm.module.scss"
 import InputTextField from "../UI/InputTextField"
 import Link from "@mui/material/Link"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Login } from "../../redux/reducers/authSlice"
 import { Typography } from "@mui/material"
+import { authSelector } from "../../redux/selectors"
+import CustomizedSnackbars from "../UI/CustomizedSnackbars"
 export const SignInForm = ({ handler }) => {
   const dispatch = useDispatch()
+  const { loginSuccess, loginLoading, loginError } = useSelector(authSelector)
   const submitHandler = (event) => {
     event.preventDefault()
 
     dispatch(Login({ username, password }))
-
-    handler(false)
+    setTimeout(() => {
+      handler(false)
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
+    }, 2000)
   }
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")

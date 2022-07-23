@@ -207,12 +207,12 @@ const CardCarousel = (props) => {
         <OwlCarousel className={styles["carousel-container"]} {...options2}>
           {data.map((item, index) => {
             return (
-              <>
+              <div key={index} className="item">
                 {loading && <CardSkeleton type={CARD_TYPES.DEFAULT} />}
                 {item && !loading && (
                   <CardCarouselItem type={type} data={item} />
                 )}
-              </>
+              </div>
             )
           })}
         </OwlCarousel>
@@ -233,7 +233,11 @@ const CardCarousel = (props) => {
               <div key={index} className="item">
                 {loading && <CardSkeleton type={CARD_TYPES.SQUARE} />}
                 {item && !loading && (
-                  <CardCarouselItem type={type} data={item.entry[0]} />
+                  <CardCarouselItem
+                    key={index}
+                    type={type}
+                    data={item.entry[0]}
+                  />
                 )}
               </div>
             )

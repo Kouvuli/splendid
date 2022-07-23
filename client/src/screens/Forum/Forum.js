@@ -48,7 +48,9 @@ const Forum = () => {
     dispatch(createPost({ ...values, author: { id: currentUser?.id } }))
     dispatch(fetchAllPost(page, limit))
     setOpen(false)
-    window.location.reload()
+    setTimeout(() => {
+      window.location.reload()
+    }, 500)
   }
 
   return (

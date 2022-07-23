@@ -3,8 +3,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import splendidApi from "../../apis/splendidApi"
 
 const initialState = {
-  loading: null,
-  error: null,
+  loginSuccess: false,
+  loginLoading: false,
+  loginError: false,
+  signUpSuccess: false,
+  signUpLoading: false,
+  signUpError: false,
+  time: 0,
   data: JSON.parse(localStorage.getItem("user")) || null,
   success: false
 }
@@ -26,29 +31,50 @@ export const Login = createAsyncThunk("login", async (formData) => {
 const loginSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: (state) => {
-    state.success = false
-    localStorage.removeItem("user")
+  reducers: {
+    logOut: (state, action) => {
+      state.success = false
+
+      state.data = null
+      localStorage.removeItem("user")
+      state.loginSuccess = false
+      state.loginLoading = false
+      state.loginError = false
+      state.signUpSuccess = false
+      state.signUpLoading = false
+      state.signUpError = false
+    }
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(SignUp.pending, (state) => {
-        state.loading = true
+        state.signUpLoading = true
+        state.signUpError = false
+        state.signUpSuccess = false
       })
       .addCase(SignUp.fulfilled, (state, action) => {
-        state.success = true
+        state.signUpSuccess = true
+        state.signUpLoading = false
+        state.signUpError = false
       })
       .addCase(SignUp.rejected, (state, action) => {
-        state.error = true
+        state.signUpError = true
+        state.signUpLoading = false
       })
       .addCase(Login.pending, (state, action) => {
-        state.loading = true
+        state.loginLoading = true
+        state.loginSuccess = false
+        state.loginError = false
       })
       .addCase(Login.fulfilled, (state, action) => {
-        state.success = true
+        state.loginSuccess = true
+        state.data = action.payload
+        state.loginLoading = false
       })
       .addCase(Login.rejected, (state, action) => {
-        state.error = true
+        state.loginError = true
+        state.loginLoading = false
       })
   }
 })

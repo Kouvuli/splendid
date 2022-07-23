@@ -23,3 +23,5 @@ export const characterSelector = (state) => state.character
 export const postDetailSelector = (state) => state.postDetail
 
 export const commentSelector = (state) => state.comment
+
+export const profileSelector = (state) => state.profile

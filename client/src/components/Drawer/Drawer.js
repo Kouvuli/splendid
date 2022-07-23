@@ -9,6 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon"
 import ListItemText from "@mui/material/ListItemText"
 import { Link } from "react-router-dom"
 import styles from "./styles.module.scss"
+import { ListItemButton } from "@mui/material"
 
 export default function Component({
   browseItems,
@@ -18,7 +19,7 @@ export default function Component({
   onClose,
   user
 }) {
-  const [isOpen, setOpen] = React.useState(open)
+  // const [isOpen, setOpen] = React.useState(open)
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -28,7 +29,7 @@ export default function Component({
       return
     }
 
-    setOpen(open)
+    // setOpen(open)
   }
 
   const list = () => (
@@ -42,9 +43,10 @@ export default function Component({
         {browseItems.map((item, index) => (
           <ListItem
             className={styles.listItem}
-            component={Link}
+            component={item.component}
             to={item.linkTo}
             button
+            onClick={item.handler}
             key={item.label}
           >
             <ListItemIcon>
@@ -63,6 +65,7 @@ export default function Component({
                 component={Link}
                 to={item.linkTo}
                 button
+                onClick={item.handler}
                 key={item.label}
               >
                 <ListItemIcon>

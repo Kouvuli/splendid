@@ -29,8 +29,12 @@ import PersonIcon from "@mui/icons-material/Person"
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded"
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined"
 import LogoutIcon from "@mui/icons-material/Logout"
-import { Dialog, DialogContent } from "@mui/material"
+import { Button, ButtonBase, Dialog, DialogContent } from "@mui/material"
+import { authSelector } from "../../redux/selectors"
+import { useDispatch, useSelector } from "react-redux"
+import authSlice from "../../redux/reducers/authSlice"
 import Login from "../../screens/Login/Login"
+import CustomizedSnackbars from "../UI/CustomizedSnackbars"
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -39,31 +43,10 @@ export default function Header() {
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileDrawerOpen = Boolean(mobileMoreAnchorEl)
-
+  const dispatch = useDispatch()
   // fake user state
-  const [user, setUser] = React.useState(false)
-
-  const browseItems = [
-    { Icon: PlayArrowRoundedIcon, label: "Anime", linkTo: PATHS.ANIME },
-    { Icon: AutoStoriesIcon, label: "Manga", linkTo: PATHS.MANGA },
-    {
-      Icon: AccountBoxOutlinedIcon,
-      label: "Characters",
-      linkTo: PATHS.CHARACTERS
-    },
-    { Icon: ForumIcon, label: "Forum", linkTo: PATHS.FORUM }
-  ]
-
-  const userItems = [
-    { Icon: PersonIcon, label: "Profile", linkTo: PATHS.PROFILE },
-    {
-      Icon: NotificationsIcon,
-      label: "Notifications",
-      linkTo: PATHS.NOTIFICATIONS
-    },
-    { Icon: SettingsIcon, label: "Settings", linkTo: PATHS.SETTINGS },
-    { Icon: LogoutIcon, label: "Logout", linkTo: PATHS.LOGOUT }
-  ]
+  const { data: user } = useSelector(authSelector)
+  // const [user, setUser] = React.useState(false)
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -71,6 +54,62 @@ export default function Header() {
   const handleClose = () => {
     setOpen(false)
   }
+  const logOutHandler = () => {
+    setAnchorEl(null)
+    dispatch(authSlice.actions.logOut())
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+  }
+  const browseItems = [
+    {
+      component: Link,
+      Icon: PlayArrowRoundedIcon,
+      label: "Anime",
+      linkTo: PATHS.ANIME
+    },
+    {
+      component: Link,
+      Icon: AutoStoriesIcon,
+      label: "Manga",
+      linkTo: PATHS.MANGA
+    },
+    {
+      component: Link,
+      Icon: AccountBoxOutlinedIcon,
+      label: "Characters",
+      linkTo: PATHS.CHARACTERS
+    },
+    { component: Link, Icon: ForumIcon, label: "Forum", linkTo: PATHS.FORUM }
+  ]
+
+  const userItems = [
+    {
+      component: Link,
+      Icon: PersonIcon,
+      label: "Profile",
+      linkTo: PATHS.PROFILE
+    },
+    {
+      component: Link,
+      Icon: NotificationsIcon,
+      label: "Notifications",
+      linkTo: PATHS.NOTIFICATIONS
+    },
+    {
+      component: Link,
+      Icon: SettingsIcon,
+      label: "Settings",
+      linkTo: PATHS.SETTINGS
+    },
+    {
+      Icon: LogoutIcon,
+      label: "Logout",
+      linkTo: "",
+      handler: logOutHandler
+    }
+  ]
+
   const buttons = [
     {
       outlined: true,
@@ -81,7 +120,7 @@ export default function Header() {
     {
       className: styles.btnSignUp,
       label: "Sign Up",
-      href: PATHS.SIGNUP,
+
       handler: handleClickOpen
     }
   ]
@@ -135,7 +174,12 @@ export default function Header() {
       onClose={handleMenuClose}
     >
       {userItems.map((item) => (
-        <MenuItem component={Link} to={item.linkTo} key={item.label}>
+        <MenuItem
+          component={item.component}
+          to={item.linkTo}
+          key={item.label}
+          onClick={item.handler}
+        >
           {item.label}
         </MenuItem>
       ))}
