@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import animeApi from "../../apis/animeApi"
-
+import splendidApi from "../../apis/splendidApi"
 const initialState = {
   loading: false,
   error: false,
@@ -19,13 +19,32 @@ const initialState = {
   relationsLoading: false,
   relations: [],
   relationsError: false,
+
+  commentsLimit: 12,
+  comments: [],
+  commentsPage: 1,
+  hasMoreComments: false,
+  commentsLoading: false,
+  commentsError: false,
+
   reviews: [],
   reviewsPage: 1,
   hasMoreReviews: false,
   reviewsLoading: false,
-  reviewsError: false
+  reviewsError: false,
+
+  insertListLoading: null,
+  insertListSuccess: false,
+  insertListError: false
 }
 
+export const insertList = createAsyncThunk(
+  "insert-manga-list",
+  async (params) => {
+    const { data } = await splendidApi.insertList(params)
+    return data
+  }
+)
 export const fetchMangaDetail = createAsyncThunk("manga-detail", async (id) => {
   const { data } = await animeApi.getMangaById(id)
   return data
@@ -38,7 +57,13 @@ export const fetchtMangaRecommendations = createAsyncThunk(
     return data
   }
 )
-
+export const fetchMangaCommentsById = createAsyncThunk(
+  "manga-detail-comments",
+  async (params) => {
+    const data = await splendidApi.getMangaCommentByMalId(params)
+    return data
+  }
+)
 export const fetchMangaCharacterById = createAsyncThunk(
   "manga-detail-characters",
   async (id) => {
@@ -82,7 +107,11 @@ export const fetchMangaRelations = createAsyncThunk(
 const animeDetailSlice = createSlice({
   name: "mangaDetail",
   initialState,
-  reducers: {},
+  reducers: {
+    addUser: (state, action) => {
+      state.currentUser = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMangaDetail.pending, (state) => {
@@ -171,6 +200,39 @@ const animeDetailSlice = createSlice({
       .addCase(fetchMangaRelations.rejected, (state, action) => {
         state.relationsError = action.error
         state.relationsLoading = false
+      })
+      .addCase(fetchMangaCommentsById.pending, (state) => {
+        state.commentsLoading = true
+        state.commentsError = false
+      })
+      .addCase(fetchMangaCommentsById.fulfilled, (state, action) => {
+        if (state.hasMoreComments === true || state.commentsPage === 1) {
+          state.comments.push(...action.payload.data)
+          state.commentsPage++
+        }
+        state.hasMoreComments = action.payload.pagination.has_next_page
+
+        state.commentsLoading = false
+        state.commentsError = false
+      })
+      .addCase(fetchMangaCommentsById.rejected, (state, action) => {
+        state.commentsError = action.error
+        state.commentsLoading = false
+      })
+      .addCase(insertList.pending, (state) => {
+        state.insertListSuccess = false
+        state.insertListError = false
+        state.insertListLoading = true
+      })
+      .addCase(insertList.fulfilled, (state) => {
+        state.insertListSuccess = true
+        state.insertListError = false
+        state.insertListLoading = false
+      })
+      .addCase(insertList.rejected, (state) => {
+        state.insertListSuccess = false
+        state.insertListError = true
+        state.insertListLoading = false
       })
   }
 })

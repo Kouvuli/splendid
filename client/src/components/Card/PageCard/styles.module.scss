@@ -1,0 +1,56 @@
+@import '../../../styles/config';
+.box {
+    background-color: $color-se-1;
+    border-radius: 4px;
+}
+.pages {
+    margin-top: 20px;
+    padding: 20px;
+}
+.intro {
+    padding: 20px;
+
+    &-title {
+
+        color: $color-text-md;
+        font-weight: 600;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    &-menu {
+        background-color: $color-text-super-light;
+        box-shadow: -8px 0 0 0 $color-text-super-light, 8px 0 0 0 $color-text-super-light;
+        width: 5px;
+        height: 5px;
+        border: 0;
+        padding: 0;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: 8px;
+    }
+}
+.user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.user+.user {
+    margin-top: 18px;
+}
+
+.user-img {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.username {
+    font-size: 15px;
+
+}

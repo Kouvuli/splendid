@@ -35,11 +35,11 @@ public class UserCriteriaRepository {
 
 
         TypedQuery<User> typedQuery=entityManager.createQuery(query.select(root));
-        typedQuery.setFirstResult(page*limit);
+        typedQuery.setFirstResult((page-1)*limit);
         typedQuery.setMaxResults(limit);
 
 
-        Pageable pageable= PageRequest.of(page,limit);
+        Pageable pageable= PageRequest.of(page-1,limit);
 
         long postCount=getUserCount();
         return new PageImpl<>(typedQuery.getResultList(),pageable,postCount);

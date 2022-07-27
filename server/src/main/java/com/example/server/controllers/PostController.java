@@ -33,7 +33,7 @@ public class PostController {
     @GetMapping("")
     ResponseEntity<ResponseObjectPagination> getPost(
             @RequestParam(required = false,name = "author_id") String authorId,
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10")int limit
     ){
         if(page<0 || limit <1){
@@ -77,7 +77,6 @@ public class PostController {
                     post.setContent(newPost.getContent());
                     post.setTitle(newPost.getTitle());
                     post.setCreateAt(new Timestamp(System.currentTimeMillis()));
-                    post.setAuthor(postService.getUserById(newPost.getAuthor().getId()));
                     return postService.addPost(post);
                 }).orElseGet(()->{
                     newPost.setId(id);

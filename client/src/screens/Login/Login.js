@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from "./styles.module.scss"
 import SignUpForm from "../../components/Form/SignUpForm"
 import SignInForm from "../../components/Form/SignInForm"
@@ -6,7 +6,8 @@ import Box from "@mui/material/Box"
 import { Card } from "@mui/material"
 import OvalButton from "../../components/UI/Button/OvalButton"
 import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import authSlice from "../../redux/reducers/authSlice"
 import { authSelector } from "../../redux/selectors"
 export const Login = ({ signIn, handler }) => {
   const [isSignIn, setIsSignIn] = useState(signIn)
@@ -18,11 +19,15 @@ export const Login = ({ signIn, handler }) => {
     signUpLoading,
     signUpError
   } = useSelector(authSelector)
+  const dispatch = useDispatch()
   const signInHandler = () => {
     setIsSignIn((prevIsSignIn) => {
       return !prevIsSignIn
     })
   }
+  useEffect(() => {
+    dispatch(authSlice.actions.restartSignUp())
+  }, [])
   return (
     <Card
       className={`${styles.container} ${

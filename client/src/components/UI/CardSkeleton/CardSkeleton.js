@@ -68,6 +68,20 @@ const Component = ({ children, className, type, ...props }) => {
       </Stack>
     )
   }
+
+  if (type === CARD_TYPES.MEDIUM_HORIZONTAL) {
+    return (
+      <Stack direction="row">
+        <Skeleton variant="circular" width={55} height={55} />
+        <Skeleton
+          sx={{ marginLeft: "8px", borderRadius: "3px" }}
+          variant="rectangular"
+          width="93%"
+          height={90}
+        />
+      </Stack>
+    )
+  }
   if (type === CARD_TYPES.SQUARE) {
     return (
       <Stack style={{ width: "100%" }}>

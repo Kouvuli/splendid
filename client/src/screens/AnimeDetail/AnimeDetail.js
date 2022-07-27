@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Grid from "@mui/material/Grid"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import SideBarList3 from "../../components/List/SideBarList/SideBarList3"
 import styles from "./styles.module.scss"
 import Tabs from "@mui/material/Tabs"
@@ -18,9 +19,14 @@ import { useDispatch, useSelector } from "react-redux"
 import {
   fetchAnimeDetail,
   fetchtAnimeRecommendations,
-  fetchAnimeRelations
+  fetchAnimeRelations,
+  insertList
 } from "../../redux/reducers/animeDetailSlice"
 import { animeDetailSelector } from "../../redux/selectors"
+import RoundButton from "../../components/UI/Button/RoundButton"
+import { Menu, MenuItem } from "@mui/material"
+import animeDetailSlice from "../../redux/reducers/animeDetailSlice"
+import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
 const AnimeDetail = () => {
   const {
     data,
@@ -28,35 +34,128 @@ const AnimeDetail = () => {
     relations,
     relationsLoading,
     relationsError,
-    loading
+    loading,
+    currentUser,
+    insertListSuccess,
+    insertListError,
+    insertListLoading
   } = useSelector(animeDetailSelector)
   const dispatch = useDispatch()
   const { id } = useParams()
-  // const [data, setData] = useState(null)
-  // const [rec, setRec] = useState(null)
+
   useEffect(() => {
-    // const fetchDetail = async () => {
-    //   const response = await animeApi.getAnimeById(id)
-    //   setData(response.data)
-    // }
-    // const fetchtAnimeRecommendations = async () => {
-    //   const response = await animeApi.getAnimeRecommendations(id)
-    //   setRec(response.data)
-    // }
-    // fetchtAnimeRecommendations()
-    // fetchDetail()
+    dispatch(
+      animeDetailSlice.actions.addUser(JSON.parse(localStorage.getItem("user")))
+    )
     dispatch(fetchAnimeDetail(id))
     dispatch(fetchtAnimeRecommendations(id))
     dispatch(fetchAnimeRelations(id))
   }, [dispatch, id])
   const [value, setValue] = React.useState(0)
-  console.log("ANIME_DETAIL")
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const isMenuOpen = Boolean(anchorEl)
+
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const setAsWatchingHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "anime",
+        mal_title: data.title,
+        type: "watching"
+      })
+    )
+  }
+  const setAsPlanningHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "anime",
+        mal_title: data.title,
+        type: "planning"
+      })
+    )
+  }
+  const setAsCompleteHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "anime",
+        mal_title: data.title,
+        type: "finished"
+      })
+    )
+  }
+  const addListItem = [
+    {
+      label: "Set as Watching",
+      handler: setAsWatchingHandler
+    },
+    {
+      label: "Set as Planning",
+
+      handler: setAsPlanningHandler
+    },
+    {
+      label: "Set as Finished",
+
+      handler: setAsCompleteHandler
+    }
+  ]
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right"
+      }}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "left"
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      {addListItem.map((item) => (
+        <MenuItem
+          component={item.component}
+          to={item.linkTo}
+          key={item.label}
+          onClick={item.handler}
+        >
+          {item.label}
+        </MenuItem>
+      ))}
+    </Menu>
+  )
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
-  console.log(data)
+
   return (
     <>
+      {!insertListLoading && insertListSuccess && (
+        <CustomizedSnackbars
+          title={`Add ${data.title} success!`}
+          type="success"
+        />
+      )}
+      {!insertListLoading && insertListError && (
+        <CustomizedSnackbars title="Add failed!" type="error" />
+      )}
+      {!loading && !currentUser && (
+        <CustomizedSnackbars title="Sign in to comment!" type="info" />
+      )}
       {loading && <Preloader />}
       {!loading && Object.keys(data).length !== 0 && (
         <>
@@ -199,9 +298,16 @@ const AnimeDetail = () => {
                         </Grid>
                       </div>
                       <div className={styles["anime__details__btn"]}>
-                        <a href="#" className={styles["watch-btn"]}>
-                          <span>Watch Now</span> <ArrowForwardIosIcon />
-                        </a>
+                        <RoundButton className={styles["follow-btn"]}>
+                          Follow
+                        </RoundButton>
+                        <div className={styles["watch-btn"]}>
+                          <RoundButton handler={handleMenuOpen}>
+                            Add to list
+                          </RoundButton>{" "}
+                          <KeyboardArrowDownIcon />
+                        </div>
+                        {renderMenu}
                       </div>
                     </div>
                   </TabPanel>
@@ -231,7 +337,7 @@ const AnimeDetail = () => {
                     <iframe
                       src={`${data.trailer.embed_url}`}
                       width="100%"
-                      height="700px"
+                      height="600px"
                       title="video"
                     ></iframe>
                   </div>
@@ -242,7 +348,7 @@ const AnimeDetail = () => {
                   <div className={styles["section-title"]}>
                     <h5>Comments</h5>
                   </div>
-                  <CommentList />
+                  <CommentList id={id} />
                 </div>
               </Grid>
               <Grid item xs={12} md={4} marginTop="1rem" marginBottom="2rem">

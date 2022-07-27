@@ -10,6 +10,7 @@ import LoadingCardSkeleton from "../LoadingCardSkeleton"
 import { CARD_TYPES } from "../../constants"
 const ListFilter = (props) => {
   const { title, items, loading, error } = props
+  console.log(items)
   return (
     <Grid container justifyContent="center" columnSpacing={5}>
       <Grid item xs={12}>
@@ -58,7 +59,7 @@ const ListFilter = (props) => {
       )}
       {items &&
         items.map((item, index) => {
-          return <MovieItem type={title} key={index} {...item} />
+          return <MovieItem typez={title} key={index} {...item} />
         })}
       {!loading && items && items.length === 0 && (
         <ResultNotFound message="No Results" />

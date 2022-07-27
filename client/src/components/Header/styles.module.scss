@@ -3,6 +3,15 @@
 .header {
     z-index: 99!important;
     padding: 0 calc((100% - 1200px) / 2);
+    height:75px;
+    // background-color: $color-bg-footer!important;
+    transition: height 0.3s ease, background-color 0.3s ease!important;
+    &.shrink {
+        height: 64px;
+        background-color: $color-bg-dark!important;
+
+        
+    }
 }
 
 .btnLogin, .btnSignUp {

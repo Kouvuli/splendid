@@ -46,7 +46,11 @@ const MovieItem = (props) => {
               )}
 
               <h5>
-                <a href={`/${props.type ? "manga" : "anime"}/${props.mal_id}`}>
+                <a
+                  href={`/${props.typez === "Anime" ? "anime" : "manga"}/${
+                    props.mal_id
+                  }`}
+                >
                   {props.title}
                 </a>
               </h5>

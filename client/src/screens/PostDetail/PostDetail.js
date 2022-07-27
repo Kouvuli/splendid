@@ -28,6 +28,7 @@ import styles from "./styles.module.scss"
 import postDetailSlice from "../../redux/reducers/postDetailSlice"
 import Preloader from "../../components/Preloader"
 import moment from "moment"
+import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
 const PostDetail = () => {
   const { id } = useParams()
   // const { data: currentUserData } = useSelector(selectAuth)
@@ -91,12 +92,23 @@ const PostDetail = () => {
         author: { id: currentUser?.id }
       })
     )
-    window.location.reload()
     setOpen(false)
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
   }
   console.log(post.create_at)
   return (
     <>
+      {!loading && !currentUser && (
+        <CustomizedSnackbars
+          title="Sign in to create comment of your own!"
+          type="info"
+        />
+      )}
+      {!loading && error && currentUser && (
+        <CustomizedSnackbars title="Your token has expired!" type="warning" />
+      )}
       {loading && <Preloader />}
       {!loading && post && (
         <Grid

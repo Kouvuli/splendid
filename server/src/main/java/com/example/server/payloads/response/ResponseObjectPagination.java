@@ -18,6 +18,7 @@ public class ResponseObjectPagination {
         this.data = data;
     }
 
+
     public Pagination getPagination() {
         return pagination;
     }

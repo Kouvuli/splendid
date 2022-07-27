@@ -51,6 +51,32 @@ public class CommentCriteriaRepository {
         long commentCount=getCommentCount(predicate);
         return new PageImpl<>(typedQuery.getResultList(),pageable,commentCount);
     }
+    public Page<Comment> findCommentByMalIdWithFilterPagination(String malId,String type,int page,int limit){
+        CriteriaQuery<Comment> query=cb.createQuery(Comment.class);
+
+        Root<Comment> root=query.from(Comment.class);
+        List<Predicate> predicates=new ArrayList<>();
+        if(malId!=null){
+            predicates.add(cb.equal(root.get("malId"),malId));
+        }
+        predicates.add(cb.equal(root.get("type"),type));
+
+
+
+        Predicate predicate=cb.and(predicates.toArray(new Predicate[0]));
+        query.orderBy(cb.desc(root.get("createAt")));
+        query.where(predicate);
+
+        TypedQuery<Comment> typedQuery=entityManager.createQuery(query);
+        typedQuery.setFirstResult((page-1)*limit);
+        typedQuery.setMaxResults(limit);
+
+
+        Pageable pageable= PageRequest.of(page-1,limit);
+
+        long commentCount=getCommentCount(predicate);
+        return new PageImpl<>(typedQuery.getResultList(),pageable,commentCount);
+    }
 
     private long getCommentCount(Predicate predicate){
         CriteriaQuery<Long> countQuery=cb.createQuery(Long.class);

@@ -31,18 +31,55 @@ import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined"
 import LogoutIcon from "@mui/icons-material/Logout"
 import { Button, ButtonBase, Dialog, DialogContent } from "@mui/material"
 import { authSelector } from "../../redux/selectors"
+import { styled } from "@mui/material/styles"
 import { useDispatch, useSelector } from "react-redux"
 import authSlice from "../../redux/reducers/authSlice"
 import Login from "../../screens/Login/Login"
 import CustomizedSnackbars from "../UI/CustomizedSnackbars"
 
+const CustomAppBar = styled(AppBar)(({ theme }) => ({
+  "&.MuiPaper-root": {
+    backgroundColor: "unset",
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.05),rgba(255,255,255,0.07))"
+  }
+}))
+
+const CustomToolBar = styled(Toolbar)(({ theme }) => ({
+  transition: "min-height 0.3s ease",
+  minHeight: "75px",
+  "&.shrink": {
+    minHeight: "64px"
+  }
+}))
+
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
   const [open, setOpen] = React.useState(false)
-
+  const appBarRef = React.useRef(null)
+  const toolBarRef = React.useRef(null)
   const isMenuOpen = Boolean(anchorEl)
   const isMobileDrawerOpen = Boolean(mobileMoreAnchorEl)
+  React.useEffect(() => {
+    const shrinkHeader = () => {
+      if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+      ) {
+        appBarRef.current.classList.add(styles["shrink"])
+        toolBarRef.current.classList.add("shrink")
+      } else {
+        appBarRef.current.classList.remove(styles["shrink"])
+        toolBarRef.current.classList.remove("shrink")
+      }
+    }
+    window.addEventListener("scroll", shrinkHeader)
+    return () => {
+      window.removeEventListener("scroll", shrinkHeader)
+    }
+  }, [])
+
   const dispatch = useDispatch()
   // fake user state
   const { data: user } = useSelector(authSelector)
@@ -161,10 +198,9 @@ export default function Header() {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "top",
+        vertical: "bottom",
         horizontal: "right"
       }}
-      id={menuId}
       keepMounted
       transformOrigin={{
         vertical: "top",
@@ -203,8 +239,8 @@ export default function Header() {
       <Dialog maxWidth="lg" open={open} onClose={handleClose}>
         <Login isSignIn={true} handler={setOpen} />
       </Dialog>
-      <AppBar position="static" className={styles.header}>
-        <Toolbar>
+      <CustomAppBar ref={appBarRef} position="fixed" className={styles.header}>
+        <CustomToolBar ref={toolBarRef}>
           <Link to="/">
             <img style={{ width: "90px" }} src={Logo} alt="Logo" />
           </Link>
@@ -258,8 +294,8 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
           </Box>
-        </Toolbar>
-      </AppBar>
+        </CustomToolBar>
+      </CustomAppBar>
       {renderMobileDrawer}
       {renderMenu}
     </Box>

@@ -16,6 +16,7 @@
     "clsx": "^1.1.1",
     "dotenv": "^16.0.0",
     "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "nodemon": "^2.0.15",
     "query-string": "^7.1.1",

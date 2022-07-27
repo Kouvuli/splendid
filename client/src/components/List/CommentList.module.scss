@@ -1,36 +1,38 @@
-.comment-section{
-    padding-right: 20px;
-}
+
 .anime__detail__review{
 	margin-bottom: 55px;
 }
 .anime__details__form {
 	
-	& form{
-		& textarea{
-			width: 100%;
-			font-size: 15px;
-			color: #b7b7b7;
-			padding-left: 20px;
-			padding-top: 12px;
-			height: 110px;
-			border: none;
-			border-radius: 5px;
-			resize: none;
-			margin-bottom: 24px;
-		}
-		& button {
-			font-size: 11px;
-			color: #ffffff;
-			font-weight: 700;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			background: #e53637;
-			border: none;
-			padding: 10px 15px;
-			border-radius: 2px;
-		}
+margin-right: 20px;
+	& textarea{
+		width: 100%;
+		font-size: 15px;
+		color: #7c7c7c;
+		padding-left: 20px;
+		padding-top: 12px;
+		height: 110px;
+		border: none;
+		border-radius: 5px;
+		resize:none ;
+		margin-top:20px;
+		
+		text-decoration: none;
 	}
+	& button {
+		margin-top:20px;
+		// font-size: 11px;
+		// color: #ffffff;
+		// font-weight: 700;
+		// letter-spacing: 2px;
+		// text-transform: uppercase;
+		// // background: #e53637;
+		// border: none;
+		// padding: 10px 15px;
+		// border-radius: 2px;
+
+	}
+	
 }
 /* .anime__details__form form textarea {
 	width: 100%;

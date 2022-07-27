@@ -33,6 +33,10 @@ public class CommentService {
         return commentCriteriaRepository.findCommentWithFilterPagination(postId,page,limit);
     }
 
+    public Page<Comment> getCommentByMalId(String malId,String type,int page,int limit){
+        return commentCriteriaRepository.findCommentByMalIdWithFilterPagination(malId,type,page,limit);
+    }
+
     public User getUserById(int id){
         return userRepository.findById(id).get();
     }

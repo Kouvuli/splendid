@@ -1,6 +1,7 @@
 package com.example.server.controllers;
 
 import com.example.server.models.Pagination;
+import com.example.server.models.Post;
 import com.example.server.models.Reaction;
 import com.example.server.models.User;
 import com.example.server.payloads.response.ResponeObject;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +31,7 @@ public class UserController {
 
     @GetMapping("")
     ResponseEntity<ResponseObjectPagination> getAllUser(
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10")int limit
     ){
         if(page<0 || limit <1){
@@ -52,5 +54,25 @@ public class UserController {
                 ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                         new ResponeObject("failed","Cannot find reaction with id="+id,"")
                 );
+    }
+
+
+    @PutMapping("/{id}")
+    ResponseEntity<ResponeObject> updateUser(@RequestBody User newUser, @PathVariable int id){
+        User updatedUser= userService.getUserById(id)
+                .map(user->{
+                    user.setAddress(newUser.getAddress());
+                    user.setDob(newUser.getDob());
+                    user.setJob(newUser.getJob());
+                    user.setFullname(newUser.getFullname());
+
+                    return userService.addUser(user);
+                }).orElseGet(()->{
+                    newUser.setId(id);
+                    return userService.addUser(newUser);
+                });
+        return ResponseEntity.status(HttpStatus.OK).body(
+                new ResponeObject("ok","Update User successfully",userService.addUser(updatedUser))
+        );
     }
 }

@@ -20,16 +20,11 @@
 		content: "";
 	}
 }
-.section-title h4, .section-title h5 {
-   
-}
 
-.section-title h4:after, .section-title h5:after {
-    
-}
 
 .comment-section{
     padding-right:20px;
+
 }
 .banner {
     height: 50vh;
@@ -198,28 +193,33 @@
 		margin-bottom: 12px;
 		text-decoration: none;
 	}
-	& .watch-btn span {
+	
+
+	& .watch-btn button{
 		font-size: 13px;
 		color: $color-white;
-		background: $color-pr-1;
+		background: $color-pr-3!important;
+		border-color: $color-pr-3 !important;
 		display: inline-block;
 		font-weight: 700;
 		letter-spacing: 2px;
 		text-transform: uppercase;
 		padding: 14px 20px;
 		border-radius: 4px 0 0 4px;
+		
 		margin-right: 5px;
-		text-decoration: underline $color-pr-1;
+		text-decoration: none;
 	}
 	& .watch-btn {
 		display: flex;
 		& svg {
-			font-size: 20px;
+			// font-size: 20px;
 			display: inline-block;
-			background: $color-pr-1;
+			background: $color-pr-3;
 			padding: 11px 5px 16px 8px;
 			color:$color-white;
 			border-radius: 0 4px 4px 0;
+			cursor: pointer;
 		}
 	}
 } 

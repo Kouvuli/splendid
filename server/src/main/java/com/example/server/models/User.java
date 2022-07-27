@@ -28,12 +28,19 @@ public class User {
     @JsonIgnore
     private Set<Reaction> reactions=new HashSet<>();
 
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<List> lists=new HashSet<>();
     private String fullname;
 
     private String dob;
 
     private String username;
 
+    private String job;
+
+    private String address;
     @JsonIgnore
     private String password;
 
@@ -47,6 +54,16 @@ public class User {
         this.fullname = fullname;
         this.dob = dob;
         this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
+    public User(String fullname, String dob, String username, String job, String address, String password, boolean isAdmin) {
+        this.fullname = fullname;
+        this.dob = dob;
+        this.username = username;
+        this.job = job;
+        this.address = address;
         this.password = password;
         this.isAdmin = isAdmin;
     }
@@ -67,12 +84,36 @@ public class User {
         this.comments = comments;
     }
 
+    public Set<List> getLists() {
+        return lists;
+    }
+
+    public void setLists(Set<List> lists) {
+        this.lists = lists;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getFullname() {

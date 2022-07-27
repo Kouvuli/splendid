@@ -1,6 +1,7 @@
 import axiosClient from "./axiosClient"
 import { SPLENDID_API } from "./apiURL"
 import authHeader from "./auth-header"
+
 const request = axiosClient(SPLENDID_API)
 
 const splendidApi = {
@@ -18,7 +19,7 @@ const splendidApi = {
   },
   updatePost: (id, data) => {
     const url = `/post/${id}`
-    return request.post(url, data, { headers: authHeader() })
+    return request.put(url, data, { headers: authHeader() })
   },
   deletePost: (id) => {
     const url = `/post/${id}`
@@ -53,13 +54,22 @@ const splendidApi = {
     const url = `/comment/${id}`
     return request.get(url)
   },
+
+  getAnimeCommentByMalId: (params) => {
+    const url = `/comment/anime`
+    return request.get(url, { params })
+  },
+  getMangaCommentByMalId: (params) => {
+    const url = `/comment/manga`
+    return request.get(url, { params })
+  },
   insertComment: (data) => {
     const url = "/comment"
     return request.post(url, data, { headers: authHeader() })
   },
   updateComment: (id, data) => {
     const url = `/comment/${id}`
-    return request.post(url, data, { headers: authHeader() })
+    return request.put(url, data, { headers: authHeader() })
   },
   deleteComment: (id) => {
     const url = `/comment/${id}`
@@ -77,9 +87,33 @@ const splendidApi = {
     const url = `/reaction`
     return request.delete(url, { params, headers: authHeader() })
   },
+  deleteReactionById: (id) => {
+    const url = `/reaction/${id}`
+    return request.delete(url, { headers: authHeader() })
+  },
   getUserById: (id) => {
     const url = `/user/${id}`
     return request.get(url)
+  },
+  updateUser: (id, data) => {
+    const url = `/user/${id}`
+    return request.put(url, data, { headers: authHeader() })
+  },
+  getActivityByUserId: (data) => {
+    const url = "/activity"
+    return request.post(url, data, { headers: authHeader() })
+  },
+  getList: (params) => {
+    const url = "/list"
+    return request.get(url, { params })
+  },
+  insertList: (data) => {
+    const url = "/list"
+    return request.post(url, data, { headers: authHeader() })
+  },
+  deleteList: (id) => {
+    const url = `/list/${id}`
+    return request.delete(url, { headers: authHeader() })
   }
 }
 

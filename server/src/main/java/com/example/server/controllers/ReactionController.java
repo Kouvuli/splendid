@@ -103,6 +103,17 @@ public class ReactionController {
                 new ResponeObject("failed","Cannot find reaction to delete","")
         );
     }
-
-
+    @DeleteMapping("/{id}")
+    ResponseEntity<ResponeObject> deleteReaction(@PathVariable int id){
+        boolean exists=reactionService.ifReactionExists(id);
+        if(exists){
+            reactionService.deleteReactionById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new ResponeObject("ok","Deleted reaction succesfully","")
+            );
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                new ResponeObject("failed","Cannot find reaction to delete","")
+        );
+    }
 }

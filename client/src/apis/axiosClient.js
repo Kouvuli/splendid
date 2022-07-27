@@ -11,9 +11,11 @@ const request = (url) => {
   })
 
   axiosClient.interceptors.request.use(async (config) => {
+    console.log(config)
     if (config.url === "/auth/signin") {
       config.method = "POST"
     }
+
     return config
   })
   axiosClient.interceptors.response.use(

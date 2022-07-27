@@ -4,6 +4,7 @@ import splendidApi from "../../apis/splendidApi"
 const initialState = {
   loading: false,
   error: false,
+  currentUserError: false,
   currentUser: {},
   data: [],
   hasNext: false,
@@ -29,6 +30,9 @@ export const forumSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       state.currentUser = action.payload
+      if (action.payload === null) {
+        state.currentUserError = true
+      }
     }
   },
   extraReducers: (builder) => {
@@ -45,7 +49,7 @@ export const forumSlice = createSlice({
       })
       .addCase(createPost.rejected, (state, action) => {
         state.loading = false
-        state.error = action.error
+        state.error = true
       })
       .addCase(fetchAllPost.pending, (state) => {
         if (state.page === 1) {

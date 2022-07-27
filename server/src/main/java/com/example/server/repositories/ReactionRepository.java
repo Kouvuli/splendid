@@ -11,4 +11,6 @@ public interface ReactionRepository extends JpaRepository<Reaction,Integer> {
     List<Reaction> findByPostId(int postId);
 
     List<Reaction> findByCommentId(int commentId);
+
+    List<Reaction> findByAuthorId(Integer authorId);
 }

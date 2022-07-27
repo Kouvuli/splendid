@@ -1,0 +1,92 @@
+@import '../../../styles/config';
+.box {
+    background-color: $color-se-1;
+    border-radius: 4px;
+}
+.status-main {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-text-bold;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.status-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.album {
+    padding-top: 20px;
+    margin-bottom: 20px;
+
+    .status-main {
+        border: none;
+        display: flex;
+    }
+
+    .intro-menu {
+        margin-bottom: auto;
+        margin-top: 5px;
+    }
+}
+
+.album-detail {
+    width: calc(100% - 110px);
+}
+
+.album-title {
+    color: $color-white;
+    font-weight: 400 !important;
+
+    & a {
+        color: $color-pr-3;
+
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    & .red {
+        color: $color-pr-1 !important;
+    }
+
+    & .orange {
+        color: $color-pr-2 !important;
+    }
+
+    & .cyan {
+        color: $color-pr-4 !important;
+    }
+
+    & .yellow {
+        color: $color-warning  !important;
+    }
+
+}
+
+.album-date {
+    font-size: 15px;
+    color: #595c6c;
+    margin-top: 8px;
+}
+
+.intro {
+    padding: 20px;
+
+
+    &-menu {
+
+
+        width: 5px;
+        height: 5px;
+
+
+        margin-left: auto !important;
+        margin-right: 8px !important;
+    }
+}

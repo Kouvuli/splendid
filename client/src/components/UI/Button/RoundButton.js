@@ -7,9 +7,6 @@ const RoundButton = ({ className, handler, children, outlined }) => {
     <>
       {outlined ? (
         <button
-          style={{
-            borderColor: theme.palette.secondary.main
-          }}
           className={`${styles["btn"]} ${styles["ghost"]} ${className}`}
           id={`${styles["signIn"]}`}
           onClick={handler}

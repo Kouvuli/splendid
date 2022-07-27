@@ -43,6 +43,11 @@ const loginSlice = createSlice({
       state.signUpSuccess = false
       state.signUpLoading = false
       state.signUpError = false
+    },
+    restartSignUp: (state) => {
+      state.signUpSuccess = false
+      state.signUpLoading = false
+      state.signUpError = false
     }
   },
 

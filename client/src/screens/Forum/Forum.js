@@ -19,13 +19,22 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import { CARD_TYPES } from "../../constants"
 import Loading from "../../components/Loading"
 import Preloader from "../../components/Preloader"
+import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
 const Forum = () => {
   const [open, setOpen] = React.useState(false)
 
   const dispatch = useDispatch()
 
-  const { loading, currentUser, error, hasNext, data, page, limit } =
-    useSelector(forumSelector)
+  const {
+    currentUserError,
+    loading,
+    currentUser,
+    error,
+    hasNext,
+    data,
+    page,
+    limit
+  } = useSelector(forumSelector)
 
   // const posts = data.data.documents
   useEffect(() => {
@@ -55,6 +64,15 @@ const Forum = () => {
 
   return (
     <>
+      {!loading && !currentUser && (
+        <CustomizedSnackbars
+          title="Sign in to create post of your own!"
+          type="info"
+        />
+      )}
+      {!loading && error && currentUser && (
+        <CustomizedSnackbars title="Your token has expired!" type="warning" />
+      )}
       {loading && <Preloader />}
       {!loading && (
         <>

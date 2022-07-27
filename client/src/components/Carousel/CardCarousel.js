@@ -6,7 +6,7 @@ import styles from "./styles.module.scss"
 import { styled, alpha } from "@mui/material/styles"
 // import styled from "styled-components";
 import CardCarouselItem from "../Item/CardCarouselItem"
-import MovieItem from "../Item/MovieItem"
+
 import CardSkeleton from "../UI/CardSkeleton"
 import { CARD_TYPES } from "../../constants"
 const CustomOwlCarousel = styled(OwlCarousel)(({ theme }) => ({

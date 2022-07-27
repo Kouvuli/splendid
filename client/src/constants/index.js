@@ -3,5 +3,6 @@ export const CARD_TYPES = {
   SQUARE: "square",
   HORIZONTAL: "horizontal",
   BOX: "box",
-  SMALL_HORIZONTAL: "small-horizontal"
+  SMALL_HORIZONTAL: "small-horizontal",
+  MEDIUM_HORIZONTAL: "medium-horizontal"
 }

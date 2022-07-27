@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Grid from "@mui/material/Grid"
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import SideBarList3 from "../../components/List/SideBarList/SideBarList3"
 import styles from "./styles.module.scss"
 import Tabs from "@mui/material/Tabs"
@@ -18,9 +18,14 @@ import { useDispatch, useSelector } from "react-redux"
 import {
   fetchMangaDetail,
   fetchtMangaRecommendations,
-  fetchMangaRelations
+  fetchMangaRelations,
+  insertList
 } from "../../redux/reducers/mangaDetailSlice"
 import { mangaDetailSelector } from "../../redux/selectors"
+import CustomizedSnackbars from "../../components/UI/CustomizedSnackbars"
+import mangaDetailSlice from "../../redux/reducers/mangaDetailSlice"
+import RoundButton from "../../components/UI/Button/RoundButton"
+import { Menu, MenuItem } from "@mui/material"
 const MangaDetail = () => {
   const {
     data,
@@ -31,35 +36,128 @@ const MangaDetail = () => {
     relationsLoading,
     relationsError,
     loading,
-    error
+    error,
+    currentUser,
+    insertListSuccess,
+    insertListError,
+    insertListLoading
   } = useSelector(mangaDetailSelector)
   const dispatch = useDispatch()
   const { id } = useParams()
-  // const [data, setData] = useState(null)
-  // const [rec, setRec] = useState(null)
+
   useEffect(() => {
-    // const fetchDetail = async () => {
-    //   const response = await animeApi.getAnimeById(id)
-    //   setData(response.data)
-    // }
-    // const fetchtAnimeRecommendations = async () => {
-    //   const response = await animeApi.getAnimeRecommendations(id)
-    //   setRec(response.data)
-    // }
-    // fetchtAnimeRecommendations()
-    // fetchDetail()
+    dispatch(
+      mangaDetailSlice.actions.addUser(JSON.parse(localStorage.getItem("user")))
+    )
     dispatch(fetchMangaDetail(id))
     dispatch(fetchtMangaRecommendations(id))
     dispatch(fetchMangaRelations(id))
   }, [dispatch, id])
   const [value, setValue] = React.useState(0)
-  //   console.log("ANIME_DETAIL")
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
-  console.log(data)
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const isMenuOpen = Boolean(anchorEl)
+
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const setAsWatchingHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "manga",
+        mal_title: data.title,
+        type: "watching"
+      })
+    )
+  }
+  const setAsPlanningHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "manga",
+        mal_title: data.title,
+        type: "planning"
+      })
+    )
+  }
+  const setAsCompleteHandler = () => {
+    dispatch(
+      insertList({
+        mal_id: data.mal_id,
+        user: { id: currentUser.id },
+        mal_type: "manga",
+        mal_title: data.title,
+        type: "finished"
+      })
+    )
+  }
+  const addListItem = [
+    {
+      label: "Set as Watching",
+      handler: setAsWatchingHandler
+    },
+    {
+      label: "Set as Planning",
+
+      handler: setAsPlanningHandler
+    },
+    {
+      label: "Set as Finished",
+
+      handler: setAsCompleteHandler
+    }
+  ]
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right"
+      }}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "left"
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      {addListItem.map((item) => (
+        <MenuItem
+          component={item.component}
+          to={item.linkTo}
+          key={item.label}
+          onClick={item.handler}
+        >
+          {item.label}
+        </MenuItem>
+      ))}
+    </Menu>
+  )
   return (
     <>
+      {!insertListLoading && insertListSuccess && (
+        <CustomizedSnackbars
+          title={`Add ${data.title} success!`}
+          type="success"
+        />
+      )}
+      {!insertListLoading && insertListError && (
+        <CustomizedSnackbars title="Add failed!" type="error" />
+      )}
+      {!loading && !currentUser && (
+        <CustomizedSnackbars title="Sign in to comment!" type="info" />
+      )}
       {loading && <Preloader />}
       {!loading && Object.keys(data).length !== 0 && (
         <>
@@ -202,9 +300,16 @@ const MangaDetail = () => {
                         </Grid>
                       </div>
                       <div className={styles["anime__details__btn"]}>
-                        <a href="#" className={styles["watch-btn"]}>
-                          <span>Watch Now</span> <ArrowForwardIosIcon />
-                        </a>
+                        <RoundButton className={styles["follow-btn"]}>
+                          Follow
+                        </RoundButton>
+                        <div className={styles["watch-btn"]}>
+                          <RoundButton handler={handleMenuOpen}>
+                            Add to list
+                          </RoundButton>{" "}
+                          <KeyboardArrowDownIcon />
+                        </div>
+                        {renderMenu}
                       </div>
                     </div>
                   </TabPanel>
@@ -233,7 +338,7 @@ const MangaDetail = () => {
                   <div className={styles["section-title"]}>
                     <h5>Comments</h5>
                   </div>
-                  <CommentList />
+                  <CommentList id={id} type="manga" />
                 </div>
               </Grid>
               <Grid item xs={12} md={4} marginTop="1rem" marginBottom="2rem">

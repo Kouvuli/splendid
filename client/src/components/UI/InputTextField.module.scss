@@ -4,3 +4,6 @@
   margin: 8px 0 !important;
   width: 100%;
 }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

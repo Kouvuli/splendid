@@ -18,6 +18,12 @@ public class Comment {
 
     private String content;
 
+    @Column(name = "mal_id")
+    private Integer malId;
+
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "create_at")
     private Timestamp createAt;
 
@@ -30,15 +36,19 @@ public class Comment {
     private Post post;
 
 
+
     @ManyToOne
     @JoinColumn(name = "author_id",referencedColumnName = "id")
     private User author;
 
-    public Comment(int id, String content, Timestamp createAt, Post post, User author) {
+    public Comment(int id, String content, Timestamp createAt, Set<Reaction> reactions, Post post, int malId, String type, User author) {
         this.id = id;
         this.content = content;
         this.createAt = createAt;
+        this.reactions = reactions;
         this.post = post;
+        this.malId = malId;
+        this.type = type;
         this.author = author;
     }
 
@@ -84,6 +94,22 @@ public class Comment {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public Integer getMalId() {
+        return malId;
+    }
+
+    public void setMalId(Integer malId) {
+        this.malId = malId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Set<Reaction> getReactions() {
