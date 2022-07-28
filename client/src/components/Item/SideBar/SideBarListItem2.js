@@ -3,9 +3,12 @@ import styles from "./SideBarListItem2.module.scss"
 const SideBarListItem2 = ({ data }) => {
   return (
     <div className={styles["product__sidebar__comment__item"]}>
-      <div className={styles["product__sidebar__comment__item__pic"]}>
-        <img src={data.images.jpg.large_image_url} alt="" />
-      </div>
+      <a href={`/manga/${data.mal_id}`}>
+        <div className={styles["product__sidebar__comment__item__pic"]}>
+          <img src={data.images.jpg.large_image_url} alt="" />
+        </div>
+      </a>
+
       <div className={styles["product__sidebar__comment__item__text"]}>
         {data.genres && (
           <ul>

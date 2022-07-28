@@ -186,7 +186,7 @@ const options3 = {
 }
 const CardCarousel = (props) => {
   const { loading, data, type = "anime", carouselType } = props
-  console.log(loading)
+
   return (
     <>
       {carouselType === "1" && (

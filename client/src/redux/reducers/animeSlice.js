@@ -16,6 +16,7 @@ const initialState = {
   maxScore: 10
 }
 export const fetchAllAnimes = createAsyncThunk("anime", async (params) => {
+  console.log("hello fetch all")
   const data = await animeApi.getAllAnime(params)
   return data
 })

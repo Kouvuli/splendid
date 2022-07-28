@@ -19,7 +19,7 @@ const SideBarListItem3 = ({ type, id }) => {
 
     fetchDetail()
   }, [id, type])
-  console.log(data)
+
   return (
     <>
       {data && (
