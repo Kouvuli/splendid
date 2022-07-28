@@ -12,14 +12,15 @@ export const SignInForm = ({ handler }) => {
   const { loginSuccess, loginLoading, loginError } = useSelector(authSelector)
   const submitHandler = (event) => {
     event.preventDefault()
-
-    dispatch(Login({ username, password }))
-    setTimeout(() => {
-      handler(false)
+    if (username !== "" && password !== "") {
+      dispatch(Login({ username, password }))
       setTimeout(() => {
-        window.location.reload()
-      }, 1000)
-    }, 2000)
+        handler(false)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
+      }, 2000)
+    }
   }
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")

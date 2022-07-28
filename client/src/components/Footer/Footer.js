@@ -48,7 +48,7 @@ const Footer = () => {
       <Container>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={3} style={{ paddingTop: "20px" }}>
-            <Grid item xs={12} md={4} style={{ marginBottom: "8px" }}>
+            <Grid item xs={12} sm={6} md={4} style={{ marginBottom: "8px" }}>
               <Stack spacing={2}>
                 <Link to="/">
                   <img src={Logo} alt="Logo" />
@@ -79,8 +79,8 @@ const Footer = () => {
               <Grid
                 item
                 xs={12}
-                md={6}
-                lg={2}
+                sm={6}
+                md={2}
                 key={idx}
                 style={{ marginBottom: "8px" }}
               >

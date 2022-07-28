@@ -43,19 +43,25 @@ const Content = ({ type }) => {
     selector = animeListSelector
     slice = animeSlice
   }
-  const { data } = useSelector(selector)
+  const { page, data } = useSelector(selector)
   // const [page, setPage] = useState(parseInt(query.get("page") || "1", 10))
   // console.log(page)
-  const page = parseInt(query.get("page") || "1", 10)
-  useEffect(() => {
-    console.log(page)
-    dispatch(slice.actions.changePage(page))
-  }, [dispatch, page])
-
+  // const page = parseInt(query.get("page") || "1", 10)
+  // useEffect(() => {
+  //   // console.log(page)
+  //   dispatch(slice.actions.changePage(page))
+  // }, [dispatch, page])
+  // const [currentPage, setCurrentPage] = useState(page)
   // props.handlePage(page)
+  const pageHandler = (e, page) => {
+    console.log(page)
+    // setCurrentPage(page)
+    dispatch(slice.actions.changePage(page))
+  }
   return (
     <Pagination
       page={page}
+      onChange={pageHandler}
       count={data.pagination ? data.pagination.last_visible_page : 0}
       shape="rounded"
       color="primary"

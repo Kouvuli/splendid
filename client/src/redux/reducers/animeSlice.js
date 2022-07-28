@@ -39,9 +39,11 @@ const animeSlice = createSlice({
     },
     addGenres: (state, action) => {
       state.genres.push(action.payload)
+      state.page = 1
     },
     changeStatus: (state, action) => {
       state.status = action.payload
+      state.page = 1
     },
     removeGenres: (state, action) => {
       const index = state.genres.indexOf(action.payload)
@@ -49,12 +51,15 @@ const animeSlice = createSlice({
         // only splice array when item is found
         state.genres.splice(index, 1) // 2nd parameter means remove one item only
       }
+      state.page = 1
     },
     changeOrder: (state, action) => {
       state.order = action.payload
+      state.page = 1
     },
     search: (state, action) => {
       state.search = action.payload
+      state.page = 1
     },
     changeMinScore: (state, action) => {
       state.minScore = action.payload

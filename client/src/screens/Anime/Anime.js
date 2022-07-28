@@ -24,30 +24,7 @@ const Anime = () => {
     maxScore
   } = useSelector(animeListSelector)
 
-  // const [page, setPage] = useState(null)
-  // const [genres, setGenres] = useState("")
-  // const [status, setStatus] = useState("")
-  // const [order, setOrder] = useState("type")
-  // const [lastVisiblePage, setLastVisiblePage] = useState(null)
-  // const [productList, setProductList] = useState(null)
   useEffect(() => {
-    // const fetchAllMovie = async () => {
-    //   try {
-    //     const params = {
-    //       page,
-    //       limit,
-    //       genres,
-    //       status,
-    //       order_by: order
-    //     }
-    //     const response = await animeApi.getAll(params)
-    //     setProductList(response.data)
-    //     setLastVisiblePage(response.pagination.last_visible_page)
-    //   } catch (error) {
-    //     throw error
-    //   }
-    // }
-    // fetchAllMovie()
     const params = {
       page,
       limit,
@@ -60,13 +37,6 @@ const Anime = () => {
     }
 
     dispatch(fetchAllAnimes(params))
-
-    // setLastVisiblePage(data.pagination.last_visible_page)
-    // setProductList(data.data)
-    // if (data.length > 0) {
-    //   setLastVisiblePage(data.pagination.last_visible_page)
-    //   setProductList(data.data)
-    // }
   }, [dispatch, page, limit, genres, status, order, search, minScore, maxScore])
   return (
     <>

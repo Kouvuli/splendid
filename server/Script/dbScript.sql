@@ -52,7 +52,7 @@ CREATE TABLE public.LIST(
 	CREATE_AT TIMESTAMP,
 	TYPE VARCHAR,
 	CONSTRAINT PK_LIST PRIMARY KEY(ID)
-)
+);
 --
 -- PostgreSQL database dump
 --
@@ -159,7 +159,11 @@ INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin
 INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('leduc tam',NULL,NULL, '11/02/2001', 'godofwar', '$2a$10$1eY0TesxaS2Pd8SRh5ntdOCazK869VQCDK0AF/wE2fpMtUikUV5ye', false);
 
 
-INSERT INTO public.LIST (USER_ID ,MAL_ID , MAL_TYPE ,MAL_TITLE,CREATE_AT ,TYPE) OVERRIDING SYSTEM VALUE VALUES (10,1,'anime','Cowboy Bepop','2022-07-06 08:06:25.470232+00','watching')
+INSERT INTO public.LIST (USER_ID ,MAL_ID , MAL_TYPE ,MAL_TITLE,CREATE_AT ,TYPE) OVERRIDING SYSTEM VALUE VALUES (10,31245,'anime','Zutto Mae kara Suki deshita.: Kokuhaku Jikkou Iinkai','2022-07-27 21:31:59.082000','finished');
+INSERT INTO public.LIST (USER_ID ,MAL_ID , MAL_TYPE ,MAL_TITLE,CREATE_AT ,TYPE) OVERRIDING SYSTEM VALUE VALUES (10,38826,'anime','Tenki no Ko','2022-07-27 21:14:04.455000','finished');
+INSERT INTO public.LIST (USER_ID ,MAL_ID , MAL_TYPE ,MAL_TITLE,CREATE_AT ,TYPE) OVERRIDING SYSTEM VALUE VALUES (10,460,'anime','One Piece Movie 02: Nejimaki-jima no Daibouken','2022-07-27 21:30:38.842000','finished');
+
+
 --
 -- TOC entry 4330 (class 0 OID 0)
 -- Dependencies: 213

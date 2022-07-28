@@ -5,7 +5,7 @@ import { styled, alpha } from "@mui/material/styles"
 import { useDispatch } from "react-redux"
 import animeSlice from "../../redux/reducers/animeSlice"
 import mangaSlice from "../../redux/reducers/mangaSlice"
-const VerticalSelect = styled(Select)(({ theme }) => ({}))
+
 const CustomSelect = ({ type = "Anime" }) => {
   const [order, setOrder] = useState("type")
   const dispatch = useDispatch()

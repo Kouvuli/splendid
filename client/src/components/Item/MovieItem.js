@@ -10,32 +10,39 @@ const MovieItem = (props) => {
       {props && (
         <Grid item xs={12} sm={5} md={4}>
           <div className={styles["product__item"]}>
-            <div
-              className={`${styles["product__item__pic"]} ${styles["set-bg"]}`}
-              style={{
-                backgroundImage: `url(${props.images.jpg.large_image_url})`
-              }}
+            <a
+              href={`/${props.typez === "Anime" ? "anime" : "manga"}/${
+                props.mal_id
+              }`}
             >
-              {props.airing && props.episodes && (
-                <div className={styles["ep"]}>
-                  {props.airing ? "?" : props.episodes} / {props.episodes}
-                </div>
-              )}
-              {props.score && (
-                <div className={styles["comment"]}>
-                  <i className="bx bxs-star"></i> {props.score}
-                </div>
-              )}
-              {props.scored_by && (
-                <div className={styles["view"]}>
-                  <RemoveRedEyeIcon
-                    className="bx"
-                    style={{ fontSize: "12px", display: "inline-block" }}
-                  ></RemoveRedEyeIcon>{" "}
-                  {props.scored_by}
-                </div>
-              )}
-            </div>
+              <div
+                className={`${styles["product__item__pic"]} ${styles["set-bg"]}`}
+                style={{
+                  backgroundImage: `url(${props.images.jpg.large_image_url})`
+                }}
+              >
+                {props.airing && props.episodes && (
+                  <div className={styles["ep"]}>
+                    {props.airing ? "?" : props.episodes} / {props.episodes}
+                  </div>
+                )}
+                {props.score && (
+                  <div className={styles["comment"]}>
+                    <i className="bx bxs-star"></i> {props.score}
+                  </div>
+                )}
+                {props.scored_by && (
+                  <div className={styles["view"]}>
+                    <RemoveRedEyeIcon
+                      className="bx"
+                      style={{ fontSize: "12px", display: "inline-block" }}
+                    ></RemoveRedEyeIcon>{" "}
+                    {props.scored_by}
+                  </div>
+                )}
+              </div>
+            </a>
+
             <div className={styles["product__item__text"]}>
               {props.genres && (
                 <ul>
