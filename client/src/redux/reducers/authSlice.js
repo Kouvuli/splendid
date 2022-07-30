@@ -15,7 +15,6 @@ const initialState = {
 }
 
 export const SignUp = createAsyncThunk("signup", async (formData) => {
-  console.log(formData)
   const data = await splendidApi.registerUser(formData)
   if (data.error) throw new Error(data.error.message)
 

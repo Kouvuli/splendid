@@ -13,7 +13,6 @@ const initialState = {
 }
 
 export const createPost = createAsyncThunk("create-post", async (param) => {
-  console.log(param)
   const data = splendidApi.insertPost(param)
   return data
 })

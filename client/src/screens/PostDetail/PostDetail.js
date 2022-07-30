@@ -84,7 +84,6 @@ const PostDetail = () => {
   }
 
   const handleConfirm = (values) => {
-    console.log(values)
     dispatch(
       createComment({
         ...values,
@@ -97,7 +96,7 @@ const PostDetail = () => {
       window.location.reload()
     }, 1000)
   }
-  console.log(post.create_at)
+
   return (
     <>
       {!loading && !currentUser && (

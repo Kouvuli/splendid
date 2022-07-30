@@ -9,12 +9,27 @@ import { styled, alpha } from "@mui/material/styles"
 import { useDispatch, useSelector } from "react-redux"
 import animeSlice from "../../redux/reducers/animeSlice"
 import mangaSlice from "../../redux/reducers/mangaSlice"
-import { fetchAllGenres } from "../../redux/reducers/animeSlice"
+import { fetchAllGenres as fetchAllGenresAnime } from "../../redux/reducers/animeSlice"
 import { fetchAllGenresManga } from "../../redux/reducers/mangaSlice"
-import { animeGenresSelector, mangaGenresSelector } from "../../redux/selectors"
+import { animeListSelector, mangaListSelector } from "../../redux/selectors"
 import { Button, IconButton } from "@mui/material"
 import FloatingFilterButton from "../FloatingFilterButton"
-const statuses = ["Airing", "Upcoming", "Complete"]
+const animeStatuses = ["Airing", "Upcoming", "Complete"]
+const mangaStatuses = [
+  "Publishing",
+  "Complete",
+  "Hiatus",
+  "Discontinued",
+  "Upcoming"
+]
+const ratings = {
+  g: "All Ages",
+  pg: "Children",
+  pg13: "Teens 13 or older",
+  r17: "17+ (violence & profanity)",
+  r: "Mild Nudity",
+  rx: "Hentai"
+}
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -44,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: "100%"
   }
 }))
-const Filter = ({ type = "anime", status }) => {
+const Filter = ({ type = "anime", status, rating }) => {
   const dispatch = useDispatch()
   const [inputSearch, setInputSearch] = useState(null)
   const [minScore, setMinScore] = useState(0)
@@ -53,19 +68,19 @@ const Filter = ({ type = "anime", status }) => {
   var slice
   var selector
   if (type === "anime") {
-    selector = animeGenresSelector
+    selector = animeListSelector
     slice = animeSlice
   } else {
-    selector = mangaGenresSelector
+    selector = mangaListSelector
     slice = mangaSlice
   }
-  const allGenres = useSelector(selector)
+  const { allGenres } = useSelector(selector)
   useEffect(() => {
     const params = {
       filter: "genres"
     }
     if (type === "anime") {
-      dispatch(fetchAllGenres(params))
+      dispatch(fetchAllGenresAnime(params))
     } else {
       dispatch(fetchAllGenresManga(params))
     }
@@ -94,6 +109,9 @@ const Filter = ({ type = "anime", status }) => {
 
   const handleChangeStatus = (e) => {
     dispatch(slice.actions.changeStatus(e.target.innerHTML))
+  }
+  const handleChangeRating = (key) => {
+    dispatch(slice.actions.changeRating(key))
   }
   return (
     <>
@@ -140,21 +158,61 @@ const Filter = ({ type = "anime", status }) => {
         </div>
         <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
           <ul className={styles["filter-list"]}>
-            {statuses.map((item, i) => {
-              return (
-                <li
-                  key={i}
-                  className={`${
-                    status === item ? styles["active"] : styles[""]
-                  }`}
-                  onClick={handleChangeStatus}
-                >
-                  {item}
-                </li>
-              )
-            })}
+            {type === "anime" &&
+              animeStatuses.map((item, i) => {
+                return (
+                  <li
+                    key={i}
+                    className={`${
+                      status === item ? styles["active"] : styles[""]
+                    }`}
+                    onClick={handleChangeStatus}
+                  >
+                    {item}
+                  </li>
+                )
+              })}
+            {type === "manga" &&
+              mangaStatuses.map((item, i) => {
+                return (
+                  <li
+                    key={i}
+                    className={`${
+                      status === item ? styles["active"] : styles[""]
+                    }`}
+                    onClick={handleChangeStatus}
+                  >
+                    {item}
+                  </li>
+                )
+              })}
           </ul>
         </Box>
+        {type === "anime" && (
+          <>
+            <div className={`${styles["section-title"]}`}>
+              <h5>Rating</h5>
+            </div>
+            <Box sx={{ backgroundColor: "background.paper", padding: "20px" }}>
+              <ul className={styles["filter-list"]}>
+                {Object.keys(ratings).map((item) => {
+                  return (
+                    <li
+                      key={item}
+                      className={`${
+                        rating === item ? styles["active"] : styles[""]
+                      }`}
+                      onClick={handleChangeRating.bind(this, item)}
+                    >
+                      {ratings[item]}
+                    </li>
+                  )
+                })}
+              </ul>
+            </Box>
+          </>
+        )}
+
         <div className={`${styles["section-title"]}`}>
           <h5>Score</h5>
         </div>

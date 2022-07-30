@@ -21,7 +21,8 @@ const Anime = () => {
     order,
     search,
     minScore,
-    maxScore
+    maxScore,
+    rating
   } = useSelector(animeListSelector)
 
   useEffect(() => {
@@ -33,11 +34,23 @@ const Anime = () => {
       order_by: order,
       q: search,
       min_score: minScore,
-      max_score: maxScore
+      max_score: maxScore,
+      rating
     }
 
     dispatch(fetchAllAnimes(params))
-  }, [dispatch, page, limit, genres, status, order, search, minScore, maxScore])
+  }, [
+    dispatch,
+    page,
+    limit,
+    genres,
+    status,
+    order,
+    search,
+    minScore,
+    maxScore,
+    rating
+  ])
   return (
     <>
       <Grid
@@ -69,6 +82,7 @@ const Anime = () => {
         <Grid item xs={12} md={4}>
           <Filter
             status={status}
+            rating={rating}
             // handleStatus={setStatus}
             // handleGenres={setGenres}
             title="Genres"

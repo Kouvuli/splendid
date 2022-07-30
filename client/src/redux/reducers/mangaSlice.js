@@ -10,6 +10,7 @@ const initialState = {
   genres: [],
   allGenres: [],
   status: "",
+  rating: "",
   order: "type",
   search: "",
   minScore: 0,
@@ -43,6 +44,10 @@ const animeSlice = createSlice({
     },
     changeStatus: (state, action) => {
       state.status = action.payload
+      state.page = 1
+    },
+    changeRating: (state, action) => {
+      state.rating = action.payload
       state.page = 1
     },
     removeGenres: (state, action) => {

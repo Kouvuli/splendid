@@ -46,7 +46,6 @@ const SignUpForm = () => {
     const newName = event.target.value
     setName(newName)
 
-    // console.log(event);
     if (nameRegex.test(newName)) {
       setIsNameError(false)
       setNameHelperText("")
@@ -97,7 +96,7 @@ const SignUpForm = () => {
   const retypePasswordHandler = (event) => {
     const newRetypePassword = event.target.value
     setRetypePassword(newRetypePassword)
-    console.log(password, newRetypePassword)
+
     if (password === newRetypePassword) {
       setIsRetypePasswordError(false)
       setRetypePasswordHelperText("")
@@ -112,7 +111,7 @@ const SignUpForm = () => {
   }
   const submitHandler = (event) => {
     event.preventDefault()
-    console.log("SIGNUP")
+
     if (
       !isNameError &&
       !isUsernameError &&

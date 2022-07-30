@@ -13,6 +13,4 @@ export const timeSince = (date) => {
 
 export const toTimestamp = (strDate) => {
   var datum = Date.parse(strDate)
-  console.log(strDate)
-  console.log(datum / 1000)
 }

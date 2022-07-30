@@ -44,7 +44,7 @@ const Home = () => {
     dispatch(fetchRecentAnimeRec({ page: 1 }))
     dispatch(fetchRecentMangaRec({ page: 1 }))
   }, [dispatch])
-  console.log(seasonUpcomingLoading)
+
   return (
     <>
       {(topAnimeLoading ||

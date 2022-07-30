@@ -8,15 +8,17 @@ const initialState = {
   page: 1,
   limit: 18,
   genres: [],
+  explicitGenres: [],
   allGenres: [],
+
   status: "",
+  rating: "",
   order: "type",
   search: "",
   minScore: 0,
   maxScore: 10
 }
 export const fetchAllAnimes = createAsyncThunk("anime", async (params) => {
-  console.log("hello fetch all")
   const data = await animeApi.getAllAnime(params)
   return data
 })
@@ -42,11 +44,27 @@ const animeSlice = createSlice({
       state.genres.push(action.payload)
       state.page = 1
     },
+    addExplicitGenres: (state, action) => {
+      state.explicitGenres.push(action.payload)
+      state.page = 1
+    },
     changeStatus: (state, action) => {
       state.status = action.payload
       state.page = 1
     },
+    changeRating: (state, action) => {
+      state.rating = action.payload
+      state.page = 1
+    },
     removeGenres: (state, action) => {
+      const index = state.genres.indexOf(action.payload)
+      if (index > -1) {
+        // only splice array when item is found
+        state.genres.splice(index, 1) // 2nd parameter means remove one item only
+      }
+      state.page = 1
+    },
+    removeExplicitGenres: (state, action) => {
       const index = state.genres.indexOf(action.payload)
       if (index > -1) {
         // only splice array when item is found

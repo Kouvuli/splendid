@@ -56,7 +56,6 @@ const ReviewList = (props) => {
           {reviews.map((item) => {
             return (
               <>
-                {console.log(item)}
                 <ReviewCardItem data={item} />
                 <Divider
                   style={{ borderColor: "#d9d9d9", marginBottom: "20px" }}

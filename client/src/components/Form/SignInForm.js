@@ -14,12 +14,14 @@ export const SignInForm = ({ handler }) => {
     event.preventDefault()
     if (username !== "" && password !== "") {
       dispatch(Login({ username, password }))
-      setTimeout(() => {
-        handler(false)
+      if (loginSuccess === true) {
         setTimeout(() => {
-          window.location.reload()
-        }, 1000)
-      }, 2000)
+          handler(false)
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+        }, 2000)
+      }
     }
   }
   const [username, setUsername] = useState("")

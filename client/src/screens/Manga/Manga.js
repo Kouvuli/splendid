@@ -21,7 +21,8 @@ const Manga = () => {
     order,
     search,
     minScore,
-    maxScore
+    maxScore,
+    rating
   } = useSelector(mangaListSelector)
 
   useEffect(() => {
@@ -33,7 +34,8 @@ const Manga = () => {
       order_by: order,
       q: search,
       min_score: minScore,
-      max_score: maxScore
+      max_score: maxScore,
+      rating
     }
 
     dispatch(fetchAllMangas(params))
@@ -44,7 +46,18 @@ const Manga = () => {
     //   setLastVisiblePage(data.pagination.last_visible_page)
     //   setProductList(data.data)
     // }
-  }, [dispatch, page, limit, genres, status, order, search, minScore, maxScore])
+  }, [
+    dispatch,
+    page,
+    limit,
+    genres,
+    status,
+    order,
+    search,
+    minScore,
+    maxScore,
+    rating
+  ])
   return (
     <>
       <Grid
@@ -74,6 +87,7 @@ const Manga = () => {
         <Grid item xs={12} md={4}>
           <Filter
             status={status}
+            rating={rating}
             // handleStatus={setStatus}
             // handleGenres={setGenres}
             type="manga"

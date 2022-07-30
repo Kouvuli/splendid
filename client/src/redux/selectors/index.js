@@ -1,10 +1,10 @@
 export const animeListSelector = (state) => state.anime
-export const animeGenresSelector = (state) => state.anime.allGenres
+// export const animeGenresSelector = (state) => state.anime.allGenres
 
 export const animeDetailSelector = (state) => state.animeDetail
 
 export const mangaListSelector = (state) => state.manga
-export const mangaGenresSelector = (state) => state.manga.allGenres
+// export const mangaGenresSelector = (state) => state.manga.allGenres
 
 export const mangaDetailSelector = (state) => state.mangaDetail
 
