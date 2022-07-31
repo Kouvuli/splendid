@@ -17,19 +17,7 @@
 
 | Jikan API                 | Splendid API              |
 | ------------------------- | ------------------------- |
-| {
-        <br>
-        "status":"ok",
-        <br>
-        "message":""
-        <br>
-        "data": {
-        <br>
-          ...
-        <br>
-        }
-        <br>
-   }|           |
+| {<br>"status":"ok",<br>"message":""<br>"data": {<br>...<br>}<br>}| sasdjkas          |
 <!-- <table>
   <tr>
     <th>Contact</th>
