@@ -25,7 +25,7 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 -   Vào trong thư mục server
 -   Đổi theo thông tin sau trong thư mục /resource/.application.json tương ứng.
 
-| Members  | ID                                                                                                                                                       |
+
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | URI      | postgres://uhktxkcnjqsfcy:afbd21c5aac9f19ed81b814466bebea1f6f06a26213a85397156d231439e4a18@ec2-52-22-136-117.compute-1.amazonaws.com:5432/d79eaot5g8kepb |
 | Database | d79eaot5g8kepb                                                                                                                                           | 
