@@ -20,7 +20,7 @@
     <th>Jikan API</th>
   </tr>
   <tr>
-    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
+    <td>{<pre style="margin-bottom:0px; ">"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
   <tr>
