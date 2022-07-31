@@ -1,3 +1,9 @@
+<style>
+.somthing {
+    margin-bottom: 0px;
+}
+</style>
+
 # 1. Folder Struture:
 
 - Folder src: Contains source code of server
@@ -20,7 +26,7 @@
     <th>Jikan API</th>
   </tr>
   <tr>
-    <td>{<pre style="margin-bottom:0px; ">"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
+    <td>{<pre class="somthing">"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
   <tr>
