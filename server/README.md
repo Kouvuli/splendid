@@ -16,12 +16,18 @@
 ### With no pagination
 <table>
   <tr>
-    <th>Company</th>
+
     <th>Contact</th>
     <th>Country</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
+    <td>{
+    "status":"ok",
+    "message":""
+    "data": {
+      ...
+    }
+} </td>
     <td>Maria Anders</td>
     <td>Germany</td>
   </tr>
