@@ -2,6 +2,7 @@
 
 - Folder src: Contains source code of server
 - Folder Script: Contains database sql scipt for creating table and sample data
+- pom.xml: packages management
 
 # 2. API:
 
@@ -95,6 +96,7 @@
 }
 ```
 
-### Server Host: https://splendid-app-server.herokuapp.com
 
-### Local Host:http://localhost:9090
+# 3. Hosts:
+- Server Host: https://splendid-app-server.herokuapp.com
+- Local Host:http://localhost:9090
