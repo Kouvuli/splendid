@@ -12,7 +12,7 @@
 <br>
 
 # 3. Response format:
-## Success response format:
+## 3.1 Success response format:
 
 ### - With no pagination
 <table>
@@ -55,7 +55,7 @@
 }
 ```
 
-## Error response format:
+## 3.2 Error response format:
 
 ### With no pagination
 
