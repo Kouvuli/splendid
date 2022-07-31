@@ -4,7 +4,7 @@
 - Folder Script: Contains database sql scipt for creating table and sample data
 - pom.xml: packages management
 
-# 2. API:
+# 2. API Documents:
 
 -   Jikan API (v4): [Watch here](https://docs.api.jikan.moe/)
 -   Splendid API (v1): [Watch here](https://documenter.getpostman.com/view/17594467/UzR1K2eW) 
@@ -25,19 +25,6 @@
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
 </table>
-
-                 
-
-
-```
-{
-  "status":"ok",
-  "message":""
-  "data": {
-    ...
-  }
-}
-```
 
 ### - With pagination
 
