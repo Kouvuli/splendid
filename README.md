@@ -23,7 +23,7 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 
 ### Database (PostgreSQL):
 -   Vào trong thư mục server
--   Đổi theo thông tin sau trong thư mục /resource/.application.json tương ứng(Nếu vẫn chưa cập nhật thông tin credential).
+-   Đổi theo thông tin sau trong thư mục /server/src/main/resources/application.properties tương ứng(Nếu vẫn chưa cập nhật thông tin credential).
 
 | Name     | Database Credential                                                                                                                                      |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
