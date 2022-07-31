@@ -28,7 +28,6 @@
       }
     }</clipboard-copy> </td>
     <td>Maria Anders</td>
-    <td>Germany</td>
   </tr>
   <tr>
     <td>Centro comercial Moctezuma</td>
