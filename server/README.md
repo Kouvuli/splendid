@@ -17,7 +17,7 @@
 
 | Jikan API                 | Splendid API              |
 | ------------------------- | ------------------------- |
-| "status":"ok", <br>"message":""<br>"data": {<br> ... <br>} | sdasd |
+| "status":"ok", <br>"message":""<br>"data": {<br> ... } | sdasd |
 |           |
 <table>
   <tr>
