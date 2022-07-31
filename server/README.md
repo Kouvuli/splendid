@@ -17,7 +17,7 @@
 
 | Jikan API                 | Splendid API              |
 | ------------------------- | ------------------------- |
-| "status":"ok", <br>"message":""<br>"data": {<br> ... } | sdasd |
+| "status":"ok", <br>"message":""<br>"data": {<br> ... <br>} | sdasd |
 |           |
 <table>
   <tr>
@@ -25,8 +25,8 @@
     <th>Country</th>
   </tr>
   <tr>
-    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... }</pre>}</td>
-    <td>Maria Anders</td>
+    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
+    <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
   <tr>
     <td>Centro comercial Moctezuma</td>
