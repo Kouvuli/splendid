@@ -16,34 +16,27 @@
 ### With no pagination
 <table>
   <tr>
-
     <th>Contact</th>
     <th>Country</th>
   </tr>
   <tr>
     <td>{
-    "status":"ok",
-    "message":""
-    "data": {
-      ...
-    }
-} </td>
+      "status":"ok",
+      "message":""
+      "data": {
+        ...
+      }
+    } </td>
     <td>Maria Anders</td>
-
+    <td>Germany</td>
   </tr>
   <tr>
     <td>Centro comercial Moctezuma</td>
     <td>Francisco Chang</td>
-
   </tr>
 </table>
-{
-    "status":"ok",
-    "message":""
-    "data": {
-      ...
-    }
-}                     
+
+                 
 
 
 ```
