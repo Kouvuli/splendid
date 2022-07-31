@@ -6,7 +6,8 @@
 
 # 2. API:
 
-## Documentation and example: [View here](https://documenter.getpostman.com/view/17594467/UzR1K2eW)
+-   Anime info API (Jikan API v4): [Watch here](https://docs.api.jikan.moe/)
+-   Splendid API : [Watch here](https://documenter.getpostman.com/view/17594467/UzR1K2eW) 
 
 <br>
 
