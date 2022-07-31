@@ -6,15 +6,26 @@
 
 # 2. API:
 
--   Anime info API (Jikan API v4): [Watch here](https://docs.api.jikan.moe/)
--   Splendid API : [Watch here](https://documenter.getpostman.com/view/17594467/UzR1K2eW) 
+-   Jikan API (v4): [Watch here](https://docs.api.jikan.moe/)
+-   Splendid API (v1): [Watch here](https://documenter.getpostman.com/view/17594467/UzR1K2eW) 
 
 <br>
 
 ## Success response format:
 
 ### With no pagination
-
+| Jinkan API              | Splendid API |
+| ----------------------- | ------------ |
+|```                      | sonmas       |
+{
+  "status":"ok",
+  "message":""
+  "data": {
+    ...
+  }
+}
+```
+|                         |
 ```
 {
   "status":"ok",
