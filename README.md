@@ -6,14 +6,14 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 
 ## Thành viên
 
-| Members          | ID       |
+| Name             | ID       |
 | ---------------- | -------- |
 | Lê Đức Tâm       | 19120644 |
 
 
 ## Hướng dẫn chạy chương trình
 
-## Chạy website admin (port: 3000):
+## Chạy website client (port: 3000):
 
 -   Ở thư mục gốc, chạy lệnh:
     `cd client && npm i && npm start`
@@ -23,9 +23,9 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 
 ## Database (PostgreSQL):
 -   Vào trong thư mục server
--   Đổi theo thông tin sau trong thư mục /resource/.application.json tương ứng.
+-   Đổi theo thông tin sau trong thư mục /resource/.application.json tương ứng(Nếu vẫn chưa cập nhật thông tin credential).
 
-|          |                                                                                                                                                          |
+| Name     | Database Credential                                                                                                                                      |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Host     | ec2-52-22-136-117.compute-1.amazonaws.com                                                                                                                |
 | Database | d79eaot5g8kepb                                                                                                                                           | 
