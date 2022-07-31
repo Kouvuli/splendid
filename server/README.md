@@ -16,16 +16,15 @@
 ### With no pagination
 | Jinkan API              | Splendid API |
 | ----------------------- | ------------ |
-|```                      | sonmas       |
-{
-  "status":"ok",
-  "message":""
-  "data": {
-    ...
-  }
-}
-```
-|                         |
+| {
+    "status":"ok",
+    "message":""
+    "data": {
+      ...
+    }
+| }                       | sonmas       |
+
+
 ```
 {
   "status":"ok",
