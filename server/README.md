@@ -14,15 +14,10 @@
 ## Success response format:
 
 ### With no pagination
-
-| Jikan API                 | Splendid API              |
-| ------------------------- | ------------------------- |
-| "status":"ok", <br>"message":""<br>"data": {<br> ... <br>} | sdasd |
-|           |
 <table>
   <tr>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
   </tr>
   <tr>
     <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
