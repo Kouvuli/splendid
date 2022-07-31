@@ -14,13 +14,10 @@
 ## Success response format:
 
 ### With no pagination
-<table>
-  <tr>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>{
+
+| Jikan API                 | Splendid API              |
+| ------------------------- | ------------------------- |
+| {
         <br>
         "status":"ok",
         <br>
@@ -32,14 +29,21 @@
         <br>
         }
         <br>
-    } </td>
+   }|           |
+<!-- <table>
+  <tr>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td> </td>
     <td>Maria Anders</td>
   </tr>
   <tr>
     <td>Centro comercial Moctezuma</td>
     <td>Francisco Chang</td>
   </tr>
-</table>
+</table> -->
 
                  
 
