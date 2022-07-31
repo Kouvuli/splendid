@@ -14,14 +14,14 @@
 # 3. Response format:
 ## Success response format:
 
-#### - With no pagination
+### - With no pagination
 <table>
   <tr>
     <th>Splendid API</th>
     <th>Jikan API</th>
   </tr>
   <tr>
-    <td>{<pre><code>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</code></pre>}</td>
+    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
 </table>
@@ -39,7 +39,7 @@
 }
 ```
 
-#### - With pagination
+### - With pagination
 
 ```
 {
