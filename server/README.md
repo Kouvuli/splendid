@@ -11,6 +11,7 @@
 
 <br>
 
+# 3. Response format:
 ## Success response format:
 
 #### - With no pagination
