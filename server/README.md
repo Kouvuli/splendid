@@ -20,13 +20,19 @@
     <th>Country</th>
   </tr>
   <tr>
-    <td><clipboard-copy>{
+    <td>{
+      <br>
       "status":"ok",
+      <br>
       "message":""
+      <br>
       "data": {
+      <br>
         ...
+      <br>
       }
-    }</clipboard-copy> </td>
+      <br>
+    } </td>
     <td>Maria Anders</td>
   </tr>
   <tr>
