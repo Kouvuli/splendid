@@ -25,7 +25,7 @@
     <th>Country</th>
   </tr>
   <tr>
-    <td><pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre></td>
+    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
     <td>Maria Anders</td>
   </tr>
   <tr>
