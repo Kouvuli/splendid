@@ -20,13 +20,13 @@
     <th>Country</th>
   </tr>
   <tr>
-    <td>{
+    <td><code>{
       "status":"ok",
       "message":""
       "data": {
         ...
       }
-    } </td>
+    }</code> </td>
     <td>Maria Anders</td>
     <td>Germany</td>
   </tr>
