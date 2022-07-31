@@ -21,7 +21,7 @@
     <th>Jikan API</th>
   </tr>
   <tr>
-    <td>{<pre class="somthing">"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
+    <td>{<pre><code>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</code></pre>}</td>
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
 </table>
