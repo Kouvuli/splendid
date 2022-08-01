@@ -47,7 +47,19 @@
   "data": [
     ...
   ]</pre>}</td>
-    <td>{<pre>"data":{<br>...<br>}</pre>}</td>
+    <td>{<pre>"pagination": {
+        "last_visible_page": ,
+        "has_next_page": ,
+        "current_page": ,
+        "items": {
+            "count": ,
+            "total": ,
+            "per_page": 
+        }
+    },
+    "data": [
+      ...
+    ]</pre>}</td>
   </tr>
 </table>
 
