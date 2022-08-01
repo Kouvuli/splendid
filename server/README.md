@@ -14,7 +14,7 @@
 # 3. Response format:
 ## 3.1 Success response format:
 
--   With no pagination
+-   **With no pagination**
 <table>
   <tr>
     <th>Splendid API</th>
@@ -28,7 +28,28 @@
 
 <br>
 
--  **With pagination**
+-   **With pagination**
+
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"pagination": {<br>
+    "last_visible_page": ,<br>
+    "has_next_page": ,<br>
+    "current_page":,<br>
+    "limit":<br>
+  },<br>
+  "status": "ok",<br>
+  "message": "",<br>
+  "data": [<br>
+    ...<br>
+  ]</pre>}</td>
+    <td>{<pre>"data":{<br>...<br>}</pre>}</td>
+  </tr>
+</table>
 
 ```
 {
