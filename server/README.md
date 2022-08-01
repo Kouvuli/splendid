@@ -64,7 +64,7 @@
 </table>
 
 
-### JWT response:
+## 3.2 JWT response:
 <table>
   <tr>
     <th>Splendid API</th>
@@ -77,13 +77,33 @@
 </table>
 
 
-## 3.2 Error response format:
+## 3.3 Error response format:
 
 ### With no pagination
 
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"status":"",
+"message":""
+"data": {
+  ...
+}</pre>}</td>
+    <td>{<pre>"status":"",
+"type":"",
+"message":"",
+"error":"",
+</pre>}</td>
+  </tr>
+</table>
+
+<br>
 ```
 {
-  "status":"failed",
+  "status":"",
   "message":""
   "data": {
     ...
