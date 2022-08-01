@@ -131,34 +131,24 @@
 "data": []</pre>}</td>
   </tr>
 </table>
-```
-{
-  "pagination": {
-    "last_visible_page": ,
-    "has_next_page": ,
-    "current_page":,
-    "limit":
-  },
-  "status": "failed",
-  "message": "",
-  "data": [
-    ...
-  ]
-}
-```
 
-### JWT response:
 
-```
-{
-  "path": "",
-  "error": "",
-  "message": "",
-  "status":
-}
-```
+
+-   **JWT response**
+<table>
+  <tr>
+    <th>Splendid API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"path": "",
+"error": "",
+"message": "",
+"status":</pre>}</td>
+  </tr>
+</table>
+
 
 
 # 3. Hosts:
 - Server Host: https://splendid-app-server.herokuapp.com
-- Local Host:http://localhost:9090
+- Local Host: http://localhost:9090
