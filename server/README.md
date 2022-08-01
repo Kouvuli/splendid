@@ -63,24 +63,18 @@
   </tr>
 </table>
 
-```
-{
-  "pagination": {
-    "last_visible_page": ,
-    "has_next_page": ,
-    "current_page":,
-    "limit":
-  },
-  "status": "ok",
-  "message": "",
-  "data": [
-    ...
-  ]
-}
-```
 
 ### JWT response:
-
+<table>
+  <tr>
+    <th>Splendid API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"token":"",
+  "id":,
+  "username":</pre>}</td>
+  </tr>
+</table>
 ```
 {
   "token":"",
