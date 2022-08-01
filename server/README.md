@@ -14,7 +14,7 @@
 # 3. Response format:
 ## 3.1 Success response format:
 
-### - With no pagination
+-   With no pagination
 <table>
   <tr>
     <th>Splendid API</th>
@@ -26,7 +26,7 @@
   </tr>
 </table>
 
-### - With pagination
+-  __With pagination__*
 
 ```
 {
