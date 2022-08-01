@@ -38,8 +38,8 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 -   Server: https://splendid-app-server.herokuapp.com/api/v1
 
 ## 5. API Documentations:
--   Sử dụng 2 API (Jikan API, Splendid API) 
--   Jinkan API dùng để lấy dữ liệu thông tin các Anime, Manga từ myanimelist.com
--   Splendid API dùng để quản lý người dùng và các thông tin blog, comment
--   Xem thêm ở file README.md tự /server
+-   Sử dụng 2 API: Jikan API, Splendid API.
+-   Jinkan API dùng để lấy dữ liệu thông tin các Anime, Manga từ myanimelist.net.
+-   Splendid API dùng để quản lý người dùng và các thông tin blog, comment.
+-   Xem thêm ở file README.md tự /server.
 
