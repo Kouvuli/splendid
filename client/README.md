@@ -1,7 +1,8 @@
 # 1. Folder Structure:
+- public: chứa HTML file của website và là nơi chỉ ra id root để render App vào đây 
 - src:
   + apis: chứa các thông tin và các phương thức để lấy dữ liệu từ API
-  + assets: 
+  + assets: chứa các static file
     + css: style dùng chung cho cả chương trình
     + images: hình ảnh dùng cho cho cả chương trình
     + fonts: phông dùng chung cho cả chương trình  
@@ -17,6 +18,8 @@
   + styles: chứa các config chung của scss
   + theme: chủ đề của giao diện
   + utils: chưa các tính năng thêm
+  + App.js: component này là nơi tổng hợp các trang chia theo route tương ứng
+  + index.js: render component App và element có id là root
       
 
 
