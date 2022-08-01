@@ -36,16 +36,16 @@
     <th>Jikan API</th>
   </tr>
   <tr>
-    <td>{<pre>"pagination": {<br>
-    "last_visible_page": ,<br>
-    "has_next_page": ,<br>
-    "current_page":,<br>
-    "limit":<br>
-  },<br>
-  "status": "ok",<br>
-  "message": "",<br>
-  "data": [<br>
-    ...<br>
+    <td>{<pre>"pagination": {
+    "last_visible_page": ,
+    "has_next_page": ,
+    "current_page":,
+    "limit":
+  },
+  "status": "ok",
+  "message": "",
+  "data": [
+    ...
   ]</pre>}</td>
     <td>{<pre>"data":{<br>...<br>}</pre>}</td>
   </tr>
