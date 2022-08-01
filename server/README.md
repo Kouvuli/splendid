@@ -64,7 +64,7 @@
 </table>
 
 
-## 3.2 JWT response:
+-   **JWT response**
 <table>
   <tr>
     <th>Splendid API</th>
@@ -77,9 +77,9 @@
 </table>
 
 
-## 3.3 Error response format:
+## 3.2 Error response format:
 
-### With no pagination
+-   **With no pagination**
 
 <table>
   <tr>
@@ -101,18 +101,36 @@
 </table>
 
 <br>
-```
-{
-  "status":"",
-  "message":""
-  "data": {
-    ...
+
+-   **With pagination**
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"pagination": {
+    "last_visible_page": ,
+    "has_next_page": ,
+    "current_page":,
+    "limit":
+  },
+  "status": "failed",
+  "message": "",
+  "data": []</pre>}</td>
+    <td>{<pre>"pagination": {
+  "last_visible_page": ,
+  "has_next_page": ,
+  "current_page": ,
+  "items": {
+      "count": ,
+      "total": ,
+      "per_page": 
   }
-}
-```
-
-### With pagination
-
+},
+"data": []</pre>}</td>
+  </tr>
+</table>
 ```
 {
   "pagination": {
