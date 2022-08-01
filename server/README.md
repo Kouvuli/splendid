@@ -26,7 +26,9 @@
   </tr>
 </table>
 
--  __With pagination__*
+<br>
+
+-  **With pagination**
 
 ```
 {
