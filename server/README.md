@@ -71,18 +71,11 @@
   </tr>
   <tr>
     <td>{<pre>"token":"",
-  "id":,
-  "username":</pre>}</td>
+"id":,
+"username":</pre>}</td>
   </tr>
 </table>
-```
-{
-  "token":"",
-  "id":,
-  "username":
 
-}
-```
 
 ## 3.2 Error response format:
 
