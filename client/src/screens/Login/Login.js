@@ -25,9 +25,9 @@ export const Login = ({ signIn, handler }) => {
       return !prevIsSignIn
     })
   }
-  useEffect(() => {
-    dispatch(authSlice.actions.restartSignUp())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(authSlice.actions.restartSignUp())
+  // }, [])
   return (
     <Card
       className={`${styles.container} ${

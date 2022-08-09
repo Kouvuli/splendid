@@ -5,6 +5,9 @@ const initialState = {
   loading: false,
   error: false,
   data: {},
+  avatar: "",
+  background: "",
+
   activitiesLimit: 18,
   activitiesHasNext: false,
   activitiesPage: 1,
@@ -61,7 +64,9 @@ export const updatedUser = createAsyncThunk("update-user", async (params) => {
     fullname: params.fullname,
     job: params.job,
     dob: params.dob,
-    address: params.address
+    address: params.address,
+    avatar: params.avatar,
+    background: params.background
   })
   return data
 })
@@ -119,6 +124,11 @@ export const fetchMangaList = createAsyncThunk(
 
 export const deleteList = createAsyncThunk("delete-list", async (id) => {
   const { data } = await splendidApi.deleteList(id)
+  return data
+})
+
+export const uploadImage = createAsyncThunk("upload-image", async (params) => {
+  const { data } = await splendidApi.uploadImage(params)
   return data
 })
 const profileSlice = createSlice({
@@ -289,6 +299,11 @@ const profileSlice = createSlice({
         state.deleteListError = true
         state.deleteListSuccess = false
       })
+      .addCase(uploadImage.pending, (state) => {})
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.avatar = action.payload
+      })
+      .addCase(uploadImage.rejected, (state, action) => {})
   }
 })
 export default profileSlice

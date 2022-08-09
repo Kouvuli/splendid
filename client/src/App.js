@@ -6,7 +6,7 @@ import "./assets/css/elegant-icons.css"
 import "./assets/css/nice-select.css"
 import "./assets/css/boxicons-2.1.1/css/boxicons.min.css"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import HomeTemplate from "./screens"
+import PagesTemplate from "./screens"
 import PageNotFound from "./screens/PageNotFound"
 import { routeHome } from "./routes"
 import Loader from "./components/Preloader"
@@ -16,11 +16,11 @@ import Loader from "./components/Preloader"
 // import RegisterPage from "./pages/Register/RegisterPage";
 
 function App() {
-  const showLayoutHome = (routes) => {
+  const showPages = (routes) => {
     if (routes && routes.length > 0) {
       return routes.map((item, index) => {
         return (
-          <HomeTemplate
+          <PagesTemplate
             key={index}
             exact={item.exact}
             path={item.path}
@@ -34,7 +34,7 @@ function App() {
     <Suspense fallback={<Loader />}>
       <BrowserRouter>
         <Switch>
-          {showLayoutHome(routeHome)}
+          {showPages(routeHome)}
           <Route path="" component={PageNotFound} />
         </Switch>
       </BrowserRouter>

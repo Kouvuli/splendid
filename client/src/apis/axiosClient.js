@@ -14,7 +14,13 @@ const request = (url) => {
     if (config.url === "/auth/signin") {
       config.method = "POST"
     }
+    if (config.url === "/file") {
+      console.log(config)
 
+      config.headers["content-Type"] = "multipart/form-data"
+
+      console.log(config)
+    }
     return config
   })
   axiosClient.interceptors.response.use(

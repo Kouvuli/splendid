@@ -4,7 +4,7 @@ import { Route } from "react-router"
 import Footer from "../components/Footer"
 import Header from "../components/Header/Header"
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop"
-const LayoutHome = (props) => {
+const PagesLayout = (props) => {
   //   let isLogin = false;
   //   if (localStorage.getItem("User")) {
   //     isLogin = true;
@@ -23,18 +23,18 @@ const LayoutHome = (props) => {
     </>
   )
 }
-const HomeTemplate = ({ Component, ...props }) => {
+const PagesTemplate = ({ Component, ...props }) => {
   return (
     <Route
       {...props}
       render={(propsComponent) => {
         return (
-          <LayoutHome>
+          <PagesLayout>
             <Component {...propsComponent} />
-          </LayoutHome>
+          </PagesLayout>
         )
       }}
     />
   )
 }
-export default HomeTemplate
+export default PagesTemplate

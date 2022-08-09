@@ -19,7 +19,7 @@ const Post = ({ author, title, content, id }) => {
             className={styles.avatar}
             variant="rounded"
             sx={{ width: 24, height: 24 }}
-            src=""
+            src={author.avatar}
           />
           <Typography className={styles.authorName}>
             {author.username}

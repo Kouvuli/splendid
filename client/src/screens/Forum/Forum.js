@@ -59,7 +59,7 @@ const Forum = () => {
     setOpen(false)
     setTimeout(() => {
       window.location.reload()
-    }, 500)
+    }, 1000)
   }
 
   return (

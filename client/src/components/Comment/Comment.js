@@ -46,7 +46,11 @@ const Comment = ({ content, create_at, author, id }) => {
     <>
       <div className={styles.listItem}>
         <ListItemAvatar className={styles.listItemAvatar}>
-          <Avatar className={styles.avatar} variant="rounded" src="" />
+          <Avatar
+            className={styles.avatar}
+            variant="rounded"
+            src={author?.avatar}
+          />
           <Typography className={styles.authorName}>
             {author.username}
           </Typography>

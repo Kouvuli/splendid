@@ -10,18 +10,26 @@ import CustomizedSnackbars from "../UI/CustomizedSnackbars"
 export const SignInForm = ({ handler }) => {
   const dispatch = useDispatch()
   const { loginSuccess, loginLoading, loginError } = useSelector(authSelector)
+
   const submitHandler = (event) => {
     event.preventDefault()
     if (username !== "" && password !== "") {
       dispatch(Login({ username, password }))
-      if (loginSuccess === true) {
+
+      setTimeout(() => {
+        handler(false)
         setTimeout(() => {
-          handler(false)
-          setTimeout(() => {
-            window.location.reload()
-          }, 1000)
-        }, 2000)
-      }
+          window.location.reload()
+        }, 1000)
+      }, 3000)
+      // if (loginSuccess === true) {
+      //   setTimeout(() => {
+      //     handler(false)
+      //     setTimeout(() => {
+      //       window.location.reload()
+      //     }, 1000)
+      //   }, 2000)
+      // }
     }
   }
   const [username, setUsername] = useState("")

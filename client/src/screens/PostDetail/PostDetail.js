@@ -125,7 +125,11 @@ const PostDetail = () => {
             <div className={styles.postTitle}>{post?.title}</div>
             <div className={styles.post}>
               <ListItemAvatar className={styles.listItemAvatar}>
-                <Avatar className={styles.avatar} variant="rounded" src="" />
+                <Avatar
+                  className={styles.avatar}
+                  variant="rounded"
+                  src={post.author?.avatar}
+                />
                 <Typography className={styles.authorName}>
                   {post?.author?.username}
                 </Typography>

@@ -114,6 +114,11 @@ const splendidApi = {
   deleteList: (id) => {
     const url = `/list/${id}`
     return request.delete(url, { headers: authHeader() })
+  },
+  uploadImage: (data) => {
+    const url = "/file"
+    console.log(data)
+    return request.post(url, data, { headers: authHeader() })
   }
 }
 

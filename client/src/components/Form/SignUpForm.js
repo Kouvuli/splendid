@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import InputTextField from "../UI/InputTextField"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -18,10 +18,12 @@ import {
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import moment from "moment"
-
+import authSlice from "../../redux/reducers/authSlice"
 const SignUpForm = () => {
   const dispatch = useDispatch()
-
+  useEffect(() => {
+    dispatch(authSlice.actions.restartSignUp())
+  }, [])
   const [name, setName] = useState("")
   const [isNameError, setIsNameError] = useState(false)
   const [nameHelperText, setNameHelperText] = useState("")

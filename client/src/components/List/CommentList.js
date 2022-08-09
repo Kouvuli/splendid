@@ -19,7 +19,7 @@ import CardSkeleton from "../UI/CardSkeleton"
 import { CARD_TYPES } from "../../constants"
 const CommentList = ({ type = "anime", id }) => {
   const dispatch = useDispatch()
-  const [commentVal, setCommentVal] = useState(null)
+  const [commentVal, setCommentVal] = useState("")
   var selector
   if (type === "anime") {
     selector = animeDetailSelector
@@ -82,6 +82,9 @@ const CommentList = ({ type = "anime", id }) => {
           })
         )
       }
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
     }
   }
   const fetchMoreComments = () => {

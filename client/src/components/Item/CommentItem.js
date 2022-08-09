@@ -7,7 +7,7 @@ const CommentItem = ({ data }) => {
     <div className={styles["anime__review__item"]}>
       <div className={styles["anime__review__item__pic"]}>
         <img
-          src={!data.image ? DefaultImage : "img/anime/review-1.jpg"}
+          src={!data.author.avatar ? DefaultImage : data.author.avatar}
           alt=""
         />
       </div>
