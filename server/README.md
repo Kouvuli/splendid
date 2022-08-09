@@ -2,32 +2,41 @@
 
 - Folder src: Contains source code of server
 - Folder Script: Contains database sql scipt for creating table and sample data
+- pom.xml: packages management
 
-# 2. API:
+# 2. API Documents:
 
-## Documentation and example: [View here](https://documenter.getpostman.com/view/17594467/UzR1K2eW)
+-   Jikan API (v4): [Watch here](https://docs.api.jikan.moe/)
+-   Splendid API (v1): [Watch here](https://documenter.getpostman.com/view/17594467/UzR1K2eW) 
 
 <br>
 
-## Success response format:
+# 3. Response format:
+## 3.1 Success response format:
 
-### With no pagination
+-   **With no pagination**
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"status":"ok",<br>"message":"",<br>"data":{<br> ... <br>}</pre>}</td>
+    <td>{<pre>"data":{<br>...<br>}</pre>}</td>
+  </tr>
+</table>
 
-```
-{
-  "status":"ok",
-  "message":""
-  "data": {
-    ...
-  }
-}
-```
+<br>
 
-### With pagination
+-   **With pagination**
 
-```
-{
-  "pagination": {
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"pagination": {
     "last_visible_page": ,
     "has_next_page": ,
     "current_page":,
@@ -37,40 +46,70 @@
   "message": "",
   "data": [
     ...
-  ]
-}
-```
-
-### JWT response:
-
-```
-{
-  "token":"",
-  "id":,
-  "username":
-
-}
-```
-
-## Error response format:
-
-### With no pagination
-
-```
-{
-  "status":"failed",
-  "message":""
-  "data": {
-    ...
+  ]</pre>}</td>
+    <td>{<pre>"pagination": {
+  "last_visible_page": ,
+  "has_next_page": ,
+  "current_page": ,
+  "items": {
+      "count": ,
+      "total": ,
+      "per_page": 
   }
-}
-```
+},
+"data": [
+  ...
+]</pre>}</td>
+  </tr>
+</table>
 
-### With pagination
 
-```
-{
-  "pagination": {
+-   **JWT response**
+<table>
+  <tr>
+    <th>Splendid API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"token":"",
+"id":,
+"username":</pre>}</td>
+  </tr>
+</table>
+
+
+## 3.2 Error response format:
+
+-   **With no pagination**
+
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"status":"",
+"message":""
+"data": {
+  ...
+}</pre>}</td>
+    <td>{<pre>"status":"",
+"type":"",
+"message":"",
+"error":"",
+</pre>}</td>
+  </tr>
+</table>
+
+<br>
+
+-   **With pagination**
+<table>
+  <tr>
+    <th>Splendid API</th>
+    <th>Jikan API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"pagination": {
     "last_visible_page": ,
     "has_next_page": ,
     "current_page":,
@@ -78,23 +117,38 @@
   },
   "status": "failed",
   "message": "",
-  "data": [
-    ...
-  ]
-}
-```
+  "data": []</pre>}</td>
+    <td>{<pre>"pagination": {
+  "last_visible_page": ,
+  "has_next_page": ,
+  "current_page": ,
+  "items": {
+      "count": ,
+      "total": ,
+      "per_page": 
+  }
+},
+"data": []</pre>}</td>
+  </tr>
+</table>
 
-### JWT response:
 
-```
-{
-  "path": "",
-  "error": "",
-  "message": "",
-  "status":
-}
-```
 
-### Server Host: https://splendid-app-server.herokuapp.com
+-   **JWT response**
+<table>
+  <tr>
+    <th>Splendid API</th>
+  </tr>
+  <tr>
+    <td>{<pre>"path": "",
+"error": "",
+"message": "",
+"status":</pre>}</td>
+  </tr>
+</table>
 
-### Local Host:http://localhost:9090
+
+
+# 3. Hosts:
+- Server Host: https://splendid-app-server.herokuapp.com
+- Local Host: http://localhost:9090
