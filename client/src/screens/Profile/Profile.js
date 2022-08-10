@@ -124,6 +124,9 @@ const Profile = () => {
           avatar: avatar
         })
       )
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
     }
   }, [avatar])
   useEffect(() => {
@@ -134,6 +137,9 @@ const Profile = () => {
           background: background
         })
       )
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000)
     }
   }, [background])
   const [value, setValue] = useState(0)
@@ -227,7 +233,7 @@ const Profile = () => {
       {!loading && error && !currentUser && (
         <CustomizedSnackbars title="Sign in to see your profile!" type="info" />
       )}
-      {!loading && activitiesError && currentUser && (
+      {!loading && error && currentUser && (
         <CustomizedSnackbars title="Your token has expired!" type="warning" />
       )}
       {loading && <Preloader />}
