@@ -10,8 +10,9 @@ import {
   fetchActivityByUserId,
   fetchAnimeList,
   fetchMangaList,
-  uploadImage,
-  updatedUser
+  uploadAvatar,
+  updatedUser,
+  uploadBackground
 } from "../../redux/reducers/profileSlice"
 import profileSlice from "../../redux/reducers/profileSlice"
 import { profileSelector } from "../../redux/selectors"
@@ -119,12 +120,22 @@ const Profile = () => {
     if (avatar !== "") {
       dispatch(
         updatedUser({
+          id: data.id,
           avatar: avatar
         })
       )
     }
-  }, [avatar, background])
-
+  }, [avatar])
+  useEffect(() => {
+    if (background !== "") {
+      dispatch(
+        updatedUser({
+          id: data.id,
+          background: background
+        })
+      )
+    }
+  }, [background])
   const [value, setValue] = useState(0)
 
   const fetchMoreActivities = () => {
@@ -162,60 +173,44 @@ const Profile = () => {
     const file = e.target.files[0]
     if (file) {
       avatarRef.current.src = URL.createObjectURL(file)
-      return new Promise((resolve, reject) => {
-        const body = new FormData()
+      const body = new FormData()
 
-        body.append("file", file)
+      body.append("file", file)
+      dispatch(uploadAvatar(body))
+      // return new Promise((resolve, reject) => {
+      //   const body = new FormData()
 
-        fetch(`https://splendid-app-server.herokuapp.com/api/v1/file`, {
-          method: "post",
-          headers: {
-            Authorization: `Bearer ${currentUser.access_token}`
-          },
-          body: body
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res.data)
-            dispatch(updatedUser({ id: data.id, avatar: res.data }))
-            setTimeout(() => {
-              window.location.reload()
-            }, 1000)
-          })
-          .catch((err) => {
-            return <CustomizedSnackbars title={err} type="error" />
-          })
-      })
+      //   body.append("file", file)
+
+      //   fetch(`https://splendid-app-server.herokuapp.com/api/v1/file`, {
+      //     method: "post",
+      //     headers: {
+      //       Authorization: `Bearer ${currentUser.access_token}`
+      //     },
+      //     body: body
+      //   })
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       console.log(res.data)
+      //       dispatch(updatedUser({ id: data.id, avatar: res.data }))
+      //       setTimeout(() => {
+      //         window.location.reload()
+      //       }, 1000)
+      //     })
+      //     .catch((err) => {
+      //       return <CustomizedSnackbars title={err} type="error" />
+      //     })
+      // })
     }
   }
   const backgroundPickerHandler = (e) => {
     const [file] = e.target.files
     if (file) {
       backgroundRef.current.src = URL.createObjectURL(file)
-      return new Promise((resolve, reject) => {
-        const body = new FormData()
+      const body = new FormData()
 
-        body.append("file", file)
-
-        fetch(`https://splendid-app-server.herokuapp.com/api/v1/file`, {
-          method: "post",
-          headers: {
-            Authorization: `Bearer ${currentUser.access_token}`
-          },
-          body: body
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            // console.log(res)
-            dispatch(updatedUser({ id: data.id, background: res.data }))
-            setTimeout(() => {
-              window.location.reload()
-            }, 1000)
-          })
-          .catch((err) => {
-            return <CustomizedSnackbars title={err} type="error" />
-          })
-      })
+      body.append("file", file)
+      dispatch(uploadBackground(body))
     }
   }
   return (
