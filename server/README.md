@@ -149,6 +149,6 @@
 
 
 
-# 3. Hosts:
+# 4. Hosts:
 - Server Host: https://splendid-app-server.herokuapp.com
 - Local Host: http://localhost:9090
