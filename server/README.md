@@ -150,5 +150,5 @@
 
 
 # 4. Hosts:
-- Server Host: https://splendid-app-server.herokuapp.com
+- Server Host: https://splendid-production.up.railway.app
 - Local Host: http://localhost:9090
