@@ -49,10 +49,10 @@ public class UserController {
         Optional<User> user=userService.getUserById(id);
         return user.isPresent()?
                 ResponseEntity.status(HttpStatus.OK).body(
-                        new ResponeObject("ok","Query reaction succesfully",user)
+                        new ResponeObject("ok","Query user succesfully",user)
                 ):
                 ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                        new ResponeObject("failed","Cannot find reaction with id="+id,"")
+                        new ResponeObject("failed","Cannot find user with id="+id,"")
                 );
     }
 

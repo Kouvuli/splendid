@@ -9,7 +9,7 @@ const initialState = {
   signUpSuccess: false,
   signUpLoading: false,
   signUpError: false,
-  time: 0,
+
   data: JSON.parse(localStorage.getItem("user")) || null,
   success: false
 }
@@ -32,8 +32,6 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state, action) => {
-      state.success = false
-
       state.data = null
       localStorage.removeItem("user")
       state.loginSuccess = false

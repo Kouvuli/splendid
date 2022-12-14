@@ -38,6 +38,8 @@ CREATE TABLE public.USER (
 	job VARCHAR,
     dob VARCHAR,
     username VARCHAR,
+	avatar VARCHAR,
+	background VARCHAR,
     password VARCHAR,
     is_admin boolean DEFAULT false,
 	CONSTRAINT PK_USER PRIMARY KEY(ID)
@@ -147,16 +149,16 @@ INSERT INTO public.reaction(CREATE_AT ,POST_ID ,COMMENT_ID ,AUTHOR_ID) OVERRIDIN
 --
 
 
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Hoang Thi Truong',NULL,NULL, '12/02/2002', 'test4', '$2b$10$IehL4ShtGLCv5OAUUY7ELeyh2xrJBwc.DmNg0hmkXmMOphK1f5Cda', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Manh Hung Tien',NULL,NULL, '12/02/2002', 'test5', '$2b$10$9u6vSvL4Df0JhVlzFeaJi.32blRSoJrsA.w1vDcBIUdl/XF32DJI2', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Nguyen Huy Hoang',NULL,NULL, '12/02/2002', 'hhoang', '$2b$10$Vnw0j.qQWa/ap5JUGViiwexqqVYbyF9BqvAhqY.lQrn2iv/maaiIK', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Minh Lap',NULL,NULL, '12/02/2002', 'minhlap', '$2b$10$GRdmekQQMLY5i.dAmmMnzOaoFtLkOC7fvJ/IWjmqVNB.d/ZJH..P.', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Nguyen Hoang Tien',NULL,NULL, '12/02/2001', 'htien2', '$2b$10$EuwgrUkd2rO6czKdZn0HA.EjESm7I07Rgh0hGHjEy/Ojm//riCuNi', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Ngo Nhat Tho',NULL,NULL, '12/02/2001', 'htien3', '$2b$10$oHbZVlTGywSgyFea.hAFoOOwIY6gEFR7a0tsjOLu2Fu3hpaW3VecC', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Le Duc Tam',NULL,NULL, '12/02/2003', 'tamld', '$2b$10$3iwrwkqLJyWhMqN7bci6b.yYvaxlT.2jw5k6KXwNbicupDuS/Z6Xe', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('staff1',NULL,NULL, '1/1/2000', 'staff1', '$2b$10$7xcP0dWZEW2TsgUPUQYeZ.bsiIObiKS7a.QbJtCGcZJlu.pNPbLYS', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Hoang Vinh',NULL,NULL, '12/02/2002', 'hvinh', '$2b$10$AyDNQxgV7i0HLnkUMjE2aOOz9CD3Jc0PNKivGQOG1AP8SeB9hJKbu', false);
-INSERT INTO public."user"(fullname,address,job ,dob ,username ,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('leduc tam',NULL,NULL, '11/02/2001', 'godofwar', '$2a$10$1eY0TesxaS2Pd8SRh5ntdOCazK869VQCDK0AF/wE2fpMtUikUV5ye', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Hoang Thi Truong',NULL,NULL, '12/02/2002', 'test4',NULL,NULL, '$2b$10$IehL4ShtGLCv5OAUUY7ELeyh2xrJBwc.DmNg0hmkXmMOphK1f5Cda', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Manh Hung Tien',NULL,NULL, '12/02/2002', 'test5',NULL,NULL, '$2b$10$9u6vSvL4Df0JhVlzFeaJi.32blRSoJrsA.w1vDcBIUdl/XF32DJI2', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Nguyen Huy Hoang',NULL,NULL, '12/02/2002', 'hhoang',NULL,NULL, '$2b$10$Vnw0j.qQWa/ap5JUGViiwexqqVYbyF9BqvAhqY.lQrn2iv/maaiIK', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Minh Lap',NULL,NULL, '12/02/2002', 'minhlap',NULL,NULL, '$2b$10$GRdmekQQMLY5i.dAmmMnzOaoFtLkOC7fvJ/IWjmqVNB.d/ZJH..P.', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Nguyen Hoang Tien',NULL,NULL, '12/02/2001', 'htien2',NULL,NULL, '$2b$10$EuwgrUkd2rO6czKdZn0HA.EjESm7I07Rgh0hGHjEy/Ojm//riCuNi', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Ngo Nhat Tho',NULL,NULL, '12/02/2001', 'htien3',NULL,NULL, '$2b$10$oHbZVlTGywSgyFea.hAFoOOwIY6gEFR7a0tsjOLu2Fu3hpaW3VecC', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Le Duc Tam',NULL,NULL, '12/02/2003', 'tamld',NULL,NULL, '$2b$10$3iwrwkqLJyWhMqN7bci6b.yYvaxlT.2jw5k6KXwNbicupDuS/Z6Xe', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('staff1',NULL,NULL, '1/1/2000', 'staff1',NULL,NULL, '$2b$10$7xcP0dWZEW2TsgUPUQYeZ.bsiIObiKS7a.QbJtCGcZJlu.pNPbLYS', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('Hoang Vinh',NULL,NULL, '12/02/2002', 'hvinh',NULL,NULL, '$2b$10$AyDNQxgV7i0HLnkUMjE2aOOz9CD3Jc0PNKivGQOG1AP8SeB9hJKbu', false);
+INSERT INTO public."user"(fullname,address,job ,dob ,username,avatar,background,password,is_admin) OVERRIDING SYSTEM VALUE VALUES ('leduc tam',NULL,NULL, '11/02/2001', 'godofwar',NULL,NULL, '$2a$10$1eY0TesxaS2Pd8SRh5ntdOCazK869VQCDK0AF/wE2fpMtUikUV5ye', false);
 
 
 INSERT INTO public.LIST (USER_ID ,MAL_ID , MAL_TYPE ,MAL_TITLE,CREATE_AT ,TYPE) OVERRIDING SYSTEM VALUE VALUES (10,31245,'anime','Zutto Mae kara Suki deshita.: Kokuhaku Jikkou Iinkai','2022-07-27 21:31:59.082000','finished');

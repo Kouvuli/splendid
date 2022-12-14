@@ -15,11 +15,7 @@ const request = (url) => {
       config.method = "POST"
     }
     if (config.url === "/file") {
-      console.log(config)
-
       config.headers["content-Type"] = "multipart/form-data"
-
-      console.log(config)
     }
     return config
   })
