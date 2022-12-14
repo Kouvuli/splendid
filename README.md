@@ -27,15 +27,15 @@ Diễn đàn trực tuyến xem thông tin phim hoạt hình, truyện tranh Nh�
 
 | Name     | Database Credential                                                                                                                                      |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Host     | ec2-52-22-136-117.compute-1.amazonaws.com                                                                                                                |
-| Database | d79eaot5g8kepb                                                                                                                                           | 
-| User     | uhktxkcnjqsfcy                                                                                                                                           |
-| Port     | 5432                                                                                                                                                     | 
-| Password | afbd21c5aac9f19ed81b814466bebea1f6f06a26213a85397156d231439e4a18
+| Host     | containers-us-west-169.railway.app                                                                                                                       |
+| Database | railway                                                                                                                                                  | 
+| User     | postgres                                                                                                                                                 |
+| Port     | 7332                                                                                                                                                     | 
+| Password | wzI3EA4GGwCSiYJsdBE8
 
 ## 4. Deploy endpoints:
 -   Client: https://splendid-client-xi.vercel.app
--   Server: https://splendid-app-server.herokuapp.com/api/v1
+-   Server: https://splendid-production.up.railway.app
 
 ## 5. API Documentations:
 -   Sử dụng 2 API: Jikan API, Splendid API.
